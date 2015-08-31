@@ -359,20 +359,19 @@ Ftree - Genealogical program on Perl
 
   About the Family Tree Generator, v2.3.*
 
+=head1 PACKAGE CONTENTS:
 
-PACKAGE CONTENTS:
+  readme.txt                     This file
+  config/PerlSettingsImporter.pm Settings file
+  cgi/ftree.cgi                  The main perl script
+  cgi/*.pm                       Other perl modules
+  tree.txt, tree.xls, royal.ged  Example family tree data files
+  license.txt                    The GNU GPL license details
+  changes.txt					   Change history
+  pictures/*.[gif,png,jpg,tif]   The pictures of the relatives
+  graphics/*.gif                 The system graphic files 
 
-readme.txt                     This file
-config/PerlSettingsImporter.pm Settings file
-cgi/ftree.cgi                  The main perl script
-cgi/*.pm                       Other perl modules
-tree.txt, tree.xls, royal.ged  Example family tree data files
-license.txt                    The GNU GPL license details
-changes.txt					   Change history
-pictures/*.[gif,png,jpg,tif]   The pictures of the relatives
-graphics/*.gif                 The system graphic files 
-
-OVERVIEW:
+=head1 OVERVIEW:
  
 When I designed the Family Tree Generator, I wanted more than just an online version of a traditional tree. With this software it is possible to draw a tree of ancestors and descendants for any person, showing any number of generations (where the information exists).
 Most other web-based "trees" are little more than text listings of people. 
@@ -388,7 +387,7 @@ It runs as a CGI program - its output is the HTML of the page that you see.
 The program reads in the data file, and analyzes the relationships to determine the ancestors, siblings and descendants of the person selected. 
 HTML tables are generated to display these trees, linking in the portrait images where they exist.
 
-INSTALLATION INSTRUCTIONS:
+=head1 INSTALLATION INSTRUCTIONS:
 
 1. Set up your web server (apache or IIS) so that it can run Perl scripts (e.g. mod-perl).
 
@@ -406,7 +405,49 @@ INSTALLATION INSTRUCTIONS:
 
 7. If you are unhappy with the style and colors of the output then point the css_filename entry in PerlSettingsImporter.pm into your stly sheet.
 
-DATAFILE FORMAT:
+=head1 INSTALLATION INSTRUCTIONS FOR XAMPP for Windows 5.6.12:
+
+Download I use xampp XAMPP for Windows 5.6.12 (https://www.apachefriends.org/ru/download.html) to install and configure Apache  
+ 
+  <IfModule alias_module>  
+  ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/ftree/cgi/"  
+  </IfModule>  
+  
+  <Directory "C:/xampp/cgi-bin/ftree/cgi">  
+  AllowOverride All  
+  Options None  
+  Require all granted  
+  </Directory>  
+   
+My shebang in ftree.cgi is #!"c:\Dwimperl\perl\bin\perl.exe" (by Gabor Sabo)  
+ 
+  copy c:\xampp\cgi-bin\ftree\graphics\   
+  to    
+  c:\xampp\htdocs\graphics\  
+  
+to correct show images  
+  
+I catch error couldn't create child process: 720002
+------------------------
+It was the first line in the .cgi file that needed to be adapted to Xamp's configuration:  
+  
+  #!"c:\xampp\perl\bin\perl.exe"  
+  Instead of:  
+  
+  #!"c:\perl\bin\perl.exe"  
+  
+https://forum.xojo.com/20697-couldn-t-create-child-process-720002-error-when-deploying-on-wi/0  
+http://open-server.ru/forum/viewtopic.php?f=6&t=1059  
+  
+ Image cancatenate
+------------------------
+=head1 NAME OF THE PICTURE:
+  
+  One picture may belong to each person. 
+  No image put here and name=id.jpg
+  c:\xampp\cgi-bin\ftree\pictures\  
+
+=head1 DATAFILE FORMAT:
 
 The program can handle excel, csv (txt), gedcom, serialized files and can get data from database. Follow these rules to decide which one to use:
 1, Use gedcom if you already have your family tree data in a gedcom file and the fields that the program is able to import is sufficient.
@@ -421,7 +462,7 @@ We encourage everybody to use the excel format. To convert from the csv format t
 TIP 1.: Maintain your family tree data in excel using the Form option. Select all the columns, then press DATA->Form. It is convenient to add new people or to modify information of existing persons.
 TIP 2.: Freeze the first line so that header does not disappear when scrolling down. 
 
-The excel format:
+=head1 The excel format:
 
 The excel format is quite straightforward based on the example file. Each row (except the header) represents a person. The fields are:
  * ID: the ID of the person. It can be anything (like 123 or Bart_Simpson), but it should only contain alphanumeric characters and underscore (no whitespace is allowed).
@@ -453,7 +494,8 @@ Note, that the extension of an excel data file must be xls.
 Tip: Select the second row, click on menu Window and select Freeze Panels.
 This will freeze the first row and you can see the title of columns.
 
-The csv format:
+=head1 The csv format:
+
 Semicolon is the separator. The fields are:
 
 1. Full name.
@@ -481,7 +523,8 @@ Semicolon is the separator. The fields are:
 19. general: you would typically write something general about the person.
 Note, that the extension of a csv data file must be either csv or txt. To define the encoding of the file use option encoding in the config file.
 
-Convert from csv (txt) format to excel format:
+=head1 Convert from csv (txt) format to excel format:
+
 To switch from comma separated value file to excel spreadsheet, do the following:
 cd ftree2
 perl ./scripts/convertFormat.pl ./tree.txt ./tree.xls
@@ -514,128 +557,18 @@ Don't forget to set the data_source to "../tree.ser" in the PerlSettingsImporter
 
 Note, that the extension of a serialized data file must be ser. Also keep in mind that different versions of perl may produce incompatible serialized versions. It is advised to run the convertFormat.pl script on the same mashine where the webserver runs.
 
-NAME OF THE PICTURE:
+=head1 NAME OF THE PICTURE:
 
 One picture may belong to each person. The name of the picture file reflects the person it belongs to. The picture file is obtained from the lowercased full name by substituting spaces with underscores and adding the file extension to it. From example from "Ferenc Bodon3" we get "ferenc_bodon3.jpg".
 
-PERFORMANCE ISSUES:
+=head1 PERFORMANCE ISSUES:
 This sofware was not designed so that it can handle very large family trees. It can easily cope with few thousands of members, but latency (time till page is generated) grows as the size of the family tree increases.
 The main bottleneck of performance is that (1.) mod_perl is not used, therefore perl interpreter is starts for every request (2.) family tree is not cached but data file is parsed and tree is built-up for every request (using serialized format helps a little).
 Since the purpose of this software is to provide a free and simple tool for those who would like to maintain their family tree themself, performance is not the primary concern.
 
-SECURITY ISSUES:
+=head1 SECURITY ISSUES:
 The protection provided by password request (set in config file) is quite primitive, i.e. it is easy to break it.
 Ther are historical reasons for being available. We suggest to use server side protection like .htaccess files in case of apache web servers. 
-
-Hi Ferenc Bodon
-========================
- 
-I install your program ftree:  
-
-1. I copy it to github: https://github.com/mishin/ftree  
-------------------------
-
-2. I use xampp XAMPP for Windows 5.6.12 (https://www.apachefriends.org/ru/download.html) to install and configure Apache  
-------------------------
-I could not install mod_perl on Ubuntu 14.14 (because of Unable to locate package libapache2-mod-perl2 - bad old repository issue!!)
- 
-<IfModule alias_module>  
-  
-#  
-# ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/"  
-ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/ftree/cgi/"  
-  
-</IfModule>  
-  
-<Directory "C:/xampp/cgi-bin/ftree/cgi">  
-AllowOverride All  
-Options None  
-Require all granted  
-</Directory>  
-  
-   
-3. My shebang in ftree.cgi is #!"c:\Dwimperl\perl\bin\perl.exe" (by Gabor Sabo)  
-------------------------
-4. I remover included package Params::Validate  
-------------------------
-because of error  Undefined subroutine Params::Validate::SCALAR perl  
-and install new one (1.21)  
- 
-5. Also I copy
-------------------------
-c:\xampp\cgi-bin\ftree\graphics\  
-  
-to  
-  
-c:\xampp\htdocs\graphics\  
-  
-to correct show images  
-  
-6. I catch error couldn't create child process: 720002
-------------------------
-Because   
-If found it !  
-It was the first line in the .cgi file that needed to be adapted to Xamp's configuration:  
-  
-#!"c:\xampp\perl\bin\perl.exe"  
-Instead of:  
-  
-#!"c:\perl\bin\perl.exe"  
-  
-https://forum.xojo.com/20697-couldn-t-create-child-process-720002-error-when-deploying-on-wi/0  
-http://open-server.ru/forum/viewtopic.php?f=6&t=1059  
-  
-7. Image cancatenate
-------------------------
-NAME OF THE PICTURE:
-  
-One picture may belong to each person. The name of the picture file reflects the person it belongs to. The picture file is   obtained from the lowercased full name by substituting spaces with underscores and adding the file extension to it. From   example from "Ferenc Bodon3" we get "ferenc_bodon3.jpg". 
-
-No image put here and name=id.jpg
-c:\xampp\cgi-bin\ftree\pictures\  
-
-
-  
-So, It's a good work,  
-
-1. but I prefer some refectoring, move to PSGI  
-2. Also, very good if it will be like DWIM  
-when you can install it simply click to exe file  
-without any others moving.  
- 
-I'm ready to help with it  
- 
-Best regards  
-Nikolay Mishin  
-
-
-generate cpanfile  
-
-c:\xampp\cgi-bin\ftree\cgi\lib>perl c:\Users\TOSH\Documents\GitHub\App-scan_prereqs_cpanfile\script\scan-prereqs-cpanfile --ignore=version
-
-
-
-=head1 VERSION
-
-This document describes cpanfile format version 1.0.
-
-=head1 DESCRIPTION  
-
-
-=head1 SYNTAX
-
-=over 4
-
-=item requires, recommends, suggests, conflicts
-
-
-=back
-
-=head1 USAGE
-
-C<cpanfile> is a format to describe dependencies. How to use this file
-is dependent on the tools reading/writing it.
-
 
 =head1 AUTHORS
 
@@ -643,7 +576,8 @@ Dr. Ferenc Bodon and Simon Ward
 http://www.cs.bme.hu/~bodon/en/index.html
 http://simonward.com
 
-Maintainer
+=head1 MAINTAINER
+
 Nikolay Mishin
 
 =head1 COPYRIGHT
