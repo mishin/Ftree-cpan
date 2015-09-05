@@ -17,6 +17,7 @@ requires 'Gedcom', '1.15';
 requires 'Class::Std', '0.013';
 requires 'Class::Std::Storable', '0.0.1';
 requires 'Date::Tiny', '1.0.4';
+requires 'IO::Stringy', '2.111';
 
 
 requires 'Gedcom::Comparison', '1.15';
