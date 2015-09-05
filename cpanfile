@@ -13,6 +13,12 @@ requires 'Digest::Perl::MD4';
 requires 'Encode';
 requires 'File::Temp';
 requires 'Gedcom', '1.15';
+
+requires 'Class::Std', '0.013';
+requires 'Class::Std::Storable', '0.0.1';
+requires 'Date::Tiny', '1.0.4';
+
+
 requires 'Gedcom::Comparison', '1.15';
 requires 'Gedcom::Event', '1.15';
 requires 'Gedcom::Family', '1.15';
