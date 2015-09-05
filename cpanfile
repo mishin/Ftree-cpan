@@ -1,3 +1,4 @@
+requires 'perl', '5.008005';
 requires 'DBI';
 requires 'DataParsers::ArrayImporters::CSVArrayImporter';
 requires 'DataParsers::DBIFormat';
@@ -35,7 +36,6 @@ requires 'TextGenerators::RomanianTextGenerator';
 requires 'TextGenerators::RussianTextGenerator';
 requires 'Time::Local';
 requires 'Unicode::Map';
-requires 'perl', '5.005_04';
 requires 'subs::Funcs';
 requires 'Switch', '2.17';
 
