@@ -23,6 +23,7 @@ requires 'OLE::Storage_Lite', '0.19';
 requires 'Perl6::Export::Attrs', '0.0.3';
 requires 'Set::Scalar', '1.29';
 requires 'Spreadsheet::ParseExcel', '0.65';
+requires 'version', '0.9912';
 
 
 requires 'Gedcom::Comparison', '1.15';
