@@ -18,6 +18,11 @@ requires 'Class::Std', '0.013';
 requires 'Class::Std::Storable', '0.0.1';
 requires 'Date::Tiny', '1.0.4';
 requires 'IO::Stringy', '2.111';
+requires 'List::MoreUtils', '0.413';
+requires 'OLE::Storage_Lite', '0.19';
+requires 'Perl6::Export::Attrs', '0.0.3';
+requires 'Set::Scalar', '1.29';
+requires 'Spreadsheet::ParseExcel', '0.65';
 
 
 requires 'Gedcom::Comparison', '1.15';
