@@ -1,0 +1,130 @@
+#!/usr/bin/perl -w
+
+#######################################################
+#
+# Family Tree generation program, v2.0
+# Written by Ferenc Bodon and Simon Ward, March 2000 (simonward.com)
+# Copyright (C) 2000 Ferenc Bodon, Simon K Ward
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# For a copy of the GNU General Public License, visit 
+# http://www.gnu.org or write to the Free Software Foundation, Inc.,
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+#######################################################
+
+
+package FieldValidatorParser;
+use Date::Tiny;
+use Person;
+use Place;
+use Cemetery;
+use strict;
+use warnings;
+
+sub validEmail {
+	my ( $entry ) = @_;
+	return defined $entry && $entry =~ m/(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})/;
+}
+sub validURL {
+	my ( $entry ) = @_;
+	return defined $entry && $entry =~ m/^http:.*/;
+}
+sub validYear {
+  my ($year) = @_;
+  return $year >=0 && $year <= `date '+%Y'`;  
+}
+sub validMonth {
+  my ($month) = @_;
+  return $month >=1 && $month <= 12;  
+}
+sub validBool {
+  my ($gender) = @_;
+  return defined $gender && ($gender==0 || $gender==1);
+}
+
+sub getDate {
+   my ($date) = @_;
+   my @date_a = split( /\//, $date );
+   if(scalar @date_a == 1) {
+     if(validYear($date_a[0])) { #speed up needed!! 
+      return Date::Tiny->new(year  => $date_a[0]);
+     }
+     else {
+      print "Erroneous year:$date\n";
+     }
+   }
+   elsif(scalar @date_a == 2) {
+     return Date::Tiny->new(month => $date_a[0],
+        year  => $date_a[1]);
+   }
+   elsif(scalar @date_a == 3) {
+     return Date::Tiny->new(day => $date_a[0],
+        month => $date_a[1],
+        year  => $date_a[2]);
+   }
+   else {
+     print "Erroneous date:$date\n";
+   }
+}
+sub getCemetery {
+  my ($field) = @_;
+  if(defined $field && $field ne "") {
+    $field = StringUtils::trim($field);
+    if($field =~ /"(\S.+)"\s+"(\S.+)"\s+"(\S.+)"/) {
+      return Cemetery->new($1, $2, $3);
+    }
+    else {
+      print "Nonvalid cemetery: ". $field . " It should be like \"USA\" \"Washington D.C.\" \"Arlington National Cemetery\" ";
+      return undef;
+    }
+  }
+  else {
+    return undef;
+  }  
+}
+sub getPlace {
+  my ($field) = @_;
+  if(defined $field && $field ne "") {
+    $field = StringUtils::trim($field);
+    if($field =~ /"(\S.+)"\s+"(\S.+)"/) {
+      return Place->new($1, $2);
+    }
+    elsif($field =~ /"(\S.+)"/) {
+      return Place->new($1, undef);
+    }
+    else {
+      print "Nonvalid place: ". $field . ". It should be like \"Hungary\" \"Budapest\" ";
+      return undef;
+    }
+  }
+  else {
+    return undef;
+  }
+}
+
+sub getPlacesArray {
+  my ($places_string) = @_;
+  my @pair_array = split(/,/, $places_string);
+  my @places_array;
+  for (@pair_array) {
+    my $a_place = getPlace($_);
+    push @places_array, $a_place
+      if(defined $a_place);
+  }
+  return \@places_array;
+}
+
+
+
+
+1;

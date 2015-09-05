@@ -1,0 +1,9 @@
+Features to add:
+- employing HTML::Template to decouple code from output
+- photo gallery
+
+Would be good to have:
+- document scripts with Getopt::Euclid
+- for consistency use Class::Std for class Place and Cemetery
+- fix a bug in displaying the family tree
+- redesign code to follow MVC pattern

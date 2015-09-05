@@ -1,0 +1,102 @@
+#!/usr/bin/perl -w
+
+#######################################################
+#
+# Family Tree generation program, v2.0
+# Written by Ferenc Bodon and Simon Ward, March 2000 (simonward.com)
+# Copyright (C) 2000 Ferenc Bodon, Simon K Ward
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# For a copy of the GNU General Public License, visit 
+# http://www.gnu.org or write to the Free Software Foundation, Inc.,
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+#######################################################
+
+
+package ExcelFormat;
+use StringUtils;
+use Spreadsheet::ParseExcel;
+use DataParsers::FieldValidatorParser;
+use DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
+use FamilyTreeData;
+
+sub createFamilyTreeDataFromFile {
+  my ($file_name, $picture_directory_) = @_;
+  my $family_tree_data = FamilyTreeData->new();
+  my $excel = Spreadsheet::ParseExcel::Workbook->Parse($file_name);
+  foreach my $sheet (@{$excel->{Worksheet}}) {
+    $sheet->{MaxRow} ||= $sheet->{MinRow};
+    foreach my $row ($sheet->{MinRow}+1 .. $sheet->{MaxRow}) {
+        @fields = map {StringUtils::trim($_)} @fields;
+        $family_tree_data->{people}{ $sheet->{Cells}[$row][0]->{Val} } = Person->new( $sheet->{Cells}[$row][0]->{Val} )
+        	if ( !defined $family_tree_data->{people}{ $sheet->{Cells}[$row][0]->{Val}} );
+      	my $temp_person = $family_tree_data->{people}{ $sheet->{Cells}[$row][0]->{Val} };
+        $temp_person->{name}->setName($sheet->{Cells}[$row][3]->{Val}, $sheet->{Cells}[$row][4]->{Val}, $sheet->{Cells}[$row][5]->{Val});
+        $temp_person->{name}->setTitle($sheet->{Cells}[$row][1]->{Val})
+        	if($sheet->{Cells}[$row][1]);
+      	$temp_person->{name}->setPrefix($sheet->{Cells}[$row][2]->{Val})
+        	if($sheet->{Cells}[$row][2]);
+      	$temp_person->{name}->setSuffix($sheet->{Cells}[$row][6]->{Val})
+        	if($sheet->{Cells}[$row][6]);
+      	$temp_person->{name}->setNickname($sheet->{Cells}[$row][7]->{Val})
+        	if($sheet->{Cells}[$row][7]);
+        if($sheet->{Cells}[$row][8]) {
+        	$family_tree_data->{people}{ $sheet->{Cells}[$row][8]->{Val} } = Person->new( $sheet->{Cells}[$row][8]->{Val} )
+        	 if ( !defined $family_tree_data->{people}{ $sheet->{Cells}[$row][8]->{Val}} );
+        	$temp_person->{father} = $family_tree_data->{people}{ $sheet->{Cells}[$row][8]->{Val} };
+          push @{ $family_tree_data->{children}{$sheet->{Cells}[$row][8]->{Val}}}, $temp_person;
+        } 
+        if($sheet->{Cells}[$row][9]) {
+          $family_tree_data->{people}{ $sheet->{Cells}[$row][9]->{Val} } = Person->new( $sheet->{Cells}[$row][9]->{Val} )
+        	 if ( !defined $family_tree_data->{people}{ $sheet->{Cells}[$row][9]->{Val}} );
+          $temp_person->{mother} = $family_tree_data->{people}{ $sheet->{Cells}[$row][9]->{Val} };
+          push @{ $family_tree_data->{children}{$sheet->{Cells}[$row][9]->{Val}}}, $temp_person;
+        }
+        $temp_person->{email} = $sheet->{Cells}[$row][10]->{Val} 
+        	if(FieldValidatorParser::validEmail($sheet->{Cells}[$row][10]->{Val}));
+      	$temp_person->{homepage} = $sheet->{Cells}[$row][11]->{Val} 
+      		if(FieldValidatorParser::validURL($sheet->{Cells}[$row][11]->{Val}));
+      	$temp_person->{date_of_birth} = FieldValidatorParser::getDate($sheet->{Cells}[$row][12]->{Val})
+          if ( $sheet->{Cells}[$row][12] );
+        $temp_person->{date_of_death} = FieldValidatorParser::getDate($sheet->{Cells}[$row][13]->{Val})
+          if ( $sheet->{Cells}[$row][13]);
+        $temp_person->{gender} = $sheet->{Cells}[$row][14]->{Val}
+        	if( FieldValidatorParser::validBool($sheet->{Cells}[$row][14]->{Val}));
+        $temp_person->set_is_living($sheet->{Cells}[$row][15]->{Val})
+        	if( FieldValidatorParser::validBool($sheet->{Cells}[$row][15]->{Val}));
+      	my $place = FieldValidatorParser::getPlace($sheet->{Cells}[$row][16]->{Val});
+      	$temp_person->set_place_of_birth($place)
+          if(defined $place);
+      	$place = FieldValidatorParser::getPlace($sheet->{Cells}[$row][17]->{Val});
+      	$temp_person->set_place_of_death($place)
+          if(defined $place);
+      	$place = FieldValidatorParser::getCemetery($sheet->{Cells}[$row][18]->{Val});
+      	$temp_person->set_cemetery($place)
+        	if(defined $place);           
+      	$temp_person->set_schools([split( /,/, $sheet->{Cells}[$row][19]->{Val})])
+        	if($sheet->{Cells}[$row][19]);        
+      	$temp_person->set_jobs([split( /,/, $sheet->{Cells}[$row][20]->{Val} )])
+        	if($sheet->{Cells}[$row][20]);
+      	$temp_person->set_work_places([split( /,/, $sheet->{Cells}[$row][21]->{Val} )])
+        	if($sheet->{Cells}[$row][21]);
+      	$temp_person->set_places_of_living(FieldValidatorParser::getPlacesArray($sheet->{Cells}[$row][22]->{Val}))
+        	if($sheet->{Cells}[$row][22]);
+      	$temp_person->set_general($sheet->{Cells}[$row][23]->{Val})
+        	if($sheet->{Cells}[$row][23]);
+    }
+  }
+  ExtendedSimonWardFormat::setPictureDirectory($picture_directory_);
+  ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
+  return $family_tree_data;
+}
+1;
