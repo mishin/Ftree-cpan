@@ -4,11 +4,7 @@ FamilyTreeInfo - Family Tree Generator
 
 # NAME
 
-Ftree - Genealogical program on Perl
-
-# SYNOPSIS
-
-    About the Family Tree Generator, v2.3.*
+Ftree - Family Tree Generator, genealogical program on Perl
 
 # PACKAGE CONTENTS:
 

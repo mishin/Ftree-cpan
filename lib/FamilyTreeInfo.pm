@@ -353,11 +353,7 @@ FamilyTreeInfo - Family Tree Generator
 
 =head1 NAME
 
-Ftree - Genealogical program on Perl
-
-=head1 SYNOPSIS
-
-  About the Family Tree Generator, v2.3.*
+Ftree - Family Tree Generator, genealogical program on Perl
 
 =head1 PACKAGE CONTENTS:
 
