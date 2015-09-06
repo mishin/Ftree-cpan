@@ -30,11 +30,9 @@ requires 'Jcode';
 requires 'List::Util';
 requires 'Params::Validate';
 requires 'Parse::RecDescent';
-requires 'PerlSettingsImporter';
 requires 'Scalar::Util';
 requires 'Time::Local';
 requires 'Unicode::Map';
-requires 'subs::Funcs';
 requires 'Switch', '2.17';
 
 on test => sub {
