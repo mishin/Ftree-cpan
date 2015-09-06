@@ -30,6 +30,8 @@ package RussianTextGenerator;
 sub new {
   my ( $classname ) = @_;
   my $self = {
+    Prayer_for_the_living => "Молитва о живых",
+    Prayer_for_the_departed => "Молитва о усопших",
     members => "Участники генеалогического дерева",
     Relatives => "Родственники",
     Faces => "Портреты",

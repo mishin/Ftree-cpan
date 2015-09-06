@@ -28,6 +28,8 @@ package RomanianTextGenerator;
 sub new {
   my ( $classname ) = @_;
   my $self = {
+    Prayer_for_the_living => "Prayer_for_the_living",
+    Prayer_for_the_departed => "Prayer_for_the_departed",
     members => "Membrii arborii genealogic", 
     Relatives => "Rude", 
     Faces => "Poze", 

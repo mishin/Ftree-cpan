@@ -29,6 +29,8 @@ package FrenchTextGenerator;
 sub new {
   my ( $classname ) = @_;
   my $self = {
+    Prayer_for_the_living => "Prayer_for_the_living",
+    Prayer_for_the_departed => "Prayer_for_the_departed",  
     members => "Les membres de la famille",
     Relatives => "Parenté",
     Faces => "Visages",

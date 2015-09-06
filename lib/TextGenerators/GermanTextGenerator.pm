@@ -30,6 +30,8 @@ package GermanTextGenerator;
 sub new {
   my ( $classname ) = @_;
   my $self = {
+    Prayer_for_the_living => "Prayer_for_the_living",
+    Prayer_for_the_departed => "Prayer_for_the_departed",  
     members => "Familienmitglieder",
     Relatives => "Verwandten",
     Faces => "Gesichter",

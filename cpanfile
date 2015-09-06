@@ -6,6 +6,7 @@ requires 'Digest::Perl::MD4';
 requires 'Encode';
 requires 'File::Temp';
 requires 'Gedcom', '1.15';
+requires 'Config::General', '2.58';
 
 requires 'Class::Std', '0.013';
 requires 'Class::Std::Storable', '0.0.1';

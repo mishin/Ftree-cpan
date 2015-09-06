@@ -1,7 +1,10 @@
 Revision history for Ftree
 
 {{$NEXT}}
-
+           * Put config to file c:\Users\TOSH\Documents\GitHub\Ftree-cpan\cgi-bin\ftree.config 
+           * Add Prayer_for_the_living
+           * Add Prayer_for_the_departed
+		   
 2.3.12  2015-09-06 09:15:07 MSK
            * Improve pod
 

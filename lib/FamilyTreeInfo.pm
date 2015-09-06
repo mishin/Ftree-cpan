@@ -314,6 +314,33 @@ sub _draw_facehall_page {
     " ($self->{textGenerator}{man}: ", $nr_of_man,  
     ", $self->{textGenerator}{woman}: ", $nr_of_woman, 
     ", $self->{textGenerator}{unknown}: ", scalar(@people_with_photo) - $nr_of_man - $nr_of_woman, ")" ;
+print $self->{cgi}->start_table({-cellpadding => '7', -align=>'center'}),"\n";	
+print $self->{cgi}->start_Tr;
+      print $self->{cgi}->start_td({-align=>'center'});
+	  print $self->{cgi}->br, " $self->{textGenerator}{Prayer_for_the_living}: ";
+	  
+	    foreach my $index (0 .. $#people_with_photo) {
+		if ($people_with_photo[$index]->get_is_living()){
+      print $self->{cgi}->br,$people_with_photo[$index]->get_name()->get_first_name(),' (',$people_with_photo[$index]->get_name()->get_full_name(),')';     
+	  }
+  }
+	  
+	  print $self->{cgi}->end_td;
+	  
+      print $self->{cgi}->start_td({-align=>'center'});
+      print $self->{cgi}->br, " $self->{textGenerator}{Prayer_for_the_departed}: ";
+	  	    foreach my $index (0 .. $#people_with_photo) {
+		if (!$people_with_photo[$index]->get_is_living()){
+      print $self->{cgi}->br,$people_with_photo[$index]->get_name()->get_first_name(),' (',$people_with_photo[$index]->get_name()->get_full_name(),')';     
+	  }
+  }
+	  print $self->{cgi}->end_td;
+	  
+      print $self->{cgi}->end_Tr,"\n";
+
+print $self->{cgi}->end_table,"\n", $self->{cgi}->br;
+
+
   $self->_endpage();
   
   return;
