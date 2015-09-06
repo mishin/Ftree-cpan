@@ -1,12 +1,5 @@
 requires 'perl', '5.008005';
 requires 'DBI';
-requires 'DataParsers::ArrayImporters::CSVArrayImporter';
-requires 'DataParsers::DBIFormat';
-requires 'DataParsers::ExcelFormat';
-requires 'DataParsers::ExtendedSimonWardFormat';
-requires 'DataParsers::FieldValidatorParser';
-requires 'DataParsers::GedcomFormat';
-requires 'DataParsers::SerializerFormat';
 requires 'Digest::MD4';
 requires 'Digest::MD5';
 requires 'Digest::Perl::MD4';
@@ -22,7 +15,7 @@ requires 'List::MoreUtils', '0.413';
 requires 'OLE::Storage_Lite', '0.19';
 requires 'Perl6::Export::Attrs', '0.0.3';
 requires 'Set::Scalar', '1.29';
-requires 'Spreadsheet::ParseExcel', '0.65';
+requires 'Spreadsheet::ParseExcel';
 requires 'version', '0.9912';
 
 
@@ -39,14 +32,6 @@ requires 'Params::Validate';
 requires 'Parse::RecDescent';
 requires 'PerlSettingsImporter';
 requires 'Scalar::Util';
-requires 'TextGenerators::EnglishTextGenerator';
-requires 'TextGenerators::FrenchTextGenerator';
-requires 'TextGenerators::GermanTextGenerator';
-requires 'TextGenerators::HungarianTextGenerator';
-requires 'TextGenerators::ItalianTextGenerator';
-requires 'TextGenerators::PolishTextGenerator';
-requires 'TextGenerators::RomanianTextGenerator';
-requires 'TextGenerators::RussianTextGenerator';
 requires 'Time::Local';
 requires 'Unicode::Map';
 requires 'subs::Funcs';
