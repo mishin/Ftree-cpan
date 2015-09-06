@@ -439,8 +439,6 @@ It was the first line in the .cgi file that needed to be adapted to Xamp's confi
 https://forum.xojo.com/20697-couldn-t-create-child-process-720002-error-when-deploying-on-wi/0  
 http://open-server.ru/forum/viewtopic.php?f=6&t=1059  
   
- Image cancatenate
-------------------------
 =head1 NAME OF THE PICTURE:
   
   One picture may belong to each person. 
