@@ -1,9 +1,5 @@
 # NAME
 
-FamilyTreeInfo - Family Tree Generator
-
-# NAME
-
 Ftree - Family Tree Generator, genealogical program on Perl
 
 # PACKAGE CONTENTS:
