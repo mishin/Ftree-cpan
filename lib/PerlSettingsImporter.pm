@@ -36,10 +36,11 @@ sub importSettings {
       type => "excel",
       config => {
         # file_name => "../tree.xls",
-        file_name => "../mishin_family.xls",#export-BloodTree.ser",
-        # photo_dir        => "../pictures/", # relative to ftree.cgi file 
-        photo_dir        => "../../../htdocs/pictures/", # relative to ftree.cgi file 
-        photo_url        => "../pictures/", # set this according to webserver's settings 
+        file_name => "mishin_family.xls",#export-BloodTree.ser",
+        photo_dir        => "c:/Users/TOSH/Documents/GitHub/Ftree-cpan/htdocs/pictures/", # relative to ftree.cgi file 
+        # photo_dir        => "../../../htdocs/pictures/", # relative to ftree.cgi file 
+        #photo_dir        => "../../../htdocs/pictures/", # relative to ftree.cgi file 
+        photo_url        => "/pictures/", # set this according to webserver's settings 
       }
     },
 #   EXCEL DATASOURCE: 

@@ -1,0 +1,40 @@
+8
+
+dir
+155
+svn+ssh://bodon@pnp.cs.bme.hu/home/bodon/repos/trunk/css
+svn+ssh://bodon@pnp.cs.bme.hu/home/bodon/repos
+
+
+
+2007-10-19T20:55:04.665555Z
+155
+bodon
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+7ad1bdda-5120-0410-b687-aa0bb90555da
+
+bodon_default.css
+file
+
+
+
+
+2007-10-19T19:22:54.000000Z
+8056660a8346786488cda55972ed3ec4
+2007-10-19T20:55:04.665555Z
+155
+bodon
+

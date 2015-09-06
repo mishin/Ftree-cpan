@@ -66,22 +66,23 @@ sub fill_up_pictures {
 sub getPictureFileName{
 	my($id) = @_;
 	
-# use FindBin '$RealBin';
-# use Log::Log4perl qw(:easy);
+use FindBin '$RealBin';
+use Log::Log4perl qw(:easy);
  # my $log_file = $RealBin . "/show_image.log";
+ my $log_file = "c:/Users/TOSH/Documents/GitHub/Ftree-cpan/cgi-bin/show_image.log";
 
-    # #Init logging
-    # Log::Log4perl->easy_init(
-        # {   level  => $DEBUG,
-            # file   => ":utf8>>$log_file",
-            # layout => '%d %p> %m%n'
-        # }
-    # );
-# my $msg = qq{image name is $picture_directory/$id.jpg};
-      # INFO($msg);
+    #Init logging
+    Log::Log4perl->easy_init(
+        {   level  => $DEBUG,
+            file   => ":utf8>>$log_file",
+            layout => '%d %p> %m%n'
+        }
+    );
+my $msg = qq{image name is $picture_directory/$id.jpg};
+      INFO($msg);
 
 	#print "<br>Debug: ".$id."<br>\n";
-	
+	# return "$id.jpg";
 	if(-e "$picture_directory/$id.jpg" ) {
 		return "$id.jpg";
 	}
