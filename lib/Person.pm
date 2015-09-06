@@ -23,7 +23,7 @@
 package Person;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.11');
+use version; our $VERSION = qv('2.3.12');
 
 use List::MoreUtils qw(uniq);
 use Params::Validate qw(:all);
