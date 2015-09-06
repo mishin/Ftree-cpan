@@ -25,7 +25,7 @@ package Cemetery;
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('2.3.12');
+use version; our $VERSION = qv('2.3.13');
 
 use Place;
 use Params::Validate qw(:all);

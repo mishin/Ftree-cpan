@@ -25,7 +25,7 @@ package Place;
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('2.3.12');
+use version; our $VERSION = qv('2.3.13');
 
 use Params::Validate qw(:all);
 

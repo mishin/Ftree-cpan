@@ -1,6 +1,8 @@
 Revision history for Ftree
 
 {{$NEXT}}
+
+2.3.13  2015-09-07 01:54:27 MSK
            * Put config to file c:\Users\TOSH\Documents\GitHub\Ftree-cpan\cgi-bin\ftree.config 
            * Add Prayer_for_the_living
            * Add Prayer_for_the_departed
