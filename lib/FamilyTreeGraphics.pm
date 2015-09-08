@@ -25,7 +25,7 @@ package FamilyTreeGraphics;
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('2.3.16');
+use version; our $VERSION = qv('2.3.17');
 
 use FamilyTreeBase;
 
