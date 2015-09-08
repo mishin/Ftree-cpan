@@ -29,7 +29,8 @@ my $app2 = CGI::Emulate::PSGI->handler($sub_person);
           path => qr{[gif|png|jpg|swf|ico|mov|mp3|pdf|js|css]$}, root => './';
       # $app;
 	  mount "/person_page" => $app2;
-	  mount "/" => $app;
+	  mount "/ftree" => $app;
+	  mount "/" => builder { $app };
   }; 
 # $app is a PSGI application
 # use CGI qw(param);
