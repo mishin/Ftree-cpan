@@ -593,7 +593,7 @@ Nikolay Mishin
 
 =head1 COPYRIGHT
 
-Copyright 2015- Dr. Ferenc Bodon and Simon Ward
+Copyright 2015- Dr. Ferenc Bodon and Simon Ward and Nikolay Mishin
 
 =head1 LICENSE
 
@@ -614,10 +614,6 @@ Vladimir Kangin (Russian)
 
 I also would like to thank the feedback/help of (in no particular order) Alex Roitman, Anthony Fletcher, 
 Richard Bos, Sylvia McKenzie and Sean Symes.
-
-=head1 SEE ALSO
-
-L<CPAN::Meta::Spec> L<Module::Install> L<Carton>
 
 =cut
  
