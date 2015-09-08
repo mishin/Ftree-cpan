@@ -47,7 +47,7 @@ sub new : Export{
     password         => undef,
 
 #    treeScript       => CGI::url(-relative=>1),
-    treeScript       => 'ftree.cgi',
+    treeScript       => 'ftree',
     personScript     => 'person_page',
     photoUrl         => undef,
     graphicsUrl      => '../graphics',
@@ -101,17 +101,17 @@ sub _toppage {
 sub _endpage {
   my ($self) = validate_pos(@_, {type => HASHREF});
   print $self->{cgi}->br(), $self->{cgi}->hr(),"\n",$self->{cgi}->start_strong(),
-    $self->{cgi}->a({-href =>  '?type=;passwd=' . $self->{settings}{password}.';lang='.$self->{lang}},
+    $self->{cgi}->a({-href => ${self}->{treeScript} . '?type=;passwd=' . $self->{settings}{password}.';lang='.$self->{lang}},
       $self->{textGenerator}->{Relatives}), " - \n",
-    $self->{cgi}->a({-href =>  '?type=faces;passwd=' . $self->{settings}{password} . ';lang=' . $self->{lang}},
+    $self->{cgi}->a({-href => ${self}->{treeScript} . '?type=faces;passwd=' . $self->{settings}{password} . ';lang=' . $self->{lang}},
       $self->{textGenerator}->{Faces}), " - \n",
-    $self->{cgi}->a({-href =>  '?type=snames;passwd=' . $self->{settings}{password} . ';lang=' . $self->{lang}},
+    $self->{cgi}->a({-href => ${self}->{treeScript} . '?type=snames;passwd=' . $self->{settings}{password} . ';lang=' . $self->{lang}},
       $self->{textGenerator}->{Surnames}), " - \n",
-    $self->{cgi}->a({-href =>  '?type=hpages;passwd=' . $self->{settings}{password} . ';lang=' . $self->{lang}},
+    $self->{cgi}->a({-href => ${self}->{treeScript} . '?type=hpages;passwd=' . $self->{settings}{password} . ';lang=' . $self->{lang}},
       $self->{textGenerator}->{Homepages}), " - \n",
-    $self->{cgi}->a({-href =>  '?type=emails;passwd=' . $self->{settings}{password} . ';lang=' . $self->{lang}},
+    $self->{cgi}->a({-href => ${self}->{treeScript} . '?type=emails;passwd=' . $self->{settings}{password} . ';lang=' . $self->{lang}},
       $self->{textGenerator}->{Emails}), " - \n",
-    $self->{cgi}->a({-href =>  '?type=bdays;passwd=' . $self->{settings}{password} . ';lang=' . $self->{lang}},
+    $self->{cgi}->a({-href => ${self}->{treeScript} . '?type=bdays;passwd=' . $self->{settings}{password} . ';lang=' . $self->{lang}},
       $self->{textGenerator}->{Birthdays}), "\n",
     $self->{cgi}->end_strong(), $self->{cgi}->br, $self->{cgi}->br,"\n";
   $self->language_chooser();
@@ -166,7 +166,8 @@ sub _password_check {
     else {
       print 'You have given the wrong password for these pages.';
     }
-    print "<br><form action=\"\" method=\"GET\">",
+
+    print "<br><form action=\"$self->{treeScript}\" method=\"GET\">",
       "<input type=\"hidden\" name=\"type\" value=\"$self->{pagetype}\">",
       "<p><strong>$self->{settings}{passwordPrompt}</strong><br>",
       '<input type="text" size="25" name="passwd">',
@@ -256,7 +257,7 @@ sub html_img {
   if($levels > 0) {
     return $self->{cgi}->a(
         {
-          -href => "?type=tree;"
+          -href => "$self->{treeScript}?type=tree;"
             . 'target=' . $person->get_id() . ";levels=$levels;"
             . "passwd=$self->{settings}{password};lang=$self->{lang}",
           -title => $person->brief_info($self->{textGenerator}),

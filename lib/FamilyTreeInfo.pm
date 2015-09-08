@@ -166,7 +166,7 @@ sub _draw_surname_page {
   print $self->{cgi}->start_table({-cellpadding => '5', -border=>'1', -align=>'center'}),"\n";
   for my $people_count (0 .. $#sortednodes) {
     print $self->{cgi}->start_Tr() if ( $people_count % $column_number == 0 );
-    print $self->{cgi}->td($self->{cgi}->a({-href => "?type=subfamily&surname=$sortednodes[$people_count]&lang=$self->{lang}"}, 
+    print $self->{cgi}->td($self->{cgi}->a({-href => "$self->{treeScript}?type=subfamily&surname=$sortednodes[$people_count]&lang=$self->{lang}"}, 
       $sortednodes[$people_count]));
     print $self->{cgi}->end_Tr(),"\n" if ( $people_count % $column_number == $column_number - 1 );
   }
@@ -256,7 +256,7 @@ sub _draw_birthday_page {
     $self->{textGenerator}->total_living_with_birthday($month-1));
 
   # Add the button for other months
-  print $self->{cgi}->start_form({-action => ,
+  print $self->{cgi}->start_form({-action => $self->{treeScript},
                         -method => 'get' }), 
     "\n$self->{textGenerator}->{CheckAnotherMonth}:\n",
     $self->{cgi}->start_Select({-name => 'month',
