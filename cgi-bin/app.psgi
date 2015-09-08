@@ -1,10 +1,6 @@
 #!"c:\Users\TOSH\Documents\job\perl\strawberry-perl-5.20.0.1-64bit-portable\perl\bin\perl.exe"
 #!"c:\Dwimperl\perl\bin\perl.exe"
 
-#c:\xampp\cgi-bin\ftree\.. 
-##!"c:\Dwimperl\perl\bin\perl.exe"
-
-###!"C:\xampp\perl\bin\perl.exe"
 use strict;
 use warnings;
 
@@ -14,6 +10,10 @@ use CGI::Compile;
 my $cgi_script = "ftree.cgi";
 my $sub = CGI::Compile->compile($cgi_script);
 my $app = CGI::Emulate::PSGI->handler($sub);
+
+my $cgi_person = "person_page.cgi";
+my $sub_person = CGI::Compile->compile($cgi_person);
+my $app2 = CGI::Emulate::PSGI->handler($sub_person);
  
  use Plack::Builder;
 
@@ -27,7 +27,9 @@ my $app = CGI::Emulate::PSGI->handler($sub);
   builder {
       enable "Plack::Middleware::Static",
           path => qr{[gif|png|jpg|swf|ico|mov|mp3|pdf|js|css]$}, root => './';
-      $app;
+      # $app;
+	  mount "/person_page" => $app2;
+	  mount "/" => $app;
   }; 
 # $app is a PSGI application
 # use CGI qw(param);
