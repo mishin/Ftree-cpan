@@ -38,6 +38,18 @@ use Perl6::Export::Attrs;
 use Encode qw(decode_utf8);
 use utf8;
 
+  use FindBin '$RealBin';
+use Log::Log4perl qw(:easy);
+ my $log_file = $RealBin . "/Use_of_uninitialized_value_261.log";
+
+    #Init logging
+    Log::Log4perl->easy_init(
+        {   level  => $DEBUG,
+            file   => ":utf8>>$log_file",
+            layout => '%d %p> %m%n'
+        }
+    );
+
 my $q = new CGI;
 
 sub new : Export{
@@ -258,6 +270,11 @@ sub html_img {
     $person = $self->$self->{target_person} unless(defined $person);
   }
   if($levels > 0) {
+
+my $msg = q{$person->get_id(): }.$person->get_id().
+     q{$person->brief_info($self->{textGenerator}): }.$person->brief_info($self->{textGenerator}).
+	 q{$to_ref: }.$to_ref;
+      INFO($msg);
     return $self->{cgi}->a(
         {
           -href => "$self->{treeScript}?type=tree;"
