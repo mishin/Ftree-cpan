@@ -38,9 +38,9 @@ use Perl6::Export::Attrs;
 use Encode qw(decode_utf8);
 use utf8;
 
-  use FindBin '$RealBin';
+  # use FindBin '$RealBin';
 use Log::Log4perl qw(:easy);
- my $log_file = $RealBin . "/Use_of_uninitialized_value_261.log";
+ my $log_file = "c:/Users/TOSH/Documents/GitHub/Ftree-cpan/cgi-bin/log/" . "Use_of_uninitialized_value_261.log";
 
     #Init logging
     Log::Log4perl->easy_init(
