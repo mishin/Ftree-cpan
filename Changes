@@ -1,6 +1,8 @@
 Revision history for Ftree
 
 {{$NEXT}}
+
+2.3.18  2015-09-09 13:21:22 MSK
            * correct some Use of uninitialized value error
 		   * add Nikolay Mishin to copyrigth
 2.3.17  2015-09-09 01:17:23 MSK
