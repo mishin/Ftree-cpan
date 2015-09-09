@@ -124,7 +124,8 @@ sub maintainer{
 sub software{
   my ($self, $version) = @_;
   return "Le logiciel de l'arbre généalogique (ver. $version) est écrit par <a href=\"http://www.cs.bme.hu/~bodon/magyar/index.html\" target=\"_new\">Ferenc Bodon</a> et ".
-  "<a href=\"http://simonward.com/\"  target=\"_new\">Simon Ward</a> - pour des informations détaillées veuillez visiter son <a href=\"http://freshmeat.net/projects/familytree_cgi/\">site internet</a>.\n";
+  "<a href=\"http://simonward.com/\"  target=\"_new\">Simon Ward</a>  and
+  <a href=\"http://mishin.narod.ru/\"  target=\"_new\">Nikolay Mishin</a> - pour des informations détaillées veuillez visiter son <a href=\"http://freshmeat.net/projects/familytree_cgi/\">site internet</a>.\n";
 }
 sub People_with_surname {
   my ($self, $surname) = @_;

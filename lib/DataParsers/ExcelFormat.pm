@@ -83,7 +83,10 @@ sub convertCell {
 	return undef unless defined $cell;
 	return $cell->{Val} if( $cell->{Type} eq "Numeric" );
 	return $cell->{Val} unless( defined $cell->{Code} );
-	return decode('UTF-16BE', $cell->{Val});	
+	  # use Encode qw(decode encode);
+    # $characters = decode('UTF-8', $octets,     Encode::FB_CROAK);
+	return  decode('UTF-8',$cell->{Val},Encode::FB_CROAK);#decode('UTF-16LE', $cell->{Val});	
+	# Encode::from_to( $cell->{Val}, "utf8", "utf16le" );
 }
 
 1;

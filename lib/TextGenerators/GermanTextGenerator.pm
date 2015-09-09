@@ -124,7 +124,8 @@ sub maintainer{
 sub software{
   my ($self, $version) = @_;
   return "Das Programm (ver. $version) wurde von <a href=\"http://www.cs.bme.hu/~bodon/en/index.html\" target=\"_new\">Ferenc Bodon</a> und ".
-  "<a href=\"http://simonward.com/\"  target=\"_new\">Simon Ward</a> entwickelt - für weitere Informationen besichtingen Sie ihre <a href=\"http://freshmeat.net/projects/familytree_cgi/\">Homepage</a>.\n";
+  "<a href=\"http://simonward.com/\"  target=\"_new\">Simon Ward</a>  and
+  <a href=\"http://mishin.narod.ru/\"  target=\"_new\">Nikolay Mishin</a> entwickelt - für weitere Informationen besichtingen Sie ihre <a href=\"http://freshmeat.net/projects/familytree_cgi/\">Homepage</a>.\n";
 }
 sub People_with_surname {
   my ($self, $surname) = @_;

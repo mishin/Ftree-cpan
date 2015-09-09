@@ -129,7 +129,8 @@ sub software {
   my ($self, $version) = @_;
 
   return "Software pentru arbore de famile (ver. $version) by <a href=\"http://www.cs.bme.hu/~bodon/en/index.html\" target=\"_new\">Ferenc Bodon</a> and ".
-  "<a href=\"http://simonward.com/\"  target=\"_new\">Simon Ward</a> - <a href=\"http://freshmeat.net/projects/familytree_cgi/\">detalii</a>.\n";
+  "<a href=\"http://simonward.com/\"  target=\"_new\">Simon Ward</a> and
+  <a href=\"http://mishin.narod.ru/\"  target=\"_new\">Nikolay Mishin</a>  - <a href=\"http://freshmeat.net/projects/familytree_cgi/\">detalii</a>.\n";
 
 
 }

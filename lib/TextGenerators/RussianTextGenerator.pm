@@ -125,7 +125,8 @@ sub maintainer {
 sub software {
   my ($self, $version) = @_;
   return "Family tree software (ver. $version) by <a href=\"http://www.cs.bme.hu/~bodon/en/index.html\" target=\"_new\">Ferenc Bodon</a> and ".
-  "<a href=\"http://simonward.com/\"  target=\"_new\">Simon Ward</a> - <a href=\"http://freshmeat.net/projects/familytree_cgi/\">details</a>.\n";
+  "<a href=\"http://simonward.com/\"  target=\"_new\">Simon Ward</a>  and
+  <a href=\"http://mishin.narod.ru/\"  target=\"_new\">Nikolay Mishin</a> - <a href=\"http://freshmeat.net/projects/familytree_cgi/\">details</a>.\n";
 }
 sub People_with_surname {
   my ($self, $surname) = @_;

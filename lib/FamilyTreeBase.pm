@@ -100,7 +100,9 @@ sub _toppage {
 # generates the html for the end of the page
 sub _endpage {
   my ($self) = validate_pos(@_, {type => HASHREF});
-  print $self->{cgi}->br(), $self->{cgi}->hr(),"\n",$self->{cgi}->start_strong(),
+  print $self->{cgi}->br(), #$self->{cgi}->hr(),
+    "\n",
+    $self->{cgi}->start_strong(),
     $self->{cgi}->a({-href => ${self}->{treeScript} . '?type=;passwd=' . $self->{settings}{password}.';lang='.$self->{lang}},
       $self->{textGenerator}->{Relatives}), " - \n",
     $self->{cgi}->a({-href => ${self}->{treeScript} . '?type=faces;passwd=' . $self->{settings}{password} . ';lang=' . $self->{lang}},
@@ -155,7 +157,8 @@ END_PAYPAL
 # check password
 sub _password_check {
   my ($self) = validate_pos(@_, {type => HASHREF});
-  if ( $self->{settings}{passwordReq} ne ""
+  if ( defined $self->{settings}{passwordReq} &&
+     $self->{settings}{passwordReq} ne ""
     && $self->{settings}{password} ne $self->{password} )
   {
     $self->toppage( $self->{textGenerator}->{Error} );

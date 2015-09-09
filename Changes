@@ -1,7 +1,8 @@
 Revision history for Ftree
 
 {{$NEXT}}
-
+           * correct some Use of uninitialized value error
+		   * add Nikolay Mishin to copyrigth
 2.3.17  2015-09-09 01:17:23 MSK
            * add install instruction
 2.3.16  2015-09-09 01:06:08 MSK
