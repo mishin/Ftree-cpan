@@ -35,6 +35,8 @@ requires 'Scalar::Util';
 requires 'Time::Local';
 requires 'Unicode::Map';
 requires 'Switch', '2.17';
+requires 'Log::Log4perl', '1.46';
+requires 'Plack', '1.0037';
 
 on test => sub {
     requires 'Test::More';
