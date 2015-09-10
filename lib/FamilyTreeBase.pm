@@ -271,11 +271,12 @@ sub html_img {
   }
   if($levels > 0) {
 
-my $msg = q{$person->get_id(): }.$person->get_id().
-     q{$person->brief_info($self->{textGenerator}): }.$person->brief_info($self->{textGenerator}).
-	 q{$to_ref: }.$to_ref;
-      INFO($msg);
-	  my $brief_info=(defined $person->brief_info($self->{textGenerator}))?$person->brief_info($self->{textGenerator}):"";
+# my $msg = q{$person->get_id(): }.$person->get_id().
+     # q{$person->brief_info($self->{textGenerator}): }.$person->brief_info($self->{textGenerator}).
+	 # q{$to_ref: }.$to_ref;
+      # INFO($msg);
+	  my $brief_info=$person->brief_info($self->{textGenerator});
+	  $brief_info=(defined $brief_info)?$brief_info:"";
     return $self->{cgi}->a(
         {
           -href => "$self->{treeScript}?type=tree;"
