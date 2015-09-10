@@ -275,12 +275,13 @@ my $msg = q{$person->get_id(): }.$person->get_id().
      q{$person->brief_info($self->{textGenerator}): }.$person->brief_info($self->{textGenerator}).
 	 q{$to_ref: }.$to_ref;
       INFO($msg);
+	  my $brief_info=(defined $person->brief_info($self->{textGenerator}))?$person->brief_info($self->{textGenerator}):"";
     return $self->{cgi}->a(
         {
           -href => "$self->{treeScript}?type=tree;"
             . 'target=' . $person->get_id() . ";levels=$levels;"
             . "passwd=$self->{settings}{password};lang=$self->{lang}",
-          -title => $person->brief_info($self->{textGenerator}),
+          -title => $brief_info,
         }, $to_ref);
   }
   else {
