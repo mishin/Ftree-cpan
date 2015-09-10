@@ -38,20 +38,6 @@ use Perl6::Export::Attrs;
 use Encode qw(decode_utf8);
 use utf8;
 
-# use FindBin '$RealBin';
-use Log::Log4perl qw(:easy);
-my $log_file = "c:/Users/TOSH/Documents/GitHub/Ftree-cpan/cgi-bin/log/"
-  . "Use_of_uninitialized_value_261.log";
-
-#Init logging
-Log::Log4perl->easy_init(
-    {
-        level  => $DEBUG,
-        file   => ":utf8>>$log_file",
-        layout => '%d %p> %m%n'
-    }
-);
-
 my $q = new CGI;
 
 sub new : Export {
@@ -375,10 +361,6 @@ sub aref_tree {
     }
     if ( $levels > 0 ) {
 
-# my $msg = q{$person->get_id(): }.$person->get_id().
-# q{$person->brief_info($self->{textGenerator}): }.$person->brief_info($self->{textGenerator}).
-# q{$to_ref: }.$to_ref;
-# INFO($msg);
         my $brief_info = $person->brief_info( $self->{textGenerator} );
         $brief_info = ( defined $brief_info ) ? $brief_info : "";
         my $password = $self->{settings}{password};
