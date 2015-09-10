@@ -277,11 +277,13 @@ sub html_img {
       # INFO($msg);
 	  my $brief_info=$person->brief_info($self->{textGenerator});
 	  $brief_info=(defined $brief_info)?$brief_info:"";
+	  my $password=$self->{settings}{password};
+	  $password=(defined $password)?$password:"";
     return $self->{cgi}->a(
         {
           -href => "$self->{treeScript}?type=tree;"
             . 'target=' . $person->get_id() . ";levels=$levels;"
-            . "passwd=$self->{settings}{password};lang=$self->{lang}",
+            . "passwd=$password;lang=$self->{lang}",
           -title => $brief_info,
         }, $to_ref);
   }
