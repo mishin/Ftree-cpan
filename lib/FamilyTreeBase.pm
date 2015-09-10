@@ -24,7 +24,7 @@ package FamilyTreeBase;
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('2.3.18');
+use version; our $VERSION = qv('2.3.19');
 
 use Params::Validate qw(:all);
 use CGI qw(:standard);

@@ -24,7 +24,7 @@ package Name;
 use strict;
 use warnings;
 use TextGeneratorFactory qw(getTextGenerator get_reverse_name);
-use version; our $VERSION = qv('2.3.18');
+use version; our $VERSION = qv('2.3.19');
 
 use Params::Validate qw(:all);
 

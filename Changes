@@ -1,6 +1,8 @@
 Revision history for Ftree
 
 {{$NEXT}}
+
+2.3.19  2015-09-10 04:51:43 MSK
            * Correct unicode bug in Excel
            * Correct empty password not init bug
 2.3.18  2015-09-09 13:21:22 MSK
