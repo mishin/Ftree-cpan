@@ -1,7 +1,8 @@
 Revision history for Ftree
 
 {{$NEXT}}
-
+           * put app to heroku!
+           * https://still-lowlands-7377.herokuapp.com/ftree?type=;passwd=;lang=gb
 2.3.19  2015-09-10 04:51:43 MSK
            * Correct unicode bug in Excel
            * Correct empty password not init bug
