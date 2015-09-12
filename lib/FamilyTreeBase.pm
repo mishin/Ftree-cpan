@@ -229,7 +229,7 @@ sub _password_check {
         && $self->{settings}{passwordReq} ne ""
         && $self->{settings}{password} ne $self->{password} )
     {
-        $self->toppage( $self->{textGenerator}->{Error} );
+        $self->_toppage( $self->{textGenerator}->{Error} );
         printf "<br>\n<br/>\n"
           . $self->{textGenerator}->{Sorry}
           . "!<br><br>\n";
