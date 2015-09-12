@@ -11,7 +11,7 @@ requires 'Config::General', '2.58';
 requires 'Class::Std', '0.013';
 requires 'Class::Std::Storable', '0.0.1';
 #requires 'Date::Tiny', '1.0.4';
-requires 'IO::Stringy', '2.111';
+requires 'IO::Stringy', '2.110';
 requires 'List::MoreUtils', '0.413';
 requires 'OLE::Storage_Lite', '0.19';
 requires 'Perl6::Export::Attrs', '0.0.3';
