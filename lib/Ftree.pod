@@ -12,6 +12,8 @@ L<https://still-lowlands-7377.herokuapp.com/ftree?type=tree;target=Abraham_Simps
 
 =head1 SYNOPSIS
   
+  installator for Windows 7 32bit
+  L<https://sourceforge.net/projects/family-tree-32/files/latest/download?source=navbar>
   #If install it
   cpanm https://cpan.metacpan.org/authors/id/M/MI/MISHIN/FamilyTreeInfo-2.3.16.tar.gz
 

@@ -260,7 +260,7 @@ Ther are historical reasons for being available. We suggest to use server side p
 
 # AUTHORS
 
-Dr. Ferenc Bodon and Simon Ward
+Dr. Ferenc Bodon and Simon Ward and Nikolay Mishin
 http://www.cs.bme.hu/~bodon/en/index.html
 http://simonward.com
 
