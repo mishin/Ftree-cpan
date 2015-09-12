@@ -1,6 +1,8 @@
 Revision history for Ftree
 
 {{$NEXT}}
+
+2.3.21  2015-09-12 09:05:48 MSK
            * add installer for windows7
 2.3.20  2015-09-11 07:15:41 MSK
            * put app to heroku!
