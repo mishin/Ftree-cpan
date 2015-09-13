@@ -2,7 +2,14 @@
 
 Ftree - family tree generator
 
+# EXAMPLE 
+
+[https://still-lowlands-7377.herokuapp.com/ftree?type=tree;target=Abraham\_Simpson;levels=2;passwd=;lang=gb](https://still-lowlands-7377.herokuapp.com/ftree?type=tree;target=Abraham_Simpson;levels=2;passwd=;lang=gb)
+
 # SYNOPSIS
+
+installator for Windows 7 32bit
+[https://sourceforge.net/projects/family-tree-32/files/latest/download?source=navbar](https://sourceforge.net/projects/family-tree-32/files/latest/download?source=navbar)
 
     #If install it
     cpanm https://cpan.metacpan.org/authors/id/M/MI/MISHIN/FamilyTreeInfo-2.3.16.tar.gz
@@ -289,3 +296,5 @@ Vladimir Kangin (Russian)
 
 I also would like to thank the feedback/help of (in no particular order) Alex Roitman, Anthony Fletcher, 
 Richard Bos, Sylvia McKenzie and Sean Symes.
+
+# SEE ALSO
