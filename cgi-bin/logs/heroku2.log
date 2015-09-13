@@ -1,0 +1,102 @@
+2015-09-10T20:30:12.630516+00:00 heroku[slug-compiler]: Slug compilation finished
+2015-09-10T20:30:12.555396+00:00 heroku[api]: Deploy 7cc1ccc by mi@ya.ru
+2015-09-10T20:30:12.555512+00:00 heroku[api]: Release v4 created by mi@ya.ru
+2015-09-10T20:30:18.199993+00:00 heroku[web.1]: Starting process with command `starman --preload-app --port 14203`
+2015-09-10T20:30:20.084341+00:00 app[web.1]: Error while loading /app/app.psgi: Can't locate CGI/Emulate/PSGI.pm in @INC (you may need to install the CGI::Emulate::PSGI module) (@INC contains: /app/local/lib/perl5/x86_64-linux /app/local/lib/perl5 /app/vendor/lib/perl5 /app/vendor/perl/lib/site_perl/5.22.0/x86_64-linux /app/vendor/perl/lib/site_perl/5.22.0 /app/vendor/perl/lib/5.22.0/x86_64-linux /app/vendor/perl/lib/5.22.0 .) at /app/app.psgi line 7.
+2015-09-10T20:30:20.084361+00:00 app[web.1]: BEGIN failed--compilation aborted at /app/app.psgi line 7.
+2015-09-10T20:30:20.861599+00:00 heroku[web.1]: Process exited with status 2
+2015-09-10T20:30:20.878399+00:00 heroku[web.1]: State changed from starting to crashed
+2015-09-10T20:30:20.879421+00:00 heroku[web.1]: State changed from crashed to starting
+2015-09-10T20:30:26.031150+00:00 heroku[web.1]: Starting process with command `starman --preload-app --port 36690`
+2015-09-10T20:30:28.551311+00:00 app[web.1]: Error while loading /app/app.psgi: Can't locate CGI/Emulate/PSGI.pm in @INC (you may need to install the CGI::Emulate::PSGI module) (@INC contains: /app/local/lib/perl5/x86_64-linux /app/local/lib/perl5 /app/vendor/lib/perl5 /app/vendor/perl/lib/site_perl/5.22.0/x86_64-linux /app/vendor/perl/lib/site_perl/5.22.0 /app/vendor/perl/lib/5.22.0/x86_64-linux /app/vendor/perl/lib/5.22.0 .) at /app/app.psgi line 7.
+2015-09-10T20:30:28.551337+00:00 app[web.1]: BEGIN failed--compilation aborted at /app/app.psgi line 7.
+2015-09-10T20:30:29.738077+00:00 heroku[web.1]: State changed from starting to crashed
+2015-09-10T20:30:29.725104+00:00 heroku[web.1]: Process exited with status 2
+2015-09-10T20:33:48.971576+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/ftree" host=still-lowlands-7377.herokuapp.com request_id=fe757a20-892e-43e1-adf4-ac28a11be08a fwd="91.78.200.224" dyno= connect= service= status=503 bytes=
+2015-09-10T20:33:49.561453+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=still-lowlands-7377.herokuapp.com request_id=9b4bf2f0-db13-4f57-9d74-7b2b1a2edfa2 fwd="91.78.200.224" dyno= connect= service= status=503 bytes=
+2015-09-10T20:37:32.715627+00:00 heroku[slug-compiler]: Slug compilation failed: failed to compile Perl/PSGI app
+2015-09-10T20:37:32.715601+00:00 heroku[slug-compiler]: Slug compilation started
+2015-09-10T20:38:51.163297+00:00 heroku[slug-compiler]: Slug compilation started
+2015-09-10T20:38:51.163315+00:00 heroku[slug-compiler]: Slug compilation finished
+2015-09-10T20:38:51.101770+00:00 heroku[api]: Deploy 71cbdd4 by mi@ya.ru
+2015-09-10T20:38:51.101892+00:00 heroku[api]: Release v5 created by mi@ya.ru
+2015-09-10T20:38:56.763810+00:00 heroku[web.1]: State changed from crashed to starting
+2015-09-10T20:39:01.023040+00:00 heroku[web.1]: Starting process with command `starman --preload-app --port 56748`
+2015-09-10T20:39:03.871046+00:00 app[web.1]: Error while loading /app/app.psgi: Can't locate CGI/Emulate/PSGI.pm in @INC (you may need to install the CGI::Emulate::PSGI module) (@INC contains: /app/local/lib/perl5/x86_64-linux /app/local/lib/perl5 /app/vendor/lib/perl5 /app/vendor/perl/lib/site_perl/5.22.0/x86_64-linux /app/vendor/perl/lib/site_perl/5.22.0 /app/vendor/perl/lib/5.22.0/x86_64-linux /app/vendor/perl/lib/5.22.0 .) at /app/app.psgi line 7.
+2015-09-10T20:39:03.871068+00:00 app[web.1]: BEGIN failed--compilation aborted at /app/app.psgi line 7.
+2015-09-10T20:39:04.604601+00:00 heroku[web.1]: State changed from starting to crashed
+2015-09-10T20:39:04.593096+00:00 heroku[web.1]: Process exited with status 2
+2015-09-10T20:39:06.460212+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/ftree" host=still-lowlands-7377.herokuapp.com request_id=7fa8bb80-38dc-4846-9bc7-b7bbd4146d0b fwd="91.78.200.224" dyno= connect= service= status=503 bytes=
+2015-09-10T20:39:06.805670+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=still-lowlands-7377.herokuapp.com request_id=2d20c0c5-3d66-4e63-91d1-df2dd1a242b8 fwd="91.78.200.224" dyno= connect= service= status=503 bytes=
+2015-09-10T20:40:49.977515+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=still-lowlands-7377.herokuapp.com request_id=0e6a1972-260f-4c67-85d2-f8abf34d43c0 fwd="91.78.200.224" dyno= connect= service= status=503 bytes=
+2015-09-10T20:40:50.171904+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=still-lowlands-7377.herokuapp.com request_id=8a466bac-ad85-4e9e-9565-e2459800bb43 fwd="91.78.200.224" dyno= connect= service= status=503 bytes=
+2015-09-10T20:55:17.630407+00:00 heroku[slug-compiler]: Slug compilation started
+2015-09-10T20:55:17.630426+00:00 heroku[slug-compiler]: Slug compilation finished
+2015-09-10T20:55:17.567164+00:00 heroku[api]: Deploy cac1ed9 by mi@ya.ru
+2015-09-10T20:55:17.567353+00:00 heroku[api]: Release v6 created by mi@ya.ru
+2015-09-10T20:55:17.668722+00:00 heroku[web.1]: State changed from crashed to starting
+2015-09-10T20:55:22.951751+00:00 heroku[web.1]: Starting process with command `starman --preload-app --port 35263`
+2015-09-10T20:55:25.245232+00:00 app[web.1]: Resolved [*]:35263 to [0.0.0.0]:35263, IPv4
+2015-09-10T20:55:25.247668+00:00 app[web.1]: Setting gid to "58542 58542"
+2015-09-10T20:55:25.244745+00:00 app[web.1]: 2015/09/10-20:55:25 Starman::Server (type Net::Server::PreFork) starting! pid(3)
+2015-09-10T20:55:25.247068+00:00 app[web.1]: Binding to TCP port 35263 on host 0.0.0.0 with IPv4
+2015-09-10T20:55:26.732896+00:00 heroku[web.1]: State changed from starting to up
+2015-09-10T20:55:28.019921+00:00 heroku[router]: at=info method=GET path="/hello" host=still-lowlands-7377.herokuapp.com request_id=23ccaad0-8962-490f-85c8-5820a824cf36 fwd="91.78.200.224" dyno=web.1 connect=0ms service=8ms status=200 bytes=186
+2015-09-10T20:55:28.198955+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=still-lowlands-7377.herokuapp.com request_id=afc7e4e6-41db-4346-9c80-0b46041ee2da fwd="91.78.200.224" dyno=web.1 connect=0ms service=10ms status=404 bytes=654
+2015-09-10T20:55:51.685189+00:00 heroku[api]: Set WORLD config vars by mi@ya.ru
+2015-09-10T20:55:51.685304+00:00 heroku[api]: Release v7 created by mi@ya.ru
+2015-09-10T20:55:51.772319+00:00 heroku[web.1]: State changed from up to starting
+2015-09-10T20:55:55.176875+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2015-09-10T20:55:56.012259+00:00 app[web.1]: 2015/09/10-20:55:56 Server closing!
+2015-09-10T20:55:57.140276+00:00 heroku[web.1]: Process exited with status 0
+2015-09-10T20:55:57.985886+00:00 heroku[web.1]: Starting process with command `starman --preload-app --port 49014`
+2015-09-10T20:56:01.171665+00:00 app[web.1]: Resolved [*]:49014 to [0.0.0.0]:49014, IPv4
+2015-09-10T20:56:01.178200+00:00 app[web.1]: Setting gid to "46080 46080"
+2015-09-10T20:56:01.171203+00:00 app[web.1]: 2015/09/10-20:56:01 Starman::Server (type Net::Server::PreFork) starting! pid(3)
+2015-09-10T20:56:01.173792+00:00 app[web.1]: Binding to TCP port 49014 on host 0.0.0.0 with IPv4
+2015-09-10T20:56:01.950491+00:00 heroku[web.1]: State changed from starting to up
+2015-09-10T20:56:20.603046+00:00 heroku[router]: at=info method=GET path="/hello" host=still-lowlands-7377.herokuapp.com request_id=69f63666-97c8-47bf-bfbc-f9a1ecb11ef2 fwd="91.78.200.224" dyno=web.1 connect=2ms service=40ms status=200 bytes=188
+2015-09-10T21:31:19.527833+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2015-09-10T21:31:20.338399+00:00 app[web.1]: 2015/09/10-21:31:20 Server closing!
+2015-09-10T21:31:21.482468+00:00 heroku[web.1]: Process exited with status 0
+2015-09-10T21:31:14.964593+00:00 heroku[web.1]: Idling
+2015-09-10T21:31:14.965081+00:00 heroku[web.1]: State changed from up to down
+2015-09-11T03:21:24.705742+00:00 heroku[web.1]: Unidling
+2015-09-11T03:21:24.706194+00:00 heroku[web.1]: State changed from down to starting
+2015-09-11T03:21:31.582176+00:00 heroku[web.1]: Starting process with command `starman --preload-app --port 36120`
+2015-09-11T03:21:34.520838+00:00 app[web.1]: Setting gid to "6211 6211"
+2015-09-11T03:21:34.518313+00:00 app[web.1]: Resolved [*]:36120 to [0.0.0.0]:36120, IPv4
+2015-09-11T03:21:34.520311+00:00 app[web.1]: Binding to TCP port 36120 on host 0.0.0.0 with IPv4
+2015-09-11T03:21:34.518084+00:00 app[web.1]: 2015/09/11-03:21:34 Starman::Server (type Net::Server::PreFork) starting! pid(3)
+2015-09-11T03:21:35.386252+00:00 heroku[web.1]: State changed from starting to up
+2015-09-11T03:21:36.803863+00:00 heroku[router]: at=info method=GET path="/hello" host=still-lowlands-7377.herokuapp.com request_id=afcc5717-f0c6-4f70-a430-0dfce873e2a1 fwd="91.78.200.224" dyno=web.1 connect=1ms service=35ms status=200 bytes=188
+2015-09-11T03:31:38.213163+00:00 heroku[api]: Starting process with command `bash` by mi@ya.ru
+2015-09-11T03:31:43.420668+00:00 heroku[run.2857]: Starting process with command `bash`
+2015-09-11T03:31:43.382928+00:00 heroku[run.2857]: Awaiting client
+2015-09-11T03:31:43.773370+00:00 heroku[run.2857]: State changed from starting to up
+2015-09-11T03:33:08.577152+00:00 heroku[run.2857]: Process exited with status 0
+2015-09-11T03:33:08.596814+00:00 heroku[run.2857]: State changed from up to complete
+2015-09-11T03:34:27.458710+00:00 heroku[api]: Deploy 6d3d427 by mi@ya.ru
+2015-09-11T03:34:27.458832+00:00 heroku[api]: Release v8 created by mi@ya.ru
+2015-09-11T03:34:27.532247+00:00 heroku[slug-compiler]: Slug compilation started
+2015-09-11T03:34:27.532259+00:00 heroku[slug-compiler]: Slug compilation finished
+2015-09-11T03:34:27.627765+00:00 heroku[web.1]: State changed from up to starting
+2015-09-11T03:34:30.767933+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2015-09-11T03:34:31.416353+00:00 app[web.1]: 2015/09/11-03:34:31 Server closing!
+2015-09-11T03:34:31.945124+00:00 heroku[web.1]: Starting process with command `starman --preload-app --port 35009`
+2015-09-11T03:34:32.324192+00:00 heroku[web.1]: Process exited with status 0
+2015-09-11T03:34:33.388892+00:00 app[web.1]: Error while loading /app/app.psgi: Can't locate CGI/Emulate/PSGI.pm in @INC (you may need to install the CGI::Emulate::PSGI module) (@INC contains: /app/local/lib/perl5/x86_64-linux /app/local/lib/perl5 /app/vendor/lib/perl5 /app/vendor/perl/lib/site_perl/5.22.0/x86_64-linux /app/vendor/perl/lib/site_perl/5.22.0 /app/vendor/perl/lib/5.22.0/x86_64-linux /app/vendor/perl/lib/5.22.0 .) at /app/app.psgi line 7.
+2015-09-11T03:34:33.388914+00:00 app[web.1]: BEGIN failed--compilation aborted at /app/app.psgi line 7.
+2015-09-11T03:34:34.164316+00:00 heroku[web.1]: State changed from starting to crashed
+2015-09-11T03:34:34.166819+00:00 heroku[web.1]: State changed from crashed to starting
+2015-09-11T03:34:34.147538+00:00 heroku[web.1]: Process exited with status 2
+2015-09-11T03:34:38.454623+00:00 heroku[web.1]: Starting process with command `starman --preload-app --port 19879`
+2015-09-11T03:34:39.928159+00:00 app[web.1]: Error while loading /app/app.psgi: Can't locate CGI/Emulate/PSGI.pm in @INC (you may need to install the CGI::Emulate::PSGI module) (@INC contains: /app/local/lib/perl5/x86_64-linux /app/local/lib/perl5 /app/vendor/lib/perl5 /app/vendor/perl/lib/site_perl/5.22.0/x86_64-linux /app/vendor/perl/lib/site_perl/5.22.0 /app/vendor/perl/lib/5.22.0/x86_64-linux /app/vendor/perl/lib/5.22.0 .) at /app/app.psgi line 7.
+2015-09-11T03:34:39.928176+00:00 app[web.1]: BEGIN failed--compilation aborted at /app/app.psgi line 7.
+2015-09-11T03:34:40.640934+00:00 heroku[web.1]: Process exited with status 2
+2015-09-11T03:34:40.649013+00:00 heroku[web.1]: State changed from starting to crashed
+2015-09-11T03:34:59.600967+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=still-lowlands-7377.herokuapp.com request_id=08ae8917-7ed1-4b0d-8700-331288ff07f7 fwd="91.78.200.224" dyno= connect= service= status=503 bytes=
+2015-09-11T03:35:00.450539+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=still-lowlands-7377.herokuapp.com request_id=8da3d022-fdc1-4881-ad23-649d38fe729e fwd="91.78.200.224" dyno= connect= service= status=503 bytes=
+2015-09-11T03:35:08.401350+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/ftree" host=still-lowlands-7377.herokuapp.com request_id=6a45e199-7891-4002-b1b2-01f44ad1898b fwd="91.78.200.224" dyno= connect= service= status=503 bytes=
+2015-09-11T03:35:08.599206+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=still-lowlands-7377.herokuapp.com request_id=743948b4-60bc-41c3-9341-e77d03c4215c fwd="91.78.200.224" dyno= connect= service= status=503 bytes=
+Завершить выполнение пакетного файла [Y(да)/N(нет)]? 

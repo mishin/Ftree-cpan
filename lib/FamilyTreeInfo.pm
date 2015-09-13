@@ -369,7 +369,14 @@ __END__
 
 Ftree - family tree generator
 
+=head1 EXAMPLE 
+
+L<https://still-lowlands-7377.herokuapp.com/ftree?type=tree;target=Abraham_Simpson;levels=2;passwd=;lang=gb>
+
 =head1 SYNOPSIS
+  
+installator for Windows 7 32bit
+L<https://sourceforge.net/projects/family-tree-32/files/latest/download?source=navbar>
 
   #If install it
   cpanm https://cpan.metacpan.org/authors/id/M/MI/MISHIN/FamilyTreeInfo-2.3.16.tar.gz
@@ -641,8 +648,6 @@ Copyright 2015- Dr. Ferenc Bodon and Simon Ward and Nikolay Mishin
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
-
-
 =head1 ACKNOWLEDGEMENTS
 
 I am in debt to the translators:
@@ -655,6 +660,8 @@ Vladimir Kangin (Russian)
 
 I also would like to thank the feedback/help of (in no particular order) Alex Roitman, Anthony Fletcher, 
 Richard Bos, Sylvia McKenzie and Sean Symes.
+
+=head1 SEE ALSO
 
 =cut
  
