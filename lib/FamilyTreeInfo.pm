@@ -371,7 +371,7 @@ Ftree - family tree generator
 
 =head1 EXAMPLE 
 
-L<https://still-lowlands-7377.herokuapp.com/ftree?type=tree;target=Abraham_Simpson;levels=2;passwd=;lang=gb>
+L<https://still-lowlands-7377.herokuapp.com>
 
 =head1 SYNOPSIS
   

@@ -1,11 +1,11 @@
 Features to add(mishin):
-- Move from CGI to PSGI
+- Move from CGI to PSGI (part)+
 - Repaire pod documentation+
-- Make distributive for Windows 7, simple installation for All
+- Make distributive for Windows 7, simple installation for All+
 - Realize HTML::Template
 - Run ftree under strawberry-perl-5.20.0.1-64bit-portable+
 - Write article about Dist::Milla in pragmaticperl.ru
-- Make the remembrance of the dead and living at morning and evening prayer
+- Make the remembrance of the dead and living at morning and evening prayer+
 - Make config in file - done!+
 
 Features to add(old):
