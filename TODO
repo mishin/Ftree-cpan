@@ -1,4 +1,9 @@
 Features to add(mishin):
+- Make adapter for xlsx !
+- Read Gene data from Googlespreadsheet
+- Move pictures to http://s1182.photobucket.com/ :
+http://i1182.photobucket.com/albums/x454/mishin_jet/i28.jpg
+
 - Move from CGI to PSGI (part)+
 - Repaire pod documentation+
 - Make distributive for Windows 7, simple installation for All+
