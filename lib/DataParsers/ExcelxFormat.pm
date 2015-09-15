@@ -34,7 +34,8 @@ sub createFamilyTreeDataFromFile {
       or die "No file_name is given in config";
 
     my $family_tree_data = FamilyTreeData->new();
-    my $excel            = Spreadsheet::ParseXLSX::Workbook->Parse($file_name)
+    my $excel            = Spreadsheet::ParseXLSX->new->parse($file_name);
+	# Spreadsheet::ParseXLSX::Workbook->Parse($file_name)
       or die "Unable to parse file " . $file_name;
     foreach my $sheet ( @{ $excel->{Worksheet} } ) {
         $sheet->{MaxRow} ||= $sheet->{MinRow};

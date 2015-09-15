@@ -4,7 +4,7 @@ Ftree - family tree generator
 
 # EXAMPLE 
 
-[https://still-lowlands-7377.herokuapp.com/ftree?type=tree;target=Abraham\_Simpson;levels=2;passwd=;lang=gb](https://still-lowlands-7377.herokuapp.com/ftree?type=tree;target=Abraham_Simpson;levels=2;passwd=;lang=gb)
+[https://still-lowlands-7377.herokuapp.com](https://still-lowlands-7377.herokuapp.com)
 
 # SYNOPSIS
 
