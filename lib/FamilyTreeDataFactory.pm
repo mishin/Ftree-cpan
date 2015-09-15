@@ -41,6 +41,10 @@ sub getFamilyTree {
   	  require DataParsers::ExcelFormat;
   	  return ExcelFormat::createFamilyTreeDataFromFile($config->{config});
   	}
+	case 'excelx' {
+  	  require DataParsers::ExcelxFormat;
+  	  return ExcelxFormat::createFamilyTreeDataFromFile($config->{config});
+  	}
     case 'ser' {
       require DataParsers::SerializerFormat;
       return SerializerFormat::createFamilyTreeDataFromFile($config->{config});
