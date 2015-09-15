@@ -21,9 +21,13 @@
 #######################################################
 
 package ExcelxFormat;
-use Spreadsheet::ParseXLSX;
+
+# use Spreadsheet::ParseXLSX;
+use Spreadsheet::Read;
+
 # use Spreadsheet::ParseExcel;
-use DataParsers::ExtendedSimonWardFormat;    # for getting pictures. Temporal solution
+use DataParsers::ExtendedSimonWardFormat
+  ;    # for getting pictures. Temporal solution
 use FamilyTreeData;
 use CGI::Carp qw(fatalsToBrowser);
 use Encode qw(decode);
@@ -34,43 +38,54 @@ sub createFamilyTreeDataFromFile {
       or die "No file_name is given in config";
 
     my $family_tree_data = FamilyTreeData->new();
-    my $excel            = Spreadsheet::ParseXLSX->new->parse($file_name);
-	# Spreadsheet::ParseXLSX::Workbook->Parse($file_name)
+    my $workbook         = ReadData($file_name)
       or die "Unable to parse file " . $file_name;
-    foreach my $sheet ( @{ $excel->{Worksheet} } ) {
-        $sheet->{MaxRow} ||= $sheet->{MinRow};
-        foreach my $row ( $sheet->{MinRow} + 1 .. $sheet->{MaxRow} ) {
+
+    # my $excel            = Spreadsheet::ParseXLSX->new->parse($file_name);
+    # Spreadsheet::ParseXLSX::Workbook->Parse($file_name)
+    # or die "Unable to parse file " . $file_name;
+    foreach my $sheet_number ( 1 .. $workbook->[0]{sheets} ) {
+
+        # say "\$sheet_number: $sheet_number";
+        my $start = $workbook->[$sheet_number]{minrow} + 1;
+        my $end   = $workbook->[$sheet_number]{maxrow};
+
+        # say "\$start: $start .. \$end: $end";
+        foreach my $row ( $start .. $end ) {
+
             my $tempperson = {
-                id             => convertCell( $sheet->{Cells}[$row][0] ),
-                first_name     => convertCell( $sheet->{Cells}[$row][3] ),
-                mid_name       => convertCell( $sheet->{Cells}[$row][4] ),
-                last_name      => convertCell( $sheet->{Cells}[$row][5] ),
-                title          => convertCell( $sheet->{Cells}[$row][1] ),
-                prefix         => convertCell( $sheet->{Cells}[$row][2] ),
-                suffix         => convertCell( $sheet->{Cells}[$row][6] ),
-                nickname       => convertCell( $sheet->{Cells}[$row][7] ),
-                father_id      => convertCell( $sheet->{Cells}[$row][8] ),
-                mother_id      => convertCell( $sheet->{Cells}[$row][9] ),
-                email          => convertCell( $sheet->{Cells}[$row][10] ),
-                homepage       => convertCell( $sheet->{Cells}[$row][11] ),
-                date_of_birth  => convertCell( $sheet->{Cells}[$row][12] ),
-                date_of_death  => convertCell( $sheet->{Cells}[$row][13] ),
-                gender         => convertCell( $sheet->{Cells}[$row][14] ),
-                is_living      => convertCell( $sheet->{Cells}[$row][15] ),
-                place_of_birth => convertCell( $sheet->{Cells}[$row][16] ),
-                place_of_death => convertCell( $sheet->{Cells}[$row][17] ),
-                cemetery       => convertCell( $sheet->{Cells}[$row][18] ),
-                schools        => ( defined $sheet->{Cells}[$row][19] )
-                ? [ split( /,/, convertCell( $sheet->{Cells}[$row][19] ) ) ]
+                id             => $workbook->[$sheet_number]{cell}[1][$row],
+                first_name     => $workbook->[$sheet_number]{cell}[4][$row],
+                mid_name       => $workbook->[$sheet_number]{cell}[5][$row],
+                last_name      => $workbook->[$sheet_number]{cell}[6][$row],
+                title          => $workbook->[$sheet_number]{cell}[2][$row],
+                prefix         => $workbook->[$sheet_number]{cell}[3][$row],
+                suffix         => $workbook->[$sheet_number]{cell}[7][$row],
+                nickname       => $workbook->[$sheet_number]{cell}[8][$row],
+                father_id      => $workbook->[$sheet_number]{cell}[9][$row],
+                mother_id      => $workbook->[$sheet_number]{cell}[10][$row],
+                email          => $workbook->[$sheet_number]{cell}[11][$row],
+                homepage       => $workbook->[$sheet_number]{cell}[12][$row],
+                date_of_birth  => $workbook->[$sheet_number]{cell}[13][$row],
+                date_of_death  => $workbook->[$sheet_number]{cell}[14][$row],
+                gender         => $workbook->[$sheet_number]{cell}[15][$row],
+                is_living      => $workbook->[$sheet_number]{cell}[16][$row],
+                place_of_birth => $workbook->[$sheet_number]{cell}[17][$row],
+                place_of_death => $workbook->[$sheet_number]{cell}[18][$row],
+                cemetery       => $workbook->[$sheet_number]{cell}[19][$row],
+                schools =>
+                  ( defined $workbook->[$sheet_number]{cell}[20][$row] )
+                ? [ split( /,/, $workbook->[$sheet_number]{cell}[20][$row] ) ]
                 : undef,
-                jobs => ( defined $sheet->{Cells}[$row][20] )
-                ? [ split( /,/, convertCell( $sheet->{Cells}[$row][20] ) ) ]
+                jobs => ( defined $workbook->[$sheet_number]{cell}[21][$row] )
+                ? [ split( /,/, $workbook->[$sheet_number]{cell}[21][$row] ) ]
                 : undef,
-                work_places => ( defined $sheet->{Cells}[$row][21] )
-                ? [ split( /,/, convertCell( $sheet->{Cells}[$row][21] ) ) ]
+                work_places =>
+                  ( defined $workbook->[$sheet_number]{cell}[22][$row] )
+                ? [ split( /,/, $workbook->[$sheet_number]{cell}[22][$row] ) ]
                 : undef,
-                places_of_living => convertCell( $sheet->{Cells}[$row][22] ),
-                general          => convertCell( $sheet->{Cells}[$row][23] )
+                places_of_living => $workbook->[$sheet_number]{cell}[23][$row],
+                general          => $workbook->[$sheet_number]{cell}[24][$row]
             };
             $family_tree_data->add_person($tempperson);
         }
@@ -81,40 +96,6 @@ sub createFamilyTreeDataFromFile {
     }
 
     return $family_tree_data;
-}
-
-sub convertCell {
-    my ($cell) = @_;
-    return undef unless defined $cell;
-    my $rowtxt = '';
-    if ( !$cell ) {
-        $rowtxt = "\t";
-
-        # next;
-    }
-    my $val = $cell->{Val};
-    if ( !defined($val) or $val eq '' ) {
-        $rowtxt = "\t";
-
-        # next;
-    }
-    $val = decode( "UTF-16BE", $val ) if ( $cell->{Code} eq 'ucs2' );
-    $val =~ s/^\s+//;
-    $val =~ s/\s+$//;
-    if ( $val eq '' ) {
-        $rowtxt = "\t";
-        next;
-    }
-    $rowtxt = "$val";
-
-    return $rowtxt;
-
-# return $cell->{Val} if( $cell->{Type} eq "Numeric" );
-# return $cell->{Val} unless( defined $cell->{Code} );
-# use Encode qw(decode encode);
-# $characters = decode('UTF-8', $octets,     Encode::FB_CROAK);
-# return  decode('UTF-8',$cell->{Val},Encode::FB_CROAK);#decode('UTF-16LE', $cell->{Val});
-# Encode::from_to( $cell->{Val}, "utf8", "utf16le" );
 }
 
 1;

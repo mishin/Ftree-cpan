@@ -40,6 +40,7 @@ requires 'Plack', '1.0037';
 requires 'CGI::Emulate::PSGI', '0.21';
 requires 'CGI::Compile', '0.19';
 requires 'Spreadsheet::ParseXLSX', '0.17';
+requires 'Spreadsheet::Read', '0.62';
 
 on test => sub {
     requires 'Test::More';
