@@ -42,11 +42,16 @@ use v5.14;
 	  # Spreadsheet::ParseXLSX::Workbook->Parse($file_name)
 	  # @{ $excel->{sheets}
    foreach my $sheet_number ( 1 .. $workbook->[0]{sheets} ) {
-   say "\$sheet_number: $sheet_number";
-   	my $start=$workbook->[$sheet_number]{minrow}+1;
-		my $end=$workbook->[$sheet_number]{maxrow};
-		say "\$start: $start .. \$end: $end";
-        foreach my $row ( $start .. $end ) {
+    printf("Sheet: %s\n", $sheet->{Name});
+        
+       $sheet -> {MaxRow} ||= $sheet -> {MinRow};
+        
+   # say "\$sheet_number: $sheet_number";
+   	# my $start=$workbook->[$sheet_number]{minrow}+1;
+		# my $end=$workbook->[$sheet_number]{maxrow};
+		# say "\$start: $start .. \$end: $end";
+		  foreach my $row ($sheet -> {MinRow}+1 .. $sheet -> {MaxRow}) {
+        # foreach my $row ( $start .. $end ) {
 		
             my $tempperson = {
                 id             =>  $workbook->[$sheet_number]{cell}[1][$row] ,

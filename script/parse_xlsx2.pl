@@ -1,29 +1,33 @@
-﻿use Spreadsheet::ParseXLSX;
-use     Spreadsheet::Read;
+﻿# use Spreadsheet::ParseXLSX;
+# use     Spreadsheet::Read;
 use Data::Dumper;
 use Data::Printer;
 use v5.14;
+use Spreadsheet::XLSX;
  my $file_name='mishin_family.xls.xlsx';
+my $excel = Spreadsheet::XLSX -> new ( $file_name);#, $converter);
+ # my $file_name='mishin_family.xls.xlsx';
 # my $parser = Spreadsheet::ParseXLSX->new;
-  my $excel            = Spreadsheet::ParseXLSX->new->parse($file_name)
-      or die "Unable to parse file " . $file_name;
+  # my $excel            = Spreadsheet::ParseXLSX->new->parse($file_name)
+      # or die "Unable to parse file " . $file_name;
 	  
-	  my $workbook  = ReadData ($file_name) 
-         or die "Unable to parse file " . $file_name;
+	  # my $workbook  = ReadData ($file_name) 
+         # or die "Unable to parse file " . $file_name;
 		  	# my $start=$workbook->[$sheet_number]{minrow}+1;
-		my $end=$workbook->[1]{maxrow};
+		# my $end=$workbook->[1]{maxrow};
 	  # Spreadsheet::ParseXLSX::Workbook->Parse($file_name)
 	  # p $excel ;
+	  # foreach my $sheet (@{$excel -> {Worksheet}}) {
   foreach my $sheet ( @{ $excel->{Worksheet} } ) {
         # $sheet->{MaxRow} ||= $sheet->{MinRow};
 		 # my ( $row_min, $row_max ) = $sheet->row_range();
 		# next if $sheet -> {MinRow} > $sheet -> {MaxRow};
 		# say '$sheet->{MaxRow}: '.$sheet->{MaxRow};
-		say '$end: '.$end;
+		# say '$end: '.$end;
 		# # say '$sheet->{MinRow}: '.$sheet->{MinRow};
 		# say '$sheet->{MinRow}: '.$row_min;
         # foreach my $row ( $sheet->{MinRow} + 1 .. $sheet->{MaxRow} ) {
-        foreach my $row ( 2 .. $end ) {
+        foreach my $row ( $sheet -> {MinRow} +1  .. $sheet -> {MaxRow} ) {
             my $tempperson = {
                 id             =>  $sheet->{Cells}[$row][0]->{Val},
                 first_name     =>  $sheet->{Cells}[$row][3]->{Val},
