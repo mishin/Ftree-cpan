@@ -45,6 +45,7 @@ sub createFamilyTreeDataFromFile {
     # my $excel            = Spreadsheet::ParseXLSX->new->parse($file_name);
     # Spreadsheet::ParseXLSX::Workbook->Parse($file_name)
     # or die "Unable to parse file " . $file_name;
+foreach my $sheet ( @{ $excel->{Worksheet} } ) {	
       foreach my $row ($sheet -> {MinRow}+1 .. $sheet -> {MaxRow}) {
         # foreach my $row ( $start .. $end ) {
 		
