@@ -1,6 +1,8 @@
 Revision history for Ftree
 
 {{$NEXT}}
+
+2.3.24  2015-09-17 02:16:22 MSK
            * add ExcelxExporter
 		   * to convert from xlsx to ser format
 		   * perl convertFormat.pl tree.xlsx tree.ser
