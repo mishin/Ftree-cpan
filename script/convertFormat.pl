@@ -35,6 +35,7 @@ if(!defined $input_file_name || !defined $output_file_name) {
     "some examples:\n",
     "  $0 tree.txt tree.xls\n",
     "  $0 tree.xls tree.ser\n",
+    "  $0 tree.xlsx tree.ser\n",
 }
 else {
   my %type_hash = (
