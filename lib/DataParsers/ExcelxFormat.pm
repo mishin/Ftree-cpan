@@ -107,9 +107,10 @@ sub convertCell {
 
         # # next;
     # }
-     $val = decode( "UTF-16BE", $val ) if ( $cell->{Code} eq 'ucs2' );
-     $val =~ s/^\s+//;
-     $val =~ s/\s+$//;
+	utf8::decode($val);
+     # $val = decode( "UTF-16BE", $val ) if ( $cell->{Code} eq 'ucs2' );
+     # $val =~ s/^\s+//;
+     # $val =~ s/\s+$//;
     # if ( $val eq '' ) {
         # $rowtxt = "\t";
         # next;
