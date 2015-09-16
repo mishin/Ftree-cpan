@@ -41,6 +41,7 @@ else {
     csv => "csv",
     txt => "csv",
     xls => "excel",
+    xlsx => "excelx",
     ged => "gedcom",
     ser => "ser",
   );
@@ -60,6 +61,10 @@ else {
       require Exporters::ExcelExporter;
       ExcelExporter::export($output_file_name, $family_tree);
       }
+    case "xlsx" {
+      require Exporters::ExcelxExporter;
+      ExcelxExporter::export($output_file_name, $family_tree);
+      }	  
     case "ser" {
       require Exporters::Serializer;
       Serializer::export($output_file_name, $family_tree);
