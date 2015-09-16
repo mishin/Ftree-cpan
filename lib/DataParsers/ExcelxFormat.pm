@@ -95,13 +95,13 @@ foreach my $sheet ( @{ $excel->{Worksheet} } ) {
 sub convertCell {
     my ($cell) = @_;
     return undef unless defined $cell;
-    my $rowtxt = '';
-    if ( !$cell ) {
-        $rowtxt = "\t";
+    # my $rowtxt = '';
+    # if ( !$cell ) {
+        # $rowtxt = "\t";
 
-        # next;
-    }
-    my $val = $cell->{Val};
+        # # next;
+    # }
+    # my $val = $cell->{Val};
     # if ( !defined($val) or $val eq '' ) {
         # $rowtxt = "\t";
 
@@ -116,7 +116,7 @@ sub convertCell {
     # }
     # $rowtxt = "$val";
 
-    return $rowtxt;
+    return $cell->{Val};#$rowtxt;
 
  # return $cell->{Val} if( $cell->{Type} eq "Numeric" );
  # return $cell->{Val} unless( defined $cell->{Code} );
