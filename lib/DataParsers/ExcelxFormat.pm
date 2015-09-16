@@ -102,11 +102,11 @@ sub convertCell {
         # next;
     }
     my $val = $cell->{Val};
-    if ( !defined($val) or $val eq '' ) {
-        $rowtxt = "\t";
+    # if ( !defined($val) or $val eq '' ) {
+        # $rowtxt = "\t";
 
-        # next;
-    }
+        # # next;
+    # }
     # $val = decode( "UTF-16BE", $val ) if ( $cell->{Code} eq 'ucs2' );
     # $val =~ s/^\s+//;
     # $val =~ s/\s+$//;
@@ -118,8 +118,8 @@ sub convertCell {
 
     return $rowtxt;
 
-# return $cell->{Val} if( $cell->{Type} eq "Numeric" );
-# return $cell->{Val} unless( defined $cell->{Code} );
+ # return $cell->{Val} if( $cell->{Type} eq "Numeric" );
+ # return $cell->{Val} unless( defined $cell->{Code} );
 # use Encode qw(decode encode);
 # $characters = decode('UTF-8', $octets,     Encode::FB_CROAK);
 # return  decode('UTF-8',$cell->{Val},Encode::FB_CROAK);#decode('UTF-16LE', $cell->{Val});
