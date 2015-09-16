@@ -33,7 +33,7 @@ use Perl6::Export::Attrs;
 use Encode qw(decode_utf8);
 use utf8;
 
-our $VERSION = '2.3.22';
+our $VERSION = '2.3.23';
 
 my $q = new CGI;
 
