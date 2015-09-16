@@ -101,22 +101,22 @@ sub convertCell {
 
         # # next;
     # }
-    # my $val = $cell->{Val};
+     my $val = $cell->{Val};
     # if ( !defined($val) or $val eq '' ) {
         # $rowtxt = "\t";
 
         # # next;
     # }
-    # $val = decode( "UTF-16BE", $val ) if ( $cell->{Code} eq 'ucs2' );
-    # $val =~ s/^\s+//;
-    # $val =~ s/\s+$//;
+     $val = decode( "UTF-16BE", $val ) if ( $cell->{Code} eq 'ucs2' );
+     $val =~ s/^\s+//;
+     $val =~ s/\s+$//;
     # if ( $val eq '' ) {
         # $rowtxt = "\t";
         # next;
     # }
     # $rowtxt = "$val";
 
-    return $cell->{Val};#$rowtxt;
+    return $val;#$rowtxt;
 
  # return $cell->{Val} if( $cell->{Type} eq "Numeric" );
  # return $cell->{Val} unless( defined $cell->{Code} );
