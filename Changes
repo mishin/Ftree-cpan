@@ -1,7 +1,9 @@
 Revision history for Ftree
 
 {{$NEXT}}
-
+           * move module to namespace Ftree
+		   * due to fix Don't use Person.pm and other toplevel namespaces #2
+		   * https://github.com/mishin/Ftree-cpan/issues/2
 2.3.24  2015-09-17 02:16:22 MSK
            * add ExcelxExporter
 		   * to convert from xlsx to ser format
