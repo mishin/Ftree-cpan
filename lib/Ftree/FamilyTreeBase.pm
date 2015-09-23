@@ -58,7 +58,7 @@ sub new : Export {
         cgi           => new CGI,
     };
     $self->{imgheight} = $self->{imgwidth} * 1.5;
-    $self->{settings}  = SettingsFactory::importSettings('perl');
+    $self->{settings}  = Ftree::SettingsFactory::importSettings('perl');
     $self->{photoUrl}  = $self->{settings}{data_source}{config}{photo_url};
 
     Date::Tiny->set_format( $self->{settings}{date_format} )
