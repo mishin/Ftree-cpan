@@ -31,7 +31,7 @@ sub importSettings{
   my ( $type ) = @_;
   if($type eq "perl") {
     require Ftree::PerlSettingsImporter;
-    return PerlSettingsImporter::importSettings();
+    return Ftree::PerlSettingsImporter::importSettings();
   }
 }
 
