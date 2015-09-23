@@ -21,6 +21,8 @@
 #######################################################
 
 package Ftree::Name;
+
+# ABSTRACT: Ftree - family tree generator
 use strict;
 use warnings;
 use Ftree::TextGeneratorFactory qw(getTextGenerator get_reverse_name);
