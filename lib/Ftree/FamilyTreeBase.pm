@@ -32,7 +32,7 @@ use Ftree::FamilyTreeDataFactory;
 use Ftree::Person;
 use Ftree::TextGeneratorFactory qw(getTextGenerator init);
 use Ftree::SettingsFactory;
-use Date::Tiny;
+use Ftree::Date::Tiny;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 use Perl6::Export::Attrs;
 use Encode qw(decode_utf8);
