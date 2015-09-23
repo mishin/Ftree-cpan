@@ -38,8 +38,8 @@ sub createFamilyTreeDataFromFile {
       or die "No file_name is given in config";
 
     my $family_tree_data = FamilyTreeData->new();
-	# my $excel = Spreadsheet::XLSX -> new ( $file_name);#, $converter);
-	my $excel = Spreadsheet::ParseXLSX->new->parse($file_name);
+	my $excel = Spreadsheet::XLSX -> new ( $file_name);#, $converter);
+	# my $excel = Spreadsheet::ParseXLSX->new->parse($file_name);
     # my $workbook         = ReadData($file_name)
       # or die "Unable to parse file " . $file_name;
 
