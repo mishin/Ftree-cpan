@@ -1,6 +1,8 @@
 Revision history for Ftree
 
 {{$NEXT}}
+           * clear distribution from big unnesesaries files
+2.3.25  2015-09-24 01:36:20 MSK
            * move module to namespace Ftree
 		   * due to fix Don't use Person.pm and other toplevel namespaces #2
 		   * https://github.com/mishin/Ftree-cpan/issues/2

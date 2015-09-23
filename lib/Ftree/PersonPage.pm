@@ -25,7 +25,7 @@ use strict;
 use warnings;
 
 use version;
-our $VERSION = qv('2.3.24');
+our $VERSION = qv('2.3.25');
 
 use Ftree::FamilyTreeBase;
 use Perl6::Export::Attrs;
