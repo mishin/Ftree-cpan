@@ -42,7 +42,7 @@ sub new : Export {
     my $type = shift;
     my $self = $type->SUPER::new(@_);
     $self->{family_tree_data} =
-    	FamilyTreeDataFactory::getFamilyTree( $self->{settings}{data_source} );
+    	Ftree::FamilyTreeDataFactory::getFamilyTree( $self->{settings}{data_source} );
     $self->{pagetype} = undef;
     return $self;
   }

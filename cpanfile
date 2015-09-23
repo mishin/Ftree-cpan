@@ -10,15 +10,12 @@ requires 'Config::General', '2.58';
 
 requires 'Class::Std', '0.013';
 requires 'Class::Std::Storable', '0.0.1';
-#requires 'Date::Tiny', '1.0.4';
 requires 'IO::Stringy', '2.110';
 requires 'List::MoreUtils', '0.413';
 requires 'OLE::Storage_Lite', '0.19';
 requires 'Perl6::Export::Attrs', '0.0.3';
 requires 'Set::Scalar', '1.29';
-requires 'Spreadsheet::ParseExcel';
 requires 'version', '0.9912';
-
 
 requires 'Gedcom::Comparison', '1.15';
 requires 'Gedcom::Event', '1.15';
@@ -39,9 +36,9 @@ requires 'Log::Log4perl', '1.46';
 requires 'Plack', '1.0037';
 requires 'CGI::Emulate::PSGI', '0.21';
 requires 'CGI::Compile', '0.19';
-#requires 'Spreadsheet::ParseXLSX', '0.17';
 requires 'Spreadsheet::Read', '0.62';
 requires 'Spreadsheet::XLSX', '0.13'; 
+requires 'Spreadsheet::ParseExcel';
 
 on test => sub {
     requires 'Test::More';
