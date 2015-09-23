@@ -1,10 +1,3 @@
-#!"c:\Users\TOSH\Documents\job\perl\strawberry-perl-5.20.0.1-64bit-portable\perl\bin\perl.exe"
-#!"c:\Dwimperl\perl\bin\perl.exe"
-use strict;
-use warnings;
-
-use CGI qw(param);
-
 #######################################################
 #
 # Family Tree generation program, v2.0
@@ -21,23 +14,34 @@ use CGI qw(param);
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# For a copy of the GNU General Public License, visit
+# For a copy of the GNU General Public License, visit 
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+#######################################################
+
+package Ftree::Cemetery;
 
 use strict;
 use warnings;
 
-use FindBin;
-use lib "$FindBin::Bin";
-use lib "$FindBin::Bin/lib";
+use version; our $VERSION = qv('2.3.24');
 
-use version; our $VERSION = qv('0.2');
+use Ftree::Place;
+use Params::Validate qw(:all);
 
-use Ftree::PersonPage;
+use base 'Place';
+sub new {
+    my $type = shift;
+    my $self = $type->SUPER::new(@_);
+    $self->{cemetery} = $_[2];
+    return $self;
+ }
+ 
+ sub toString {
+ 	  my ( $self) = validate_pos(@_, {type => HASHREF});
+ 	  my $string = $self->SUPER::toString();
+      return defined $self->{cemetery} ? "$string, $self->{cemetery}" : $string;
+ }
 
-my $family_tree = Ftree::PersonPage->new();
-$family_tree->main();
-
-exit;
-
+ 1;

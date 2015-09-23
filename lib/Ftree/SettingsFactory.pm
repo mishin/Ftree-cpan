@@ -1,10 +1,3 @@
-#!"c:\Users\TOSH\Documents\job\perl\strawberry-perl-5.20.0.1-64bit-portable\perl\bin\perl.exe"
-#!"c:\Dwimperl\perl\bin\perl.exe"
-use strict;
-use warnings;
-
-use CGI qw(param);
-
 #######################################################
 #
 # Family Tree generation program, v2.0
@@ -21,23 +14,25 @@ use CGI qw(param);
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# For a copy of the GNU General Public License, visit
+# For a copy of the GNU General Public License, visit 
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+#######################################################
+
 
 use strict;
 use warnings;
+use lib "../config";
 
-use FindBin;
-use lib "$FindBin::Bin";
-use lib "$FindBin::Bin/lib";
+package Ftree::SettingsFactory;
 
-use version; our $VERSION = qv('0.2');
+sub importSettings{
+  my ( $type ) = @_;
+  if($type eq "perl") {
+    require Ftree::PerlSettingsImporter;
+    return PerlSettingsImporter::importSettings();
+  }
+}
 
-use Ftree::PersonPage;
-
-my $family_tree = Ftree::PersonPage->new();
-$family_tree->main();
-
-exit;
-
+1;
