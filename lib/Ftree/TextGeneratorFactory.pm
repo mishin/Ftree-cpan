@@ -44,18 +44,18 @@ my %langToPict = (
 );
 my $reverse_name = 0;
 
-sub init : Export{
+sub init : Export(:DEFAULT) {
   ( $language ) = @_;	
 }
 
-sub getLangToPict : Export{
+sub getLangToPict : Export(:DEFAULT) {
   return %langToPict;
 }
-sub get_reverse_name : Export{
+sub get_reverse_name : Export(:DEFAULT) {
   return $reverse_name;
 }
 
-sub getTextGenerator : Export{
+sub getTextGenerator : Export(:DEFAULT) {
   switch ($language) {
     case "hu" {
       $reverse_name = 1;;

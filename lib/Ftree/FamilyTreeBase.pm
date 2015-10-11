@@ -30,7 +30,7 @@ use Params::Validate qw(:all);
 use CGI qw(:standard);
 use Ftree::FamilyTreeDataFactory;
 use Ftree::Person;
-use Ftree::TextGeneratorFactory qw(getTextGenerator init);
+use Ftree::TextGeneratorFactory;
 use Ftree::SettingsFactory;
 use Ftree::Date::Tiny;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
