@@ -35,7 +35,7 @@ use Ftree::SettingsFactory;
 use Ftree::Date::Tiny;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 # use Perl6::Export::Attrs;
-use Sub::Exporter -setup => { exports => [ qw(new getTextGenerator) ] };
+use Sub::Exporter -setup => { exports => [ qw(new) ] };
 use Encode qw(decode_utf8);
 use utf8;
 
