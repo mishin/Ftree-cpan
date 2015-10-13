@@ -1,4 +1,4 @@
-﻿#######################################################
+#######################################################
 #
 # Family Tree generation program, v2.0
 # Written by Ferenc Bodon and Simon Ward, March 2000 (simonward.com)
@@ -29,7 +29,7 @@ use Ftree::FamilyTreeBase;
 
 use Switch;
 use Params::Validate qw(:all);
-use Perl6::Export::Attrs;
+use Sub::Exporter -setup => { exports => [ qw(new main) ] };
 use Encode qw(decode_utf8);
 use utf8;
 
@@ -38,7 +38,7 @@ our $VERSION = '2.3.26';
 my $q = new CGI;
 
 use base 'Ftree::FamilyTreeBase';
-sub new : Export {
+sub new{
     my $type = shift;
     my $self = $type->SUPER::new(@_);
     $self->{family_tree_data} =
@@ -47,7 +47,7 @@ sub new : Export {
     return $self;
   }
 
-sub main : Export {
+sub main{
   my ($self) = validate_pos(@_, {type => HASHREF} );
   $self->_process_parameters();
   $self->_password_check();
