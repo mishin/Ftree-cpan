@@ -24,7 +24,8 @@ package Ftree::TextGeneratorFactory;
 use strict;
 use warnings;
 
-use Perl6::Export::Attrs;
+use Sub::Exporter -setup => { exports => [ qw(init getTextGenerator) ] };
+#use Perl6::Export::Attrs;
 use Switch;
 
 my $language = "gb";
@@ -44,18 +45,18 @@ my %langToPict = (
 );
 my $reverse_name = 0;
 
-sub init : Export(:DEFAULT) {
+sub init{
   ( $language ) = @_;	
 }
 
-sub getLangToPict : Export(:DEFAULT) {
+sub getLangToPict{
   return %langToPict;
 }
-sub get_reverse_name : Export(:DEFAULT) {
+sub get_reverse_name{
   return $reverse_name;
 }
 
-sub getTextGenerator : Export(:DEFAULT) {
+sub getTextGenerator{
   switch ($language) {
     case "hu" {
       $reverse_name = 1;;
