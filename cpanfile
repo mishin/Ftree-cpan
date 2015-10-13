@@ -14,7 +14,6 @@ requires 'IO::Stringy', '2.110';
 requires 'List::MoreUtils', '0.413';
 requires 'OLE::Storage_Lite', '0.19';
 
-requires 'Perl6::Export::Attrs', '0.0.3';
 requires 'Sub::Exporter', '0.987';
 requires 'PadWalker', '2.1';
 
