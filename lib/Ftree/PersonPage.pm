@@ -28,21 +28,21 @@ use version;
 our $VERSION = qv('2.3.26');
 
 use Ftree::FamilyTreeBase;
-use Perl6::Export::Attrs;
+use Sub::Exporter -setup => { exports => [ qw(new main) ] };
 use Params::Validate qw(:all);
 use Encode qw(decode_utf8);
 my $q = new CGI;
 
 use base 'Ftree::FamilyTreeBase';
 
-sub new : Export {
+sub new{
     my $type = shift;
     my $self = $type->SUPER::new(@_);
     $self->{target_person} = undef;
     return $self;
 }
 
-sub main : Export {
+sub main{
     my ($self) = validate_pos( @_, { type => HASHREF } );
     $self->_set_target();
     $self->_target_check();
