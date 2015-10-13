@@ -16,6 +16,8 @@ requires 'OLE::Storage_Lite', '0.19';
 
 requires 'Perl6::Export::Attrs', '0.0.3';
 requires 'Sub::Exporter', '0.987';
+requires 'PadWalker', '2.1';
+
 
 requires 'Set::Scalar', '1.29';
 requires 'version', '0.9912';
