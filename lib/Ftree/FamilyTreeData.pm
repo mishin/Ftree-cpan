@@ -27,8 +27,6 @@ use warnings;
 use Ftree::Person;
 use Ftree::Name;
 use Ftree::DataParsers::FieldValidatorParser;
-# use Params::Validate::Array qw(SCALAR ARRAYREF validate);# ...);
-# use Params::Validate::Array qw(SCALAR HASHREF validate);
 use Params::Validate qw(validate
     SCALAR
     ARRAYREF
@@ -41,31 +39,18 @@ use Params::Validate qw(validate
     BOOLEAN
     UNDEF
     OBJECT
-);#:all);
-# use Params::Validate::Array qw(validate validation_options 
-    # SCALAR
-    # ARRAYREF
-    # HASHREF
-    # CODEREF
-    # GLOB
-    # GLOBREF
-    # SCALARREF
-    # HANDLE
-    # BOOLEAN
-    # UNDEF
-    # OBJECT
-# );
+);
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
-use Perl6::Export::Attrs;
+use Sub::Exporter -setup => { exports => [ qw(new add_person) ] };
 
-sub new : Export {
+sub new{
   my ( $classname) = @_;
   my $self = {
     people   => {},  #hash of Person
   };
   return bless $self, $classname;
 }
-sub add_person : Export {
+sub add_person{
   my ($self) = shift;
   my (%arg_ref) = validate(@_, { id => {type => SCALAR},
     first_name => {type => SCALAR|UNDEF, default => undef },
