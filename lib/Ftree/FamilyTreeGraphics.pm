@@ -33,7 +33,7 @@ use Params::Validate qw(:all);
 use List::Util qw(first max);
 use List::MoreUtils qw(first_index);
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
-use Perl6::Export::Attrs;
+use Sub::Exporter -setup => { exports => [ qw(new main) ] };
 use utf8;
 use Encode qw(decode_utf8);
 use Ftree::Picture;
@@ -51,7 +51,7 @@ use Ftree::Picture;
 #######################################################
 
 use base 'Ftree::FamilyTreeBase';
-sub new : Export{
+sub new{
   my $type = shift;
   my $self = $type->SUPER::new(@_);
   $self->{target_person} = undef;
@@ -63,7 +63,7 @@ sub new : Export{
   return $self;
 }
 
-sub main : Export{
+sub main{
   my ($self) = validate_pos(@_, HASHREF);
   $self->_process_parameters();
   
