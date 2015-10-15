@@ -27,7 +27,7 @@ use strict;
 use warnings;
 use version; our $VERSION = qv('2.3.29');
 
-use Picture;
+use Ftree::Picture;
 use Ftree::FamilyTreeData;
 use Params::Validate qw(:all);
 use StringUtils;
