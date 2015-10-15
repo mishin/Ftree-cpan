@@ -2,6 +2,9 @@ Revision history for Ftree
 
 {{$NEXT}}
 
+2.3.28  2015-10-15 07:07:31 MSK
+
+           * correct version and use strict
 2.3.27  2015-10-14 06:52:51 MSK
 
            * change Perl6::Export::Attrs -> Sub::Exporter
@@ -9,13 +12,13 @@ Revision history for Ftree
            * clear distribution from big unnesesaries files
 2.3.25  2015-09-24 01:36:20 MSK
            * move module to namespace Ftree
-		   * due to fix Don't use Person.pm and other toplevel namespaces #2
-		   * https://github.com/mishin/Ftree-cpan/issues/2
+	   * due to fix Don't use Person.pm and other toplevel namespaces #2
+	   * https://github.com/mishin/Ftree-cpan/issues/2
 2.3.24  2015-09-17 02:16:22 MSK
            * add ExcelxExporter
-		   * to convert from xlsx to ser format
-		   * perl convertFormat.pl tree.xlsx tree.ser
-		   * works too
+	   * to convert from xlsx to ser format
+	   * perl convertFormat.pl tree.xlsx tree.ser
+	   * works too
 2.3.23  2015-09-16 04:59:37 MSK
            * add xlsx adaptor support
 2.3.22  2015-09-14 03:22:27 MSK

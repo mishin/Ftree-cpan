@@ -23,7 +23,7 @@
 package GedcomFormat;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.27');
+use version; our $VERSION = qv('2.3.28');
 use Gedcom;
 use Ftree::DataParsers::FieldValidatorParser;
 use Ftree::FamilyTreeData;

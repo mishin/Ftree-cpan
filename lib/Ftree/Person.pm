@@ -23,7 +23,7 @@
 package Ftree::Person;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.27');
+use version; our $VERSION = qv('2.3.28');
 
 use List::MoreUtils qw(uniq);
 use Params::Validate qw(:all);
