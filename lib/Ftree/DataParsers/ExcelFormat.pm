@@ -22,9 +22,9 @@
 
 package ExcelFormat;
 use Spreadsheet::ParseExcel;
-use DataParsers::ExtendedSimonWardFormat
+use Ftree::DataParsers::ExtendedSimonWardFormat
   ;    # for getting pictures. Temporal solution
-use FamilyTreeData;
+use Ftree::FamilyTreeData;
 use CGI::Carp qw(fatalsToBrowser);
 use Encode qw(decode);
 
@@ -75,8 +75,8 @@ sub createFamilyTreeDataFromFile {
         }
     }
     if ( defined $config_->{photo_dir} ) {
-        ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
-        ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
+        Ftree::ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
+        Ftree::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
     }
 
     return $family_tree_data;
