@@ -22,11 +22,14 @@
 
 
 package FieldValidatorParser;
+use strict;
+use warnings;
+use version; our $VERSION = qv('2.3.27');
+
 use Ftree::Date::Tiny;
 use Ftree::Place;
 use Ftree::Cemetery;
-use strict;
-use warnings;
+
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 use Ftree::StringUtils;
 
