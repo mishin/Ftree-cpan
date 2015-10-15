@@ -27,7 +27,7 @@ use warnings;
 use Sub::Exporter -setup => { exports => [ qw(init getTextGenerator) ] };
 #use Perl6::Export::Attrs;
 use Switch;
-use version; our $VERSION = qv('2.3.29');
+use version; our $VERSION = qv('2.3.30');
 
 my $language = "gb";
 my %langToPict = (
