@@ -30,7 +30,7 @@ use version; our $VERSION = qv('2.3.28');
 use Ftree::Place;
 use Params::Validate qw(:all);
 
-use base 'Place';
+use base 'Ftree::Place';
 sub new {
     my $type = shift;
     my $self = $type->SUPER::new(@_);
