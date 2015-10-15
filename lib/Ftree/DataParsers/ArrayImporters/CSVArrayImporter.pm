@@ -23,6 +23,7 @@
 package CSVArrayImporter;
 use strict;
 use warnings;
+use version; our $VERSION = qv('2.3.27');
 use Params::Validate qw(:all);
 use CGI::Carp qw(fatalsToBrowser);
 
