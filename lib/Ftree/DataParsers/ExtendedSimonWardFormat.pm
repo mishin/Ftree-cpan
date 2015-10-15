@@ -22,16 +22,16 @@
 
 package ExtendedSimonWardFormat;
 
-require DataParsers::ArrayImporters::CSVArrayImporter;
+require Ftree::DataParsers::ArrayImporters::CSVArrayImporter;
 use strict;
 use warnings;
 
 use Picture;
-use FamilyTreeData;
+use Ftree::FamilyTreeData;
 use Params::Validate qw(:all);
 use StringUtils;
 use Switch;
-use DataParsers::FieldValidatorParser;
+use Ftree::DataParsers::FieldValidatorParser;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 use utf8;
 
