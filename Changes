@@ -2,6 +2,9 @@ Revision history for Ftree
 
 {{$NEXT}}
 
+2.3.29  2015-10-15 07:17:41 MSK
+
+           * correct use base, add Ftree::
 2.3.28  2015-10-15 07:07:31 MSK
 
            * correct version and use strict

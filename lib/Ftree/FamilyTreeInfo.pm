@@ -33,7 +33,7 @@ use Sub::Exporter -setup => { exports => [ qw(new main) ] };
 use Encode qw(decode_utf8);
 use utf8;
 
-our $VERSION = '2.3.28';
+our $VERSION = '2.3.29';
 
 my $q = new CGI;
 

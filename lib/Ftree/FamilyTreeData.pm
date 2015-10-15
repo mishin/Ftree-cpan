@@ -23,7 +23,7 @@
 package Ftree::FamilyTreeData;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.28');
+use version; our $VERSION = qv('2.3.29');
 
 use Ftree::Person;
 use Ftree::Name;

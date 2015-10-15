@@ -25,7 +25,7 @@ package Ftree::Cemetery;
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('2.3.28');
+use version; our $VERSION = qv('2.3.29');
 
 use Ftree::Place;
 use Params::Validate qw(:all);
