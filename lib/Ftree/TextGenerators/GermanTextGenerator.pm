@@ -26,7 +26,7 @@ use warnings;
 use utf8;
 
 package GermanTextGenerator;
-
+use version; our $VERSION = qv('2.3.27');
 sub new {
   my ( $classname ) = @_;
   my $self = {
