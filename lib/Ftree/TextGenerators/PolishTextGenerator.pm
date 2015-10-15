@@ -25,7 +25,7 @@ use warnings;
 use utf8;
 
 package PolishTextGenerator;
-
+use version; our $VERSION = qv('2.3.27');
 
 sub new {
   my ( $classname ) = @_;
