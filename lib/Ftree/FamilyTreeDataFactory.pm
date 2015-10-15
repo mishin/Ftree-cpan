@@ -23,7 +23,7 @@
 package Ftree::FamilyTreeDataFactory;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.30');
+use version; our $VERSION = qv('2.3.31');
 
 use Switch;
 use CGI::Carp qw(fatalsToBrowser);

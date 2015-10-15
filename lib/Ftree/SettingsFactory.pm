@@ -26,7 +26,7 @@ use warnings;
 use lib "../config";
 
 package Ftree::SettingsFactory;
-use version; our $VERSION = qv('2.3.30');
+use version; our $VERSION = qv('2.3.31');
 
 sub importSettings{
   my ( $type ) = @_;

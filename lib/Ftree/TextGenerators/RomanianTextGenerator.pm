@@ -24,7 +24,7 @@ use strict;
 use warnings;
 
 package RomanianTextGenerator;
-use version; our $VERSION = qv('2.3.30');
+use version; our $VERSION = qv('2.3.31');
 sub new {
   my ( $classname ) = @_;
   my $self = {

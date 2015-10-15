@@ -23,7 +23,7 @@
 package ExcelFormat;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.30');
+use version; our $VERSION = qv('2.3.31');
 
 use Spreadsheet::ParseExcel;
 use Ftree::DataParsers::ExtendedSimonWardFormat
