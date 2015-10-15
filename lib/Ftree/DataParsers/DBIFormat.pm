@@ -24,11 +24,11 @@ package DBIFormat;
 
 use strict;
 use warnings;
-use FamilyTreeData;
+use Ftree::FamilyTreeData;
 use Params::Validate qw(:all);
-use DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
+use Ftree::DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
 use DBI;
-use DataParsers::FieldValidatorParser;
+use Ftree::DataParsers::FieldValidatorParser;
 use CGI::Carp qw(fatalsToBrowser);
 
 my $picture_directory;
@@ -114,8 +114,8 @@ sub getFamilyTreeData {
   $dbh->disconnect;
  
   if (defined $config_->{photo_dir}) {
-    ExtendedSimonWardFormat::setPictureDirectory($config_->{photo_dir});
-    ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);    
+    Ftree::ExtendedSimonWardFormat::setPictureDirectory($config_->{photo_dir});
+    Ftree::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);    
   }       
 
   return $family_tree_data;
