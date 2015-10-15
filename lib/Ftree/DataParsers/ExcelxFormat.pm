@@ -85,8 +85,8 @@ foreach my $sheet ( @{ $excel->{Worksheet} } ) {
     }
      
     if ( defined $config_->{photo_dir} ) {
-        ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
-        ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
+        Ftree::ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
+        Ftree::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
     }
 
     return $family_tree_data;
