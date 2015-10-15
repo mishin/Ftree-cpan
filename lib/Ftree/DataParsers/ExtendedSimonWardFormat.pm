@@ -30,7 +30,7 @@ use version; our $VERSION = qv('2.3.30');
 use Ftree::Picture;
 use Ftree::FamilyTreeData;
 use Params::Validate qw(:all);
-use StringUtils;
+use Ftree::StringUtils;
 use Switch;
 use Ftree::DataParsers::FieldValidatorParser;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser);

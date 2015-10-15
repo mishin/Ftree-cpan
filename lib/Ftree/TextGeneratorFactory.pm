@@ -24,7 +24,7 @@ package Ftree::TextGeneratorFactory;
 use strict;
 use warnings;
 
-use Sub::Exporter -setup => { exports => [ qw(init getTextGenerator) ] };
+use Sub::Exporter -setup => { exports => [ qw(init getTextGenerator get_reverse_name) ] };
 #use Perl6::Export::Attrs;
 use Switch;
 use version; our $VERSION = qv('2.3.30');
