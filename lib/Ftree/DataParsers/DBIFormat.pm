@@ -24,6 +24,8 @@ package DBIFormat;
 
 use strict;
 use warnings;
+use version; our $VERSION = qv('2.3.27');
+
 use Ftree::FamilyTreeData;
 use Params::Validate qw(:all);
 use Ftree::DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
