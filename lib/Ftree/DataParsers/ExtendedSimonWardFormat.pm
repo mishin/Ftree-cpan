@@ -25,6 +25,7 @@ package ExtendedSimonWardFormat;
 require Ftree::DataParsers::ArrayImporters::CSVArrayImporter;
 use strict;
 use warnings;
+use version; our $VERSION = qv('2.3.27');
 
 use Picture;
 use Ftree::FamilyTreeData;
