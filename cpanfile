@@ -44,8 +44,8 @@ requires 'Spreadsheet::Read', '0.62';
 requires 'Spreadsheet::XLSX', '0.13'; 
 requires 'Spreadsheet::ParseExcel';
 requires 'DateTime';
-requires 'Excel-Writer-XLSX';
-requires 'Spreadsheet-WriteExcel';
+requires 'Excel::Writer::XLSX';
+requires 'Spreadsheet::WriteExcel';
 
 on test => sub {
     requires 'Test::More';
