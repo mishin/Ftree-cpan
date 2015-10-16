@@ -43,7 +43,16 @@ requires 'CGI::Compile', '0.19';
 requires 'Spreadsheet::Read', '0.62';
 requires 'Spreadsheet::XLSX', '0.13'; 
 requires 'Spreadsheet::ParseExcel';
+requires 'DateTime';
+requires 'Excel-Writer-XLSX';
+requires 'Spreadsheet-WriteExcel';
 
 on test => sub {
     requires 'Test::More';
+};
+
+# Зависимости фазы сборки, спасибо Владимиру Леттиеву из Pragmaticperl
+# http://pragmaticperl.com/issues/10/pragmaticperl-10-%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-cpanfile.html
+on build => sub {
+    requires 'Test::Pod',           '1.48';
 };
