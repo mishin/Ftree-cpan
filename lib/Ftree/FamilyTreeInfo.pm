@@ -244,7 +244,7 @@ sub _draw_birthday_page {
  
   
   my @people_with_bday = grep {defined $_->get_name() && 
-    defined $_->get_date_of_birth() && !defined $_->get_date_of_death() && 
+    defined $_->get_date_of_birth() && 
   	defined $_->get_date_of_birth()->{month} && $_->get_date_of_birth()->{month} == $month} 
   	 ($self->{family_tree_data}->get_all_people());
 
