@@ -23,7 +23,7 @@
 #######################################################
 
 use lib ('cgi', 'cgi/lib');
-use FamilyTreeDataFactory;
+use Free::FamilyTreeDataFactory;
 use Switch;
 use utf8;
 

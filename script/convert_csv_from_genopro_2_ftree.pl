@@ -72,7 +72,7 @@ my @result = ();
 open( my $data, '<:encoding(utf8)', $file )
   or die "Could not open '$file' $!\n";
 
-while ( my $fields = $csv->getline($data) ) {
+while ( my $fields = $csv->parse($data) ) {
     push @result, ( join( ';', @{$fields}[ 1, 3 .. 5, 2 ] ) . ';' );
 }
 if ( not $csv->eof ) {
