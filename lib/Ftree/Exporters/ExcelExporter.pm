@@ -40,40 +40,83 @@ sub export {
   foreach my $person (values %{$family_tree_data->{people}}) {
   	if(defined $person) {
     my @person_row = ();
-    push @person_row, $person->get_id();
+    # push @person_row, $person->get_id();
     
-    if(defined $person->get_name()) {
-     push @person_row, ($person->get_name()->get_title(), 
-      $person->get_name()->get_prefix(), $person->get_name()->get_first_name(),
-      $person->get_name()->get_mid_name(), $person->get_name()->get_last_name(), 
-      $person->get_name()->get_suffix(), $person->get_name()->get_nickname())
-    }
-    else {
-    	push @person_row, (undef, undef, undef, undef, undef, undef, undef)
-    }
-    push @person_row, (defined $person->get_father()) ? $person->get_father()->get_id() : undef; 
-    push @person_row, (defined $person->get_mother()) ? $person->get_mother()->get_id() : undef; 
-    push @person_row, ($person->get_email(), $person->get_homepage());
+	
+	my ($id, $title, $prefix, $first_name, $mid_name, $last_name, $suffix, 
+        $nickname,$father, $mother, $email, $homepage, $date_of_birth,$date_of_death) = (
+  $person->get_id // undef,
+  $person->get_name()->get_title // undef,
+  $person->get_name()->get_prefix // undef,
+  $person->get_name()->get_first_name // undef,
+  $person->get_name()->get_mid_name // undef,
+  $person->get_name()->get_last_name // undef,
+  $person->get_name()->get_suffix // undef,
+  $person->get_name()->get_nickname // undef,
+  $person->get_father // undef,
+  $person->get_mother // undef,
+  $person->get_email // undef,
+  $person->get_homepage // undef,
+  $person->get_date_of_birth // undef,
+  $person->get_date_of_death // undef,
+);
+
+push @person_row,
+    $id,
+    $title,
+    $prefix,
+    $first_name,
+    $mid_name,
+    $last_name,
+    $suffix,
+    $nickname,
+    $father && $father->get_id,
+    $mother && $mother->get_id,
+    $email,
+    $homepage,
+    $date_of_birth ? join('/', $date_of_birth->day // '', $date_of_birth->month // '', $date_of_birth->year // '') : '',
+	$date_of_death ? join('/', $date_of_death->day // '', $date_of_death->month // '', $date_of_death->year // '') : '',
+	$person->get_gender,
+	$person->get_is_living,
+	getPlaceString($person->get_place_of_birth),
+	getPlaceString($person->get_place_of_death),
+	;
+	
+	
+	    # push @person_row, ($person->get_gender(), $person->get_is_living(), 
+      # getPlaceString($person->get_place_of_birth()), getPlaceString($person->get_place_of_death()));
+    # if(defined $person->get_name()) {
+     # push @person_row, ($person->get_name()->get_title(), 
+      # $person->get_name()->get_prefix(), $person->get_name()->get_first_name(),
+      # $person->get_name()->get_mid_name(), $person->get_name()->get_last_name(), 
+      # $person->get_name()->get_suffix(), $person->get_name()->get_nickname())
+    # }
+    # else {
+    	# push @person_row, (undef, undef, undef, undef, undef, undef, undef)
+    # }
+    # push @person_row, (defined $person->get_father()) ? $person->get_father()->get_id() : undef; 
+    # push @person_row, (defined $person->get_mother()) ? $person->get_mother()->get_id() : undef; 
+    # push @person_row, ($person->get_email(), $person->get_homepage());
       
-    my $date = "";
-    if(defined $person->get_date_of_birth()) {
-      my $date_of_birth = $person->get_date_of_birth();
-      $date .= defined $date_of_birth->day ? $date_of_birth->day."/" : "";
-      $date .= defined $date_of_birth->month ? $date_of_birth->month."/" : "";
-      $date .= defined $date_of_birth->year ? $date_of_birth->year : "";
-    }
-    push @person_row, $date;
+    # my $date = "";
+    # if(defined $person->get_date_of_birth()) {
+      # my $date_of_birth = $person->get_date_of_birth();
+      # $date .= defined $date_of_birth->day ? $date_of_birth->day."/" : "";
+      # $date .= defined $date_of_birth->month ? $date_of_birth->month."/" : "";
+      # $date .= defined $date_of_birth->year ? $date_of_birth->year : "";
+    # }
+    # push @person_row, $date;
     
-    $date = "";  
-    if(defined $person->get_date_of_death()) {
-      my $date_of_death = $person->get_date_of_death();
-      $date .= defined $date_of_death->day ? $date_of_death->day."/" : "";
-      $date .= defined $date_of_death->month ? $date_of_death->month."/" : "";
-      $date .= defined $date_of_death->year ? $date_of_death->year : "";
-    }
-    push @person_row, $date;
-    push @person_row, ($person->get_gender(), $person->get_is_living(), 
-      getPlaceString($person->get_place_of_birth()), getPlaceString($person->get_place_of_death()));
+    # $date = "";  
+    # if(defined $person->get_date_of_death()) {
+      # my $date_of_death = $person->get_date_of_death();
+      # $date .= defined $date_of_death->day ? $date_of_death->day."/" : "";
+      # $date .= defined $date_of_death->month ? $date_of_death->month."/" : "";
+      # $date .= defined $date_of_death->year ? $date_of_death->year : "";
+    # }
+    # push @person_row, $date;
+    # push @person_row, ($person->get_gender(), $person->get_is_living(), 
+      # getPlaceString($person->get_place_of_birth()), getPlaceString($person->get_place_of_death()));
     
     my $cemetery = "";
     if (defined $person->get_cemetery()) {
