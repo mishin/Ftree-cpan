@@ -36,27 +36,27 @@ sub getFamilyTree {
   switch ($type) {
   	case 'csv' {
   	  require Ftree::DataParsers::ExtendedSimonWardFormat;
-  	  return ExtendedSimonWardFormat::createFamilyTreeDataFromFile($config->{config});
+  	  return Ftree::DataParsers::ExtendedSimonWardFormat::createFamilyTreeDataFromFile($config->{config});
   	}
   	case 'excel' {
   	  require Ftree::DataParsers::ExcelFormat;
-  	  return ExcelFormat::createFamilyTreeDataFromFile($config->{config});
+  	  return Ftree::DataParsers::ExcelFormat::createFamilyTreeDataFromFile($config->{config});
   	}
 	case 'excelx' {
   	  require Ftree::DataParsers::ExcelxFormat;
-  	  return ExcelxFormat::createFamilyTreeDataFromFile($config->{config});
+  	  return Ftree::DataParsers::ExcelxFormat::createFamilyTreeDataFromFile($config->{config});
   	}
     case 'ser' {
       require Ftree::DataParsers::SerializerFormat;
-      return SerializerFormat::createFamilyTreeDataFromFile($config->{config});
+      return Ftree::DataParsers::SerializerFormat::createFamilyTreeDataFromFile($config->{config});
     }
   	case 'gedcom' {
   	  require Ftree::DataParsers::GedcomFormat;
-  	  return GedcomFormat::createFamilyTreeDataFromFile($config->{config});
+  	  return Ftree::DataParsers::GedcomFormat::createFamilyTreeDataFromFile($config->{config});
   	  }
   	case 'dbi' {
       require Ftree::DataParsers::DBIFormat;
-      return DBIFormat::getFamilyTreeData($config->{config});
+      return Ftree::DataParsers::DBIFormat::getFamilyTreeData($config->{config});
     }
   	else {croak "Unknown type: $type" }
   }
