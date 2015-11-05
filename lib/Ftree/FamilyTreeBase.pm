@@ -247,7 +247,7 @@ sub _password_check {
           '<input type="text" size="25" name="passwd">',
           '<input type="submit" value="Go"></p>',
           "</form>\n";
-        $self->endpage();
+        $self->_endpage();
         exit 1;
     }
 }
