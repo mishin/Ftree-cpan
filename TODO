@@ -1,4 +1,9 @@
 Features to add(mishin):
+- При выводе дней рождений - сделать сортировку по дате
+- Сделать вывод молитвы о живых и успоших на странице с деревом,
+чтобы ограничить этот список текущим деревом,
+а то читать все имена - слишком долго.
+
 - Make adapter for xlsx !
 - Read Gene data from Googlespreadsheet
 - Move pictures to http://s1182.photobucket.com/ :
