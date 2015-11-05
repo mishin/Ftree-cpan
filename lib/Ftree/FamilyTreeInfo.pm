@@ -50,7 +50,7 @@ sub new{
 sub main{
   my ($self) = validate_pos(@_, {type => HASHREF} );
   $self->_process_parameters();
-  $self->_password_check();
+  $self->SUPER::_password_check();
 
   switch ($self->{pagetype}) {
     case "" {$self->_draw_index_page();}
