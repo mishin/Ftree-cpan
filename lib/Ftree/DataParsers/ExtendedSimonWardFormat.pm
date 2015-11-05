@@ -179,12 +179,12 @@ sub createFamilyTreeDataFromFile {
           if(defined $temp_person->get_father() 
              && ! defined $temp_person->get_father()->get_name()) {
             $temp_person->get_father()->set_name(
-            	Name->new( getNameFields($fields[1])));
+            	Ftree::Name->new( getNameFields($fields[1])));
           }
           if(defined $temp_person->get_mother() 
              && ! defined $temp_person->get_mother()->get_name()) {
             $temp_person->get_mother()->set_name(
-            	Name->new( getNameFields($fields[2])));
+            	Ftree::Name->new( getNameFields($fields[2])));
           }
   }
   $arrayImporter->close();

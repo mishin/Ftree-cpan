@@ -90,7 +90,7 @@ sub add_person{
   my $temp_person = $self->{people}{ $arg_ref{id} };
   $temp_person->set_is_living(1);
   
-  $temp_person->set_name(Name->new(
+  $temp_person->set_name(Ftree::Name->new(
           {first_name => $arg_ref{first_name},
            mid_name   => $arg_ref{mid_name},
            last_name  => $arg_ref{last_name}}));
