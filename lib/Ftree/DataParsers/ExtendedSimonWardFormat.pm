@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package ExtendedSimonWardFormat;
+package Ftree::DataParsers::ExtendedSimonWardFormat;
 
 require Ftree::DataParsers::ArrayImporters::CSVArrayImporter;
 use strict;

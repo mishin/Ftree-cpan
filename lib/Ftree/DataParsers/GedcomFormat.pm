@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package GedcomFormat;
+package Ftree::DataParsers::GedcomFormat;
 use strict;
 use warnings;
 use version; our $VERSION = qv('2.3.31');

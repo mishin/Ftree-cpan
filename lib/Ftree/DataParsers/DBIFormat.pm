@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package DBIFormat;
+package Ftree::DataParsers::DBIFormat;
 
 use strict;
 use warnings;

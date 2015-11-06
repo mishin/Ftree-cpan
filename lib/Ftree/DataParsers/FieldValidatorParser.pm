@@ -21,7 +21,7 @@
 #######################################################
 
 
-package FieldValidatorParser;
+package Ftree::DataParsers::FieldValidatorParser;
 use strict;
 use warnings;
 use version; our $VERSION = qv('2.3.31');

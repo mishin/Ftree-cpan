@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package ExcelFormat;
+package Ftree::DataParsers::ExcelFormat;
 use strict;
 use warnings;
 use version; our $VERSION = qv('2.3.31');
