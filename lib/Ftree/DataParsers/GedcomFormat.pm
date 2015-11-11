@@ -58,7 +58,7 @@ sub createFamilyTreeDataFromFile {
   my $file_name = $config_->{file_name} or die "No file_name is given in config";
 
   my $ged = Gedcom->new(gedcom_file  => $file_name);
-  my $family_tree_data = FamilyTreeData->new();                        
+  my $family_tree_data = Ftree::FamilyTreeData->new();                        
   for my $i ($ged->individuals)
   {
     $family_tree_data->add_person({

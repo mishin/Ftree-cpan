@@ -67,10 +67,10 @@ sub main{
   my ($self) = validate_pos(@_, HASHREF);
   $self->_process_parameters();
   
-  $Person::unknown_male->set_default_picture(Picture->new(
+  $Person::unknown_male->set_default_picture(Ftree::Picture->new(
   	{file_name => $self->{graphicsUrl} . '/nophoto_m.jpg', 
      comment => ""})); 
-  $Person::unknown_female->set_default_picture(Picture->new(
+  $Person::unknown_female->set_default_picture(Ftree::Picture->new(
   	{file_name => $self->{graphicsUrl} . '/nophoto_f.jpg', 
      comment => ""}));
      

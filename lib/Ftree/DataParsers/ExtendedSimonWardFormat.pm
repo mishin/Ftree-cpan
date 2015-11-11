@@ -27,6 +27,7 @@ use strict;
 use warnings;
 use version; our $VERSION = qv('2.3.31');
 
+use Ftree::Name;
 use Ftree::Picture;
 use Ftree::FamilyTreeData;
 use Params::Validate qw(:all);
@@ -59,7 +60,7 @@ sub fill_up_pictures {
   my($family_tree_data) = @_;
   while ( my ($id, $person) = each %{$family_tree_data->{people}}) {
     my $picture_file_name = getPictureFileName(getFileName($id), $picture_directory);
-      $person->set_default_picture(Picture->new({file_name => $picture_file_name, 
+      $person->set_default_picture(Ftree::Picture->new({file_name => $picture_file_name, 
                                                  comment => ""})) 
         if(defined $picture_file_name); 
   }  
@@ -135,11 +136,11 @@ sub createFamilyTreeDataFromFile {
   my ($config_) = @_;
   my $file_name = $config_->{file_name} or die "No file_name is given in config";
 
-  my $family_tree_data = FamilyTreeData->new();
+  my $family_tree_data = Ftree::FamilyTreeData->new();
 
   # default encoding is utf8
   my $encoding = defined $config_->{encoding} ? $config_->{encoding} : "utf8";
-  my $arrayImporter = CSVArrayImporter->new($file_name, $encoding);
+  my $arrayImporter = Ftree::DataParsers::ArrayImporters::CSVArrayImporter->new($file_name, $encoding);
   while ($arrayImporter->hasNext()) {
     my @fields = $arrayImporter->next();
     @fields = map {StringUtils::trim($_)} @fields;

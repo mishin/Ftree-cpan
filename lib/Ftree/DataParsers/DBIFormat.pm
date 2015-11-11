@@ -47,7 +47,7 @@ sub _get_date {
 sub getFamilyTreeData {
   my ($config_) = @_;
   
-  my $family_tree_data = FamilyTreeData->new();
+  my $family_tree_data = Ftree::FamilyTreeData->new();
 
   #this may be a security hole!!! config parameters can be obtained directly!!!
   my $datasource_name = $config_->{datasource_name} 

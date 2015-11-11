@@ -85,7 +85,7 @@ sub add_person{
   }
   
   if ( !defined $self->{people}{ $arg_ref{id} } ) {
-  	$self->{people}{ $arg_ref{id} } = Person->new( {id => $arg_ref{id}} );
+  	$self->{people}{ $arg_ref{id} } = Ftree::Person->new( {id => $arg_ref{id}} );
   }
   my $temp_person = $self->{people}{ $arg_ref{id} };
   $temp_person->set_is_living(1);
@@ -197,7 +197,7 @@ sub set_parent {
     return;         	
   }
   if ( !defined $self->{people}{ $id } ) {
-    $self->{people}{ $id } = Person->new( { id => $id } );
+    $self->{people}{ $id } = Ftree::Person->new( { id => $id } );
   }
 	
   my $parent = $self->{people}{ $id };
