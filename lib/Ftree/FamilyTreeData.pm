@@ -78,7 +78,7 @@ sub add_person{
     places_of_living => {type => SCALAR|UNDEF, default => undef},
     general    => {type => SCALAR|UNDEF, default => undef} });
     
-  if(!FieldValidatorParser::validIDEntry($arg_ref{id})) {
+  if(!Ftree::DataParsers::FieldValidatorParser::validIDEntry($arg_ref{id})) {
     carp "Not valid Id: " . $arg_ref{id} . " Ids should not contain "
       . "only alphanumeric plus underscore character";
     return; 
@@ -107,7 +107,7 @@ sub add_person{
   $self->set_parent($temp_person, $arg_ref{mother_id}, 1);
 
   if(defined $arg_ref{email} && $arg_ref{email} ne "") {
-    if(FieldValidatorParser::validEmail($arg_ref{email})) {
+    if(Ftree::DataParsers::FieldValidatorParser::validEmail($arg_ref{email})) {
       $temp_person->set_email($arg_ref{email});      
     } else {
       carp 'Not valid email: ' . $arg_ref{email};
@@ -115,36 +115,36 @@ sub add_person{
   }
    
   if(defined $arg_ref{homepage} && $arg_ref{homepage} ne "") {
-    if(FieldValidatorParser::validURL($arg_ref{homepage})) {
+    if(Ftree::DataParsers::FieldValidatorParser::validURL($arg_ref{homepage})) {
       $temp_person->set_homepage($arg_ref{homepage});      
     } else {
       carp 'Not valid url: ' . $arg_ref{homepage};
     }
   }   
 
-  $temp_person->set_date_of_birth(FieldValidatorParser::getDate($arg_ref{date_of_birth}))
+  $temp_person->set_date_of_birth(Ftree::DataParsers::FieldValidatorParser::getDate($arg_ref{date_of_birth}))
     if ( defined $arg_ref{date_of_birth} 
-         && FieldValidatorParser::getDate($arg_ref{date_of_birth}) );
+         && Ftree::DataParsers::FieldValidatorParser::getDate($arg_ref{date_of_birth}) );
    if ( defined $arg_ref{date_of_death} 
-        && FieldValidatorParser::getDate($arg_ref{date_of_death})) {
-         $temp_person->set_date_of_death(FieldValidatorParser::getDate($arg_ref{date_of_death}));
+        && Ftree::DataParsers::FieldValidatorParser::getDate($arg_ref{date_of_death})) {
+         $temp_person->set_date_of_death(Ftree::DataParsers::FieldValidatorParser::getDate($arg_ref{date_of_death}));
          $temp_person->set_is_living(0);     	
    }   
      
     
   if(defined $arg_ref{gender} && $arg_ref{gender} ne "") {
-    if(FieldValidatorParser::validBool($arg_ref{gender})) {
+    if(Ftree::DataParsers::FieldValidatorParser::validBool($arg_ref{gender})) {
       $temp_person->set_gender($arg_ref{gender});      
     } else {
       carp "Not valid bool: " . $arg_ref{gender};
     }
   }
   
-   my $place = FieldValidatorParser::getPlace($arg_ref{place_of_birth});
+   my $place = Ftree::DataParsers::FieldValidatorParser::getPlace($arg_ref{place_of_birth});
    $temp_person->set_place_of_birth($place)
      if(defined $arg_ref{place_of_birth});
      
-   $place = FieldValidatorParser::getCemetery($arg_ref{cemetery});
+   $place = Ftree::DataParsers::FieldValidatorParser::getCemetery($arg_ref{cemetery});
    if(defined $place) {
      $temp_person->set_cemetery($place);
      $temp_person->set_is_living(0);
@@ -157,13 +157,13 @@ sub add_person{
    $temp_person->set_work_places($arg_ref{work_places})
      if(defined $arg_ref{work_places});
    $temp_person->set_places_of_living(
-     FieldValidatorParser::getPlacesArray($arg_ref{places_of_living}))
+     Ftree::DataParsers::FieldValidatorParser::getPlacesArray($arg_ref{places_of_living}))
        if(defined $arg_ref{places_of_living});
    $temp_person->set_general($arg_ref{general})
      if(defined $arg_ref{general});
 
   if(defined $arg_ref{is_living} && $arg_ref{is_living} ne "") {
-    if(FieldValidatorParser::validBool($arg_ref{is_living})) {
+    if(Ftree::DataParsers::FieldValidatorParser::validBool($arg_ref{is_living})) {
       if(0 == $temp_person->get_is_living() && $arg_ref{is_living}){
       	carp "is_living field should be 0 for " . $arg_ref{id};	
       } else {
@@ -191,7 +191,7 @@ sub set_parent {
   my ($self, $temp_person, $id, $gender) = @_;
   return unless defined $id;
   
-  if(!FieldValidatorParser::validIDEntry($id)) {
+  if(!Ftree::DataParsers::FieldValidatorParser::validIDEntry($id)) {
   	carp "Not valid Id: $id. Ids should not contain " .
          "only alphanumeric plus underscore character!";
     return;         	

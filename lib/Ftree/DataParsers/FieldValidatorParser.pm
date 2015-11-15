@@ -133,7 +133,7 @@ sub getDate {
 sub getCemetery {
   my ($field) = @_;
   if(defined $field && $field ne "") {
-    $field = StringUtils::trim($field);
+    $field = Ftree::StringUtils::trim($field);
     if($field =~ /"(\S.+)"\s+"(\S.+)"\s+"(\S.+)"/) {
       return Ftree::Cemetery->new($1, $2, $3);
     }
@@ -150,7 +150,7 @@ sub getCemetery {
 sub getPlace {
   my ($field) = @_;
   if(defined $field && $field ne "") {
-    $field = StringUtils::trim($field);
+    $field = Ftree::StringUtils::trim($field);
     if($field =~ /"(\S.+)"\s+"(\S.+)"/) {
       return Ftree::Place->new($1, $2);
     }

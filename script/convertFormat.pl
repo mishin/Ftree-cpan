@@ -16,15 +16,18 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# For a copy of the GNU General Public License, visit 
+# For a copy of the GNU General Public License, visit
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 #######################################################
 
 use lib ('cgi', 'cgi/lib');
-use FamilyTreeDataFactory;
-use Switch;
+use Ftree::FamilyTreeDataFactory;
+# use Switch;
+use v5.10.1;
+no warnings 'experimental::smartmatch';
+
 use utf8;
 
 my $input_file_name = $ARGV[0];
@@ -51,26 +54,25 @@ else {
     type => $type_hash{$input_extension},
     config => {
       file_name => $input_file_name,
-    }    
+    }
   );
-  
-  
-  my $family_tree = FamilyTreeDataFactory::getFamilyTree( \%config );
+
+
+  my $family_tree = Ftree::FamilyTreeDataFactory::getFamilyTree( \%config );
   my $extension = (split(/\./, $output_file_name))[-1];
-  switch ($extension) {
-    case "xls" {
-      require Exporters::ExcelExporter;
+  for ($extension) {
+    when (/xls/) {
+      require Ftree::Exporters::ExcelExporter;
       ExcelExporter::export($output_file_name, $family_tree);
       }
-    case "xlsx" {
-      require Exporters::ExcelxExporter;
+    when (/xlsx/) {
+      require Ftree::Exporters::ExcelxExporter;
       ExcelxExporter::export($output_file_name, $family_tree);
-      }	  
-    case "ser" {
-      require Exporters::Serializer;
+      }
+    when (/ser/) {
+      require Ftree::Exporters::Serializer;
       Serializer::export($output_file_name, $family_tree);
       }
-} 
-  
 }
 
+}

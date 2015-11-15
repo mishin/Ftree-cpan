@@ -79,8 +79,8 @@ sub createFamilyTreeDataFromFile {
         }
     }
     if ( defined $config_->{photo_dir} ) {
-        Ftree::ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
-        Ftree::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
+        Ftree::DataParsers::ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
+        Ftree::DataParsers::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
     }
 
     return $family_tree_data;
