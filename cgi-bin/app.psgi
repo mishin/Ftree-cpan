@@ -6,6 +6,7 @@ use warnings;
 
 use CGI::Emulate::PSGI;
 use CGI::Compile;
+$CGI::Compile::RETURN_EXIT_VAL = 1;
 use Plack::Builder;
  
 my $cgi_script = "ftree.cgi";
