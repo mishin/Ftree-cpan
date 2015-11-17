@@ -62,8 +62,9 @@ sub new {
     $self->{settings}  = Ftree::SettingsFactory::importSettings('perl');
     $self->{photoUrl}  = $self->{settings}{data_source}{config}{photo_url};
 
-    Ftree::Date::Tiny->set_format( $self->{settings}{date_format} )
-      if ( defined $self->{settings}{date_format} );
+    if ( defined $self->{settings}{date_format} ){
+        Ftree::Date::Tiny->set_format( $self->{settings}{date_format} );      
+    }
 
     return bless $self, $classname;
 }

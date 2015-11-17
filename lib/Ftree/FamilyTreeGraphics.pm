@@ -13,8 +13,8 @@
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-#
-# For a copy of the GNU General Public License, visit 
+
+# For a copy of the GNU General Public License, visit
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
@@ -32,7 +32,7 @@ use Ftree::FamilyTreeBase;
 use Params::Validate qw(:all);
 use List::Util qw(first max);
 use List::MoreUtils qw(first_index);
-use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
+#use CGI::Carp qw(fatalsToBrowser warningsToBrowser set_message);
 use Sub::Exporter -setup => { exports => [ qw(new main) ] };
 use utf8;
 use Encode qw(decode_utf8);
@@ -59,25 +59,27 @@ sub new{
   $self->{cellwidth}     = undef;    # width of a cell
   $self->{gridWidth}     = undef;    # width of the tree
   $self->{fontsize}      = undef;
-  
+
   return $self;
 }
 
 sub main{
   my ($self) = validate_pos(@_, HASHREF);
   $self->_process_parameters();
-  
+
+  #set_message("This is a better message for the end.");
+  #die ("This is a test die");
   $Person::unknown_male->set_default_picture(Ftree::Picture->new(
-  	{file_name => $self->{graphicsUrl} . '/nophoto_m.jpg', 
-     comment => ""})); 
-  $Person::unknown_female->set_default_picture(Ftree::Picture->new(
-  	{file_name => $self->{graphicsUrl} . '/nophoto_f.jpg', 
+  	{file_name => $self->{graphicsUrl} . '/nophoto_m.jpg',
      comment => ""}));
-     
+  $Person::unknown_female->set_default_picture(Ftree::Picture->new(
+  	{file_name => $self->{graphicsUrl} . '/nophoto_f.jpg',
+     comment => ""}));
+
   $self->_target_check();
   $self->set_size();
   $self->_password_check();
- 
+
   if ( $self->{reqLevels} > 0 ) {
   	 $self->_draw_familytree_page();
   }
@@ -88,7 +90,7 @@ sub main{
   	     .";lang=".$self->{lang};
   	  print $self->{cgi}->redirect($address);
   }
-  
+
   return;
 }
 
@@ -103,7 +105,7 @@ sub _process_parameters {
   $self->{target_person} = $family_tree_data->get_person($id);
   $self->{reqLevels}     = CGI::param('levels');
   $self->{reqLevels}     = 2 unless ( defined $self->{reqLevels} );
-  
+
   return;
 }
 
@@ -119,7 +121,7 @@ sub _target_check {
     exit 1;
   }
 
-  return;  
+  return;
 }
 
 #######################################################
@@ -153,17 +155,17 @@ sub set_size {
   }
   $self->{cellwidth} = "100%";
   $self->{imgheight} = $self->{imgwidth} * 1.5;
-  
-  return;  
+
+  return;
 }
 
 sub html_img {
   my ( $self, $person ) = validate_pos(@_, HASHREF, SCALARREF);
-  
+
   my $img = $self->SUPER::html_img($person);
-  return ($person == $self->{target_person} || 
+  return ($person == $self->{target_person} ||
       $person == $Person::unknown_male ||
-      $person == $Person::unknown_female ) ? $img : $self->aref_tree($img, $person);   
+      $person == $Person::unknown_female ) ? $img : $self->aref_tree($img, $person);
 }
 
 sub img_graph {
@@ -189,16 +191,16 @@ sub getATreeWidth {
 # root_person:  this person
 # levels:     no. of levels to descend in tree
 sub getDTreeWidth {
-  my ( $self, $levels, $root_person ) = validate_pos(@_, 
+  my ( $self, $levels, $root_person ) = validate_pos(@_,
     HASHREF, SCALAR, SCALARREF );
 
 #  carp "called: getDTreeWidth with \$root_person = " . $root_person->get_name()->get_long_name() . ", \$levels = $levels";
 
   return 1 if ( 0 == $levels);
-  return 1 if ($root_person == $Person::unknown_male ||  
+  return 1 if ($root_person == $Person::unknown_male ||
                $root_person == $Person::unknown_female);
   return 1 unless defined $root_person->get_children();
-      
+
   my $width = 0;
   $width += $self->getDTreeWidth( $levels - 1, $_ )
     for ( @{ $root_person->get_children() } );
@@ -212,16 +214,16 @@ sub getDTreeWidth {
 # anc_level:  current level of ancestor tree (0=root_node)
 # req_levels: no. levels requested
 sub getATreeLevels {
-  my ( $self, $root_person, $anc_level, $req_levels ) = validate_pos(@_, 
+  my ( $self, $root_person, $anc_level, $req_levels ) = validate_pos(@_,
     HASHREF, {type => SCALARREF|UNDEF}, SCALAR, SCALAR );
 
 #  print "called: getATreeLevels (root_node=$root_person->get_name()->get_full_name(), anc_level=$anc_level,  req_levels=$req_levels)\n";
   return 0 if ( $req_levels == 0 );
   return $anc_level unless defined $root_person;
-  return $anc_level unless ( defined $root_person->get_father() || 
+  return $anc_level unless ( defined $root_person->get_father() ||
     defined $root_person->get_mother());
   return $anc_level if($anc_level == $req_levels );
-     
+
   my $p1_levels = $self->getATreeLevels( $root_person->get_father(),
       $anc_level + 1, $req_levels );
   my $p2_levels = $self->getATreeLevels( $root_person->get_mother(),
@@ -236,7 +238,7 @@ sub getATreeLevels {
 # dec_level:  current level of descendant tree (0=root_node)
 # req_levels: no. levels requested
 sub fillDTree {
-  my ( $self, $root_person, $dec_level, $req_levels, $DTree_ref ) = validate_pos(@_, 
+  my ( $self, $root_person, $dec_level, $req_levels, $DTree_ref ) = validate_pos(@_,
     HASHREF, SCALARREF, SCALAR, SCALAR, ARRAYREF );
 
 #  print "called: fillDTree (root_node=$root_node_id, dec_level=$dec_level,  req_levels=$req_levels)\n";
@@ -246,36 +248,36 @@ sub fillDTree {
        && $root_person != $Person::unknown_female
   	   && defined $root_person->get_children() ) {
     push @{ $DTree_ref->[$dec_level] }, @{$root_person->get_children()};
-    $self->{DLevels} = $dec_level if ( $dec_level > $self->{DLevels} );    
+    $self->{DLevels} = $dec_level if ( $dec_level > $self->{DLevels} );
   }
   else {
     push @{ $DTree_ref->[$dec_level] }, $Person::unknown_female;
   }
-  
+
   if ( $dec_level < $req_levels ) {
   	if(defined $root_person->get_children()) {
   	  $self->fillDTree( $_, $dec_level, $req_levels, $DTree_ref )
-        for ( @{ $root_person->get_children() } );	
+        for ( @{ $root_person->get_children() } );
   	}
   	else {
       $self->fillDTree( $Person::unknown_female, $dec_level, $req_levels, $DTree_ref );
-  	}    
+  	}
   }
-    
-  return;    
+
+  return;
 }
 
 sub putNTD {
-  my ( $self, $n, $data ) = validate_pos(@_, 
+  my ( $self, $n, $data ) = validate_pos(@_,
     HASHREF, SCALAR, {type => SCALAR, default => ""} );
     print $self->{cgi}->td($data), "\n" for (1 .. $n);
 
-  return;    
+  return;
 }
 sub drawRow {
   my ( $self, $used_width, $people, $diff_levels, $this_level,
-    $left_fill, $emptyTDCond, $group_width_func, $display_func ) = validate_pos(@_, 
-    HASHREF, SCALAR, ARRAYREF, {type => SCALAR|UNDEF}, 
+    $left_fill, $emptyTDCond, $group_width_func, $display_func ) = validate_pos(@_,
+    HASHREF, SCALAR, ARRAYREF, {type => SCALAR|UNDEF},
     {type => SCALAR|UNDEF}, SCALAR, CODEREF, CODEREF, CODEREF );
   my $right_fill = $self->{gridWidth} - $used_width - $left_fill;
   my $is_blank_line = 1;
@@ -286,7 +288,7 @@ sub drawRow {
     my $group_width  = $group_width_func->($self, $diff_levels, $person);
     my $left  = int( ( $group_width - 1 ) / 2 );
     my $right = $group_width - 1 - $left;
-    
+
     $self->putNTD($left);
     if ( $emptyTDCond->($self, $person, $this_level) ) {
       print $self->{cgi}->td(), "\n";
@@ -300,7 +302,7 @@ sub drawRow {
   }
   $self->putNTD($right_fill);
   print $self->{cgi}->end_Tr, "\n";
-  
+
   return $is_blank_line;
 }
 sub unknownEquiCond {
@@ -308,11 +310,11 @@ sub unknownEquiCond {
   return $person == $Person::unknown_male || $person == $Person::unknown_female;
 }
 sub unknownEquiNoChildrenCond {
-  my ( $self, $person, $this_level ) = validate_pos(@_, 
+  my ( $self, $person, $this_level ) = validate_pos(@_,
     HASHREF, SCALARREF, SCALAR );
-  return $person == $Person::unknown_female || 
+  return $person == $Person::unknown_female ||
     $person == $Person::unknown_male ||
-    ! defined $person->get_children()  || 
+    ! defined $person->get_children()  ||
     ( $this_level == $self->{reqLevels} );
 }
 sub falseCond {
@@ -324,7 +326,7 @@ sub falseCond {
 # this_level: level of grid to generate
 # max_levels: max depth that will be shown
 sub getDGridLineG {
-  my ( $self, $this_level, $max_levels, $DWidth, $DTree_ref ) = validate_pos(@_, 
+  my ( $self, $this_level, $max_levels, $DWidth, $DTree_ref ) = validate_pos(@_,
     HASHREF, SCALAR, SCALAR, SCALAR, ARRAYREF );
 #  print "called: getDGridLineG (this_level = $this_level, max_levels = $max_levels)\n";
 
@@ -347,13 +349,13 @@ sub getDGridLineG {
       if ( 1 == $this_level ) {
         $this_parent = $self->{target_person};
       } else {
-      	$this_parent = List::Util::first {$_ == $person->get_father()} 
+      	$this_parent = List::Util::first {$_ == $person->get_father()}
       	  @{ $DTree_ref->[$this_level - 1] }
-      	  if(defined $person->get_father());      	
-        $this_parent = List::Util::first {$_ == $person->get_mother()} 
+      	  if(defined $person->get_father());
+        $this_parent = List::Util::first {$_ == $person->get_mother()}
       	  @{ $DTree_ref->[$this_level - 1] }
-      	  unless( defined $this_parent);	
-      }      
+      	  unless( defined $this_parent);
+      }
 
       if ( $person == $Person::unknown_female  ) {
         # This blank person
@@ -375,7 +377,7 @@ sub getDGridLineG {
       elsif ( $person == $this_parent->get_children()->[-1] )
       {
          # Is this person the last child of this parent?
-        $left_fill = $self->img_graph('hblank'); 
+        $left_fill = $self->img_graph('hblank');
         $branch = $self->img_graph('hright');
         $right_fill = "";
       }
@@ -383,7 +385,7 @@ sub getDGridLineG {
         $left_fill = $right_fill = $self->img_graph('hblank');
         $branch = $self->img_graph('hbranch');
       }
-      
+
       my $group_width = $self->getDTreeWidth( $max_levels - $this_level, $person );
       my $left  = int( ( $group_width - 1 ) / 2 );
       my $right = $group_width - 1 - $left;
@@ -397,8 +399,8 @@ sub getDGridLineG {
   # Spacers on RHS - fills gap between overall grid width and width of Dgrid
   $self->putNTD($righto_fill);
   print $self->{cgi}->end_Tr, "\n";
-  
-  return;  
+
+  return;
 }
 
 #######################################################
@@ -407,26 +409,26 @@ sub getDGridLineG {
 # anc_level:  current level of ancestor tree (0=root node)
 # req_levels: no. levels requested
 sub fillATree {
-  my ( $self, $root_person, $anc_level, $req_levels, $ATree_ref ) = 
-  	validate_pos(@_, HASHREF, {type => SCALARREF|UNDEF}, 
+  my ( $self, $root_person, $anc_level, $req_levels, $ATree_ref ) =
+  	validate_pos(@_, HASHREF, {type => SCALARREF|UNDEF},
   	SCALAR, SCALAR, ARRAYREF );
 
   return unless $anc_level < $req_levels;
 #  print "called: fillATree (root_node = $root_person, anc_level = $anc_level, req_levels = $req_levels)\n";
-  
-  my $father = defined $root_person->get_father() ? 
-    $root_person->get_father() : $Person::unknown_male;  	
-  
+
+  my $father = defined $root_person->get_father() ?
+    $root_person->get_father() : $Person::unknown_male;
+
   my $mother =  defined $root_person->get_mother() ?
     $root_person->get_mother() : $Person::unknown_female;
-	
+
   push @{ $ATree_ref->[$anc_level] }, ($father, $mother);
 
-  $anc_level++;  
+  $anc_level++;
   $self->fillATree( $father, $anc_level, $req_levels, $ATree_ref );
   $self->fillATree( $mother, $anc_level, $req_levels, $ATree_ref );
-  
-  return;  
+
+  return;
 }
 
 #######################################################
@@ -434,7 +436,7 @@ sub fillATree {
 # this_level: level of grid to generate
 # max_levels: max depth that will be shown
 sub getAGridLineG {
-  my ( $self, $diff_levels, $AWidth, $aRow ) = validate_pos(@_, 
+  my ( $self, $diff_levels, $AWidth, $aRow ) = validate_pos(@_,
     HASHREF, SCALAR, SCALAR, ARRAYREF);
 
   return if ( 0 > $diff_levels );
@@ -444,16 +446,16 @@ sub getAGridLineG {
 
   print $self->{cgi}->start_Tr, "\n";
   $self->putNTD($left_fill);
-  
+
   my $node_width = 2**$diff_levels ;
   my $nodel_fill = int( ( $node_width - 1 ) / 2 );
-  my $noder_fill = $node_width - 1 - $nodel_fill;  
-  
+  my $noder_fill = $node_width - 1 - $nodel_fill;
+
   for ( my $index = 0; $index < @$aRow; $index += 2 )
   {
     $self->putNTD($nodel_fill);
     print $self->{cgi}->td( $self->img_graph("hleftup")),"\n";
-    $self->putNTD( $node_width - 1, $self->img_graph("hblankup") );  
+    $self->putNTD( $node_width - 1, $self->img_graph("hblankup") );
     print $self->{cgi}->td( $self->img_graph("hrightup") ), "\n";
     $self->putNTD($noder_fill);
   }
@@ -470,11 +472,11 @@ sub getAGridLineG {
     print $self->{cgi}->td( $self->img_graph("hone") ), "\n";
     $self->putNTD($node_width);
   }
-  
+
   $self->putNTD($right_fill);
   print $self->{cgi}->end_Tr, "\n";
-  
-  return;  
+
+  return;
 }
 
 #######################################################
@@ -482,26 +484,26 @@ sub buildDGrid {
   my ($self, $DWidth, $DTree_ref) = validate_pos(@_, HASHREF, SCALAR, ARRAYREF);
 
   my $left_fill = int( ( $self->{gridWidth} - $DWidth ) / 2 );
-  
+
   for my $this_level (1 .. $self->{DLevels}) {
     $self->getDGridLineG( $this_level, $self->{reqLevels}, $DWidth, $DTree_ref );
 
-    my $is_blank_line = $self->drawRow($DWidth, \@{ $DTree_ref->[$this_level] }, 
-      $self->{reqLevels} - $this_level, $this_level, $left_fill, 
+    my $is_blank_line = $self->drawRow($DWidth, \@{ $DTree_ref->[$this_level] },
+      $self->{reqLevels} - $this_level, $this_level, $left_fill,
       \&unknownEquiCond, \&getDTreeWidth, \&Ftree::FamilyTreeGraphics::html_img);
-      
+
     $self->drawRow($DWidth, \@{ $DTree_ref->[$this_level] },
-      $self->{reqLevels} - $this_level, $this_level, $left_fill, 
+      $self->{reqLevels} - $this_level, $this_level, $left_fill,
       \&unknownEquiCond, \&getDTreeWidth, \&html_name);
-      
+
     $self->drawRow($DWidth, \@{ $DTree_ref->[$this_level] },
-      $self->{reqLevels} - $this_level, $this_level, $left_fill, 
+      $self->{reqLevels} - $this_level, $this_level, $left_fill,
       \&unknownEquiNoChildrenCond, \&getDTreeWidth, \&hone_img_graph);
-      
-    $self->{DLevels} = $this_level - 1 if ( $is_blank_line );   
+
+    $self->{DLevels} = $this_level - 1 if ( $is_blank_line );
   }
-  
-  return;  
+
+  return;
 }
 
 #######################################################
@@ -511,29 +513,29 @@ sub buildDestroyAGrid {
 
   my $aLevel = @$ATree_ref;
   my $AWidth = 2 ** $aLevel;
-  --$aLevel; 
-  my $left_fill  = int( ( $self->{gridWidth} - $AWidth + 1 ) / 2 );    
-    
+  --$aLevel;
+  my $left_fill  = int( ( $self->{gridWidth} - $AWidth + 1 ) / 2 );
+
   for ( my $this_level = $aLevel; $this_level >= 0 ; --$this_level ) {
     my $aRow = pop @$ATree_ref;
-    $self->drawRow($AWidth, $aRow, $aLevel - $this_level, $this_level, $left_fill, 
+    $self->drawRow($AWidth, $aRow, $aLevel - $this_level, $this_level, $left_fill,
       \&falseCond, \&getATreeWidth , \&Ftree::FamilyTreeGraphics::html_img);
-      
-    $self->drawRow($AWidth, $aRow, $aLevel - $this_level, $this_level, $left_fill, 
+
+    $self->drawRow($AWidth, $aRow, $aLevel - $this_level, $this_level, $left_fill,
       \&falseCond, \&getATreeWidth, \&html_name);
-      
+
     $self->getAGridLineG( $aLevel - $this_level, $AWidth, $aRow );
   }
 
   #printf "buildAGrid returns";
-  return;  
+  return;
 }
 
 #######################################################
 sub buildPGrid {
   my ($self, $PWidth) = validate_pos(@_, {type => HASHREF}, SCALAR);
-  
-  my @peers = $self->{target_person}->get_peers( ); 
+
+  my @peers = $self->{target_person}->get_peers( );
 
   my $left_side   = List::MoreUtils::first_index {$_ == $self->{target_person}} @peers;
   my $left_fill  = int(( $self->{gridWidth} - 1 ) / 2 ) - $left_side;
@@ -546,7 +548,7 @@ sub buildPGrid {
   if ( @peers > 1 ) {
     print $self->{cgi}->td( $self->img_graph("hleft") ), "\n";
     $self->putNTD($#peers - 1, $self->img_graph("hbranch"));
-    print $self->{cgi}->td( $self->img_graph("hright") ),  "\n";    
+    print $self->{cgi}->td( $self->img_graph("hright") ),  "\n";
   }
   else {
     print $self->{cgi}->td( $self->img_graph("hone") ), "\n";
@@ -555,14 +557,14 @@ sub buildPGrid {
   print $self->{cgi}->end_Tr, "\n";
 
   $self->drawRow($PWidth, \@peers,
-      undef, undef, $left_fill, 
+      undef, undef, $left_fill,
       \&falseCond, sub {return 1} , \&Ftree::FamilyTreeGraphics::html_img);
-      
+
   $self->drawRow($PWidth, \@peers,
-      undef, undef, $left_fill, 
+      undef, undef, $left_fill,
       \&falseCond, sub {return 1} , \&Ftree::FamilyTreeGraphics::html_name);
 
-  if ( defined $self->{target_person}->get_children() ) {  	
+  if ( defined $self->{target_person}->get_children() ) {
     print $self->{cgi}->start_Tr, "\n";
     my $gridLeft = int( ( $self->{gridWidth} - 1 ) / 2 );
     my $gridRight = $self->{gridWidth} - 1 - $gridLeft;
@@ -580,12 +582,12 @@ sub buildPGrid {
 # (allowing for the fact that it may be off-centre)
 sub getPTreeWidth {
   my ($self) = validate_pos(@_, {type => HASHREF});
-  
+
   my @peers = $self->{target_person}->get_peers( );
   my $node_pos = List::MoreUtils::first_index {$_ == $self->{target_person}} @peers;
-  
+
   my $right_side = $#peers - $node_pos;
-  my $big_side = List::Util::max ($node_pos, $right_side );  
+  my $big_side = List::Util::max ($node_pos, $right_side );
   return $big_side * 2  + 1;
 }
 
@@ -597,16 +599,16 @@ sub html_name {
     if ( !defined $person || $person == $Person::unknown_male || $person == $Person::unknown_female );
   my $show_name;
   if(defined $person->get_name()) {
-    $show_name = ( $self->{reqLevels} > 1 ) ? 
-      $person->get_name()->get_first_name() : $person->get_name()->get_short_name(); 
+    $show_name = ( $self->{reqLevels} > 1 ) ?
+      $person->get_name()->get_first_name() : $person->get_name()->get_short_name();
   } else {
     $show_name = $self->{textGenerator}{Unknown};
-  } 
+  }
   if ( $person == $self->{target_person} ) {
     return $self->{cgi}->strong($self->{cgi}->font({-size => $self->{fontsize}}, $show_name));
   }
   else {
-    return $self->{cgi}->font({-size => $self->{fontsize}}, $self->aref_tree($show_name, $person));    
+    return $self->{cgi}->font({-size => $self->{fontsize}}, $self->aref_tree($show_name, $person));
   }
 }
 
@@ -625,9 +627,9 @@ sub print_zoom_buttons {
           -alt => $self->{textGenerator}->ZoomIn($lev_minus1) }), $self->{target_person}, $lev_minus1),
       $self->{cgi}->end_td, "\n";
   }
-  
+
   if( $self->{reqLevels} <= $aLevels  ) {
-    my $lev_plus1  = $self->{reqLevels} + 1;    
+    my $lev_plus1  = $self->{reqLevels} + 1;
     print $self->{cgi}->start_td({-align => "center"}), "\n",
       $self->aref_tree($self->{cgi}->img( {
           -src => "$self->{graphicsUrl}/zoomout.gif",
@@ -636,8 +638,8 @@ sub print_zoom_buttons {
   }
   print $self->{cgi}->end_Tr, "\n",
         $self->{cgi}->end_table, $self->{cgi}->br, $self->{cgi}->br, "\n";
-      
-  return;      
+
+  return;
 }
 #########################################################
 # OUTPUT SECTION                                        #
@@ -646,8 +648,8 @@ sub _draw_start_page {
   my ( $self, $aLevels ) = validate_pos(@_, {type => HASHREF}, SCALAR);
 
   # header html for page
-  my $title = $self->{textGenerator}->familyTreeFor( 
-       defined $self->{target_person}->get_name() ?          # He may have id but not any name  
+  my $title = $self->{textGenerator}->familyTreeFor(
+       defined $self->{target_person}->get_name() ?          # He may have id but not any name
           $self->{target_person}->get_name()->get_full_name():
           $self->{textGenerator}->{Unknown});
   $self->_toppage($title);
@@ -684,7 +686,7 @@ sub _draw_familytree_page {
 		{ -border => "0", -cellpadding => "0", -cellspacing => "0" } ), "\n";
 	$self->buildDestroyAGrid(\@ATree);
 	$self->buildPGrid($PWidth);
-	$self->buildDGrid($DWidth, \@DTree);		
+	$self->buildDGrid($DWidth, \@DTree);
 	print $self->{cgi}->end_table, "\n", $self->{cgi}->end_center, "\n";
 
 
@@ -693,4 +695,3 @@ sub _draw_familytree_page {
 }
 
 1;
-
