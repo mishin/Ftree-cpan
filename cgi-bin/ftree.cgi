@@ -1,7 +1,7 @@
 #!"c:\Users\TOSH\Documents\job\perl\strawberry-perl-5.20.0.1-64bit-portable\perl\bin\perl.exe"
 #!"c:\Dwimperl\perl\bin\perl.exe"
 
-#c:\xampp\cgi-bin\ftree\.. 
+#c:\xampp\cgi-bin\ftree\..
 ##!"c:\Dwimperl\perl\bin\perl.exe"
 
 ###!"C:\xampp\perl\bin\perl.exe"
@@ -26,12 +26,12 @@ use CGI qw(param);
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# For a copy of the GNU General Public License, visit 
+# For a copy of the GNU General Public License, visit
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 #######################################################
-# 
+#
 # What it does:
 # * Generates a family tree from a simple underlying data file.
 # * A tree can be plotted based around any person in the tree.
@@ -47,14 +47,14 @@ use CGI qw(param);
 #   - levels (tree will have this no. levels above and below)
 #   - password (if a password is required, or "demo")
 #   - lang (languages, i.e en, de, hu, it, fr)
-# * Pass these parameters or in GET format (like 
+# * Pass these parameters or in GET format (like
 #   type=tree;name=fred;levels=1;lang=en;password=dummy)
 #
 #######################################################
 #
-# For a demonstration of this software, and details of how the 
+# For a demonstration of this software, and details of how the
 # underlying data file is formatted, visit here:
-# http://www.cs.bme.hu/~bodon/Simpsons/cgi/ftree.cgi 
+# http://www.cs.bme.hu/~bodon/Simpsons/cgi/ftree.cgi
 #
 
 use FindBin;
@@ -75,10 +75,4 @@ else {
 }
 $family_tree->main();
 
-exit; 
-
- 
-
-
-
-
+exit;

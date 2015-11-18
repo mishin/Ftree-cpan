@@ -31,7 +31,7 @@ use Params::Validate qw(:all);
 use Ftree::DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
 use DBI;
 use Ftree::DataParsers::FieldValidatorParser;
-use CGI::Carp qw(fatalsToBrowser);
+# use CGI::Carp qw(fatalsToBrowser);
 
 my $picture_directory;
 

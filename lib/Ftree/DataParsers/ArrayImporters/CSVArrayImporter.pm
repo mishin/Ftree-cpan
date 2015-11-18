@@ -25,7 +25,7 @@ use strict;
 use warnings;
 use version; our $VERSION = qv('2.3.31');
 use Params::Validate qw(:all);
-use CGI::Carp qw(fatalsToBrowser);
+# use CGI::Carp qw(fatalsToBrowser);
 
 sub new {
     my ($classname, $file_name, $encoding) = @_;

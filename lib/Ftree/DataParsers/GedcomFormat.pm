@@ -27,7 +27,7 @@ use version; our $VERSION = qv('2.3.31');
 use Gedcom;
 use Ftree::DataParsers::FieldValidatorParser;
 use Ftree::FamilyTreeData;
-use CGI::Carp qw(fatalsToBrowser);
+# use CGI::Carp qw(fatalsToBrowser);
 use Encode qw(decode_utf8);
 
 my %genderTogedcomsex = (

@@ -29,7 +29,7 @@ use Ftree::DataParsers::FieldValidatorParser;
 use Ftree::DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
 use Ftree::FamilyTreeData;
 use Storable;
-use CGI::Carp qw(fatalsToBrowser);
+# use CGI::Carp qw(fatalsToBrowser);
 
 sub createFamilyTreeDataFromFile {
   my ($config_) = @_;

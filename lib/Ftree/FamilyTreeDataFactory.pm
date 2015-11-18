@@ -14,7 +14,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# For a copy of the GNU General Public License, visit 
+# For a copy of the GNU General Public License, visit
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
@@ -26,13 +26,13 @@ use warnings;
 use version; our $VERSION = qv('2.3.31');
 
 use Switch;
-use CGI::Carp qw(fatalsToBrowser);
+# use CGI::Carp qw(fatalsToBrowser);
 
 sub getFamilyTree {
   my ( $config ) = @_;
   my $type = $config->{type};
   $type = 'csv' if ($type eq 'txt');
-  
+
   switch ($type) {
   	case 'csv' {
   	  require Ftree::DataParsers::ExtendedSimonWardFormat;
@@ -58,9 +58,9 @@ sub getFamilyTree {
       require Ftree::DataParsers::DBIFormat;
       return Ftree::DataParsers::DBIFormat::getFamilyTreeData($config->{config});
     }
-  	else {croak "Unknown type: $type" }
+  	else {die "Unknown type: $type" }
   }
-  
+
   return;
 }
 

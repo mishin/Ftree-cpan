@@ -34,7 +34,7 @@ use Params::Validate qw(:all);
 use Ftree::StringUtils;
 use Switch;
 use Ftree::DataParsers::FieldValidatorParser;
-use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
+# use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 use utf8;
 
 my $picture_directory;

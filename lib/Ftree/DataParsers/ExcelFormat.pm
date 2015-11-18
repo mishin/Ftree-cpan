@@ -29,7 +29,7 @@ use Spreadsheet::ParseExcel;
 use Ftree::DataParsers::ExtendedSimonWardFormat
   ;    # for getting pictures. Temporal solution
 use Ftree::FamilyTreeData;
-use CGI::Carp qw(fatalsToBrowser);
+# use CGI::Carp qw(fatalsToBrowser);
 use Encode qw(decode);
 
 sub createFamilyTreeDataFromFile {

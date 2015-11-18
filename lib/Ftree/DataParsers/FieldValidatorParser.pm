@@ -30,7 +30,7 @@ use Ftree::Date::Tiny;
 use Ftree::Place;
 use Ftree::Cemetery;
 
-use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
+# use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 use Ftree::StringUtils;
 
 my %month_array = (
