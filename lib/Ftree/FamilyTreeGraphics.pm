@@ -32,7 +32,7 @@ use Ftree::FamilyTreeBase;
 use Params::Validate qw(:all);
 use List::Util qw(first max);
 use List::MoreUtils qw(first_index);
-#use CGI::Carp qw(fatalsToBrowser warningsToBrowser set_message);
+use CGI::Carp qw(warningsToBrowser);# warningsToBrowser set_message);
 
 use Sub::Exporter -setup => { exports => [ qw(new main) ] };
 use utf8;
@@ -66,10 +66,16 @@ sub new{
 
 sub main{
   my ($self) = validate_pos(@_, HASHREF);
+    # my $title='/nophoto_m.jpg';
+    # warningsToBrowser(1);
   $self->_process_parameters();
 
   #set_message("This is a better message for the end.");
   #die ("This is a test die");
+
+    # print $self->{cgi}->center( $self->{cgi}->h1($title) ), "\n";
+
+  
   $Person::unknown_male->set_default_picture(Ftree::Picture->new(
   	{file_name => $self->{graphicsUrl} . '/nophoto_m.jpg',
      comment => ""}));

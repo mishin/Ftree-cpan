@@ -33,7 +33,7 @@ use Ftree::Person;
 use Ftree::TextGeneratorFactory;
 use Ftree::SettingsFactory;
 use Ftree::Date::Tiny;
-# use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
+use CGI::Carp qw(warningsToBrowser);#fatalsToBrowser
 # use Perl6::Export::Attrs;
 use Sub::Exporter -setup => { exports => [ qw(new) ] };
 use Encode qw(decode_utf8);
