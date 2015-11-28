@@ -25,7 +25,8 @@ use strict;
 use warnings;
 use version; our $VERSION = qv('2.3.31');
 
-use Switch;
+use v5.10.1;
+no warnings 'experimental::smartmatch';
 # use CGI::Carp qw(fatalsToBrowser);
 
 sub getFamilyTree {
@@ -33,32 +34,32 @@ sub getFamilyTree {
   my $type = $config->{type};
   $type = 'csv' if ($type eq 'txt');
 
-  switch ($type) {
-  	case 'csv' {
+  for ($type) {
+  	when (/csv/) {
   	  require Ftree::DataParsers::ExtendedSimonWardFormat;
   	  return Ftree::DataParsers::ExtendedSimonWardFormat::createFamilyTreeDataFromFile($config->{config});
   	}
-  	case 'excel' {
+  	when (/excel/) {
   	  require Ftree::DataParsers::ExcelFormat;
   	  return Ftree::DataParsers::ExcelFormat::createFamilyTreeDataFromFile($config->{config});
   	}
-	case 'excelx' {
+	when (/excelx/) {
   	  require Ftree::DataParsers::ExcelxFormat;
   	  return Ftree::DataParsers::ExcelxFormat::createFamilyTreeDataFromFile($config->{config});
   	}
-    case 'ser' {
+    when (/ser/) {
       require Ftree::DataParsers::SerializerFormat;
       return Ftree::DataParsers::SerializerFormat::createFamilyTreeDataFromFile($config->{config});
     }
-  	case 'gedcom' {
+  	when (/gedcom/) {
   	  require Ftree::DataParsers::GedcomFormat;
   	  return Ftree::DataParsers::GedcomFormat::createFamilyTreeDataFromFile($config->{config});
   	  }
-  	case 'dbi' {
+  	when (/dbi/) {
       require Ftree::DataParsers::DBIFormat;
       return Ftree::DataParsers::DBIFormat::getFamilyTreeData($config->{config});
     }
-  	else {die "Unknown type: $type" }
+  	default {die "Unknown type: $type" }
   }
 
   return;

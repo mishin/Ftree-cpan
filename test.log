@@ -1,0 +1,298 @@
+Problem opening MANIFEST: No such file or directory at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/lib/ExtUtils/Manifest.pm line 349.
+xt\01_synopsis.t ............... skipped: No files in lib to test
+xt\02_pod.t .................... ok
+
+#   Failed test 'Test::Perl::Critic for "lib\Ftree\FamilyTreeBase.pm"'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Perl/Critic.pm line 104.
+# 
+#   I/O layer ":utf8" used at line 88, column 5.  Use ":encoding(UTF-8)" to get strict validation.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "lib\Ftree\PersonPage.pm"'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Perl/Critic.pm line 104.
+# 
+#   I/O layer ":utf8" used at line 135, column 5.  Use ":encoding(UTF-8)" to get strict validation.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "lib\Ftree\FamilyTreeInfo.pm"'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Perl/Critic.pm line 104.
+# 
+#   Found use of Switch. This module is deprecated by the Perl 5 Porters at line 30, column 1.  Find an alternative module.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "lib\Ftree\TextGeneratorFactory.pm"'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Perl/Critic.pm line 104.
+# 
+#   Found use of Switch. This module is deprecated by the Perl 5 Porters at line 29, column 1.  Find an alternative module.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "lib\Ftree\DataParsers\ExcelFormat.pm"'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Perl/Critic.pm line 104.
+# 
+#   "return" statement with explicit "undef" at line 91, column 5.  See page 199 of PBP.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "lib\Ftree\DataParsers\GedcomFormat.pm"'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Perl/Critic.pm line 104.
+# 
+#   "return" statement with explicit "undef" at line 97, column 5.  See page 199 of PBP.  (Severity: 5)
+#   "return" statement with explicit "undef" at line 108, column 3.  See page 199 of PBP.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "lib\Ftree\DataParsers\ExtendedSimonWardFormat.pm"'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Perl/Critic.pm line 104.
+# 
+#   Found use of Switch. This module is deprecated by the Perl 5 Porters at line 35, column 1.  Find an alternative module.  (Severity: 5)
+#   Variable declared in conditional statement at line 52, column 3.  Declare variables outside of the condition.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "lib\Ftree\DataParsers\DBIFormat.pm"'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Perl/Critic.pm line 104.
+# 
+#   "return" statement with explicit "undef" at line 40, column 3.  See page 199 of PBP.  (Severity: 5)
+#   "return" statement with explicit "undef" at line 44, column 3.  See page 199 of PBP.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "lib\Ftree\DataParsers\ExcelxFormat.pm"'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Perl/Critic.pm line 104.
+# 
+#   "return" statement with explicit "undef" at line 99, column 5.  See page 199 of PBP.  (Severity: 5)
+
+#   Failed test 'Test::Perl::Critic for "lib\Ftree\DataParsers\ArrayImporters\CSVArrayImporter.pm"'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Perl/Critic.pm line 104.
+# 
+#   Bareword file handle opened at line 35, column 3.  See pages 202,204 of PBP.  (Severity: 5)
+xt\03_perlcritic.t ............. 
+Dubious, test returned 1 (wstat 256, 0x100)
+Failed 10/35 subtests 
+xt\04_podspell.t ............... skipped: no working spellchecker found
+Problem opening MANIFEST: No such file or directory at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/lib/ExtUtils/Manifest.pm line 349.
+xt\05_portability_filenames.t .. ok
+
+#   Failed test 'Pod coverage on Ftree::Cemetery'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::Cemetery: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::FamilyTreeBase'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::FamilyTreeBase: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::FamilyTreeData'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::FamilyTreeData: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::FamilyTreeDataFactory'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::FamilyTreeDataFactory: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::FamilyTreeGraphics'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::FamilyTreeGraphics: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::FamilyTreeInfo'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Coverage for Ftree::FamilyTreeInfo is 0.0%, with 2 naked subroutines:
+# 	main
+# 	new
+
+#   Failed test 'Pod coverage on Ftree::Name'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Coverage for Ftree::Name is 0.0%, with 5 naked subroutines:
+# 	get_full_name
+# 	get_long_name
+# 	get_short_name
+# 	set_name
+# 	urlname
+
+#   Failed test 'Pod coverage on Ftree::PerlSettingsImporter'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::PerlSettingsImporter: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::Person'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::Person: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::PersonPage'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::PersonPage: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::Picture'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::Picture: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::Place'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::Place: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::SettingsFactory'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::SettingsFactory: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::StringUtils'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::StringUtils: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::TextGeneratorFactory'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::TextGeneratorFactory: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::DataParsers::DBIFormat'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::DataParsers::DBIFormat: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::DataParsers::ExcelFormat'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::DataParsers::ExcelFormat: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::DataParsers::ExcelxFormat'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::DataParsers::ExcelxFormat: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::DataParsers::ExtendedSimonWardFormat'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::DataParsers::ExtendedSimonWardFormat: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::DataParsers::FieldValidatorParser'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::DataParsers::FieldValidatorParser: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::DataParsers::GedcomFormat'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::DataParsers::GedcomFormat: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::DataParsers::SerializerFormat'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::DataParsers::SerializerFormat: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::Date::Tiny'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Coverage for Ftree::Date::Tiny is 80.0%, with 2 naked subroutines:
+# 	format
+# 	set_format
+
+#   Failed test 'Pod coverage on Ftree::Exporters::ExcelExporter'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::Exporters::ExcelExporter: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::Exporters::ExcelxExporter'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::Exporters::ExcelxExporter: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::Exporters::Serializer'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::Exporters::Serializer: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::TextGenerators::EnglishTextGenerator'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::TextGenerators::EnglishTextGenerator: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::TextGenerators::FrenchTextGenerator'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::TextGenerators::FrenchTextGenerator: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::TextGenerators::GermanTextGenerator'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::TextGenerators::GermanTextGenerator: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::TextGenerators::HungarianTextGenerator'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::TextGenerators::HungarianTextGenerator: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::TextGenerators::ItalianTextGenerator'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::TextGenerators::ItalianTextGenerator: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::TextGenerators::PolishTextGenerator'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::TextGenerators::PolishTextGenerator: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::TextGenerators::RomanianTextGenerator'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::TextGenerators::RomanianTextGenerator: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::TextGenerators::RussianTextGenerator'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::TextGenerators::RussianTextGenerator: couldn't find pod
+
+#   Failed test 'Pod coverage on Ftree::DataParsers::ArrayImporters::CSVArrayImporter'
+#   at c:/Users/TOSH/Documents/job/perl/strawberry-perl-5.20.2.1-32bit-portable/perl/site/lib/Test/Pod/Coverage.pm line 133.
+# Ftree::DataParsers::ArrayImporters::CSVArrayImporter: couldn't find pod
+# Looks like you failed 35 tests of 35.
+xt\06_pod_coverage.t ........... 
+Dubious, test returned 35 (wstat 8960, 0x2300)
+Failed 35/35 subtests 
+
+#   Failed test 'has_buildtool'
+#   at xt\07_kwalitee.t line 5.
+# Error: Makefile.PL and/or Build.PL are missing. This makes installing this distribution hard for humans and impossible for automated tools like CPAN/CPANPLUS/cpanminus.
+# Details:
+# Neither Makefile.PL nor Build.PL was found.
+# Remedy: Add a Makefile.PL (for ExtUtils::MakeMaker/Module::Install) or a Build.PL (for Module::Build and its friends), or use a distribution builder such as Dist::Zilla, Dist::Milla, Minilla.
+
+#   Failed test 'has_changelog'
+#   at xt\07_kwalitee.t line 5.
+# Error: The distribution hasn't got a Changelog (named something like m/^chang(es?|log)|history$/i. A Changelog helps people decide if they want to upgrade to a new version.
+# Details:
+# Any Changelog file was not found.
+# Remedy: Add a Changelog (best named 'Changes') to the distribution. It should list at least major changes implemented in newer versions.
+
+#   Failed test 'has_manifest'
+#   at xt\07_kwalitee.t line 5.
+# Error: The file "MANIFEST" is missing from this distribution. The MANIFEST lists all files included in the distribution.
+# Details:
+# MANIFEST was not found.
+# Remedy: Add a MANIFEST to the distribution. Your buildtool should be able to autogenerate it (eg "make manifest" or "./Build manifest")
+
+#   Failed test 'has_meta_yml'
+#   at xt\07_kwalitee.t line 5.
+# Error: The file "META.yml" is missing from this distribution. META.yml is needed by people maintaining module collections (like CPAN), for people writing installation tools, or just people who want to know some stuff about a distribution before downloading it.
+# Details:
+# META.yml was not found.
+# Remedy: Add a META.yml to the distribution. Your buildtool should be able to autogenerate it.
+
+#   Failed test 'has_readme'
+#   at xt\07_kwalitee.t line 5.
+# Error: The file "README" is missing from this distribution. The README provides some basic information to users prior to downloading and unpacking the distribution.
+# Details:
+# README was not found.
+# Remedy: Add a README to the distribution. It should contain a quick description of your module and how to install it.
+
+#   Failed test 'has_tests'
+#   at xt\07_kwalitee.t line 5.
+# Error: This distribution doesn't contain either a file called 'test.pl' or a directory called 't'. This indicates that it doesn't contain even the most basic test-suite. This is really BAD!
+# Details:
+# Neither "test.pl" nor "t/" directory was not found.
+# Remedy: Add tests!
+
+#   Failed test 'has_human_readable_license'
+#   at xt\07_kwalitee.t line 5.
+# Error: This distribution does not have a license defined in the documentation or in a file called LICENSE
+# Details:
+# Neither LICENSE file nor LICENSE section in pod was found.
+# Remedy: Add a section called "LICENSE" to the documentation, or add a file named LICENSE to the distribution.
+
+#   Failed test 'has_license_in_source_file'
+#   at xt\07_kwalitee.t line 5.
+# Error: Does not have license information in any of its source files
+# Details:
+# LICENSE section was not found in the pod.
+# Remedy: Add =head1 LICENSE and the text of the license to the main module in your code.
+
+#   Failed test 'has_abstract_in_pod'
+#   at xt\07_kwalitee.t line 5.
+# Error: No abstract (short description of a module) is found in pod from this distribution.
+# Details:
+# No abstracts in pod
+# Remedy: Provide a short description in the NAME section of the pod (after the module name followed by a hyphen) at least for the main module of this distribution.
+# Looks like you failed 9 tests of 17.
+xt\07_kwalitee.t ............... 
+Dubious, test returned 9 (wstat 2304, 0x900)
+Failed 9/17 subtests 
+xt\08_vars.t ................... skipped: Test::Vars is not installed.
+xt\09_podspell_unicodetut.t .... skipped: no working spellchecker found
+
+Test Summary Report
+-------------------
+xt\03_perlcritic.t           (Wstat: 256 Tests: 35 Failed: 10)
+  Failed tests:  5, 12, 14-19, 21, 32
+  Non-zero exit status: 1
+xt\06_pod_coverage.t         (Wstat: 8960 Tests: 35 Failed: 35)
+  Failed tests:  1-35
+  Non-zero exit status: 35
+xt\07_kwalitee.t             (Wstat: 2304 Tests: 17 Failed: 9)
+  Failed tests:  5-10, 14-16
+  Non-zero exit status: 9
+Files=9, Tests=124, 29 wallclock secs ( 0.27 usr +  0.03 sys =  0.30 CPU)
+Result: FAIL
