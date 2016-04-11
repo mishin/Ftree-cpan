@@ -28,7 +28,7 @@ use version; our $VERSION = qv('2.3.31');
 use List::MoreUtils qw(uniq);
 use Params::Validate qw(:all);
 
-use Class::Std::Storable;
+use Class::Std::Fast::Storable;
 {
   my %id_of               : ATTR(:name<id>);
   my %name_of             : ATTR(:get<name> :set<name>);

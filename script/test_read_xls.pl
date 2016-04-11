@@ -1,4 +1,6 @@
 ﻿use Data::Dumper;
+use FindBin qw($Bin);
+use lib "$Bin/../lib";
 use FamilyTreeData;
 use Spreadsheet::ParseExcel;
 use Spreadsheet::ParseExcel::FmtJapan;
@@ -8,18 +10,18 @@ print Dumper createFamilyTreeDataFromFile();
 sub createFamilyTreeDataFromFile {
   # my ($config_) = @_;
   my $file_name = 'mishin_family.xls';#$config_->{file_name} or die "No file_name is given in config";
-    
+
   my $family_tree_data = FamilyTreeData->new();
     my $parser    = Spreadsheet::ParseExcel->new();
     my $formatter = Spreadsheet::ParseExcel::FmtJapan->new();
-  
+
     my $workbook  = $parser->parse($file_name, $formatter)
 	or die "Unable to parse file " . $file_name;
   # my $excel = Spreadsheet::ParseExcel::Workbook->Parse($file_name)
    if ( !defined $workbook ) {
         die $parser->error(), ".\n";
     }
-    
+
 	 for my $worksheet ( $workbook->worksheets() ) {
 	  my ( $row_min, $row_max ) = $worksheet->row_range();
       my ( $col_min, $col_max ) = $worksheet->col_range();
@@ -41,7 +43,7 @@ my $tempperson = {
           mother_id  => $worksheet->get_cell( $row, 9 )->value(),#convertCell($sheet->{Cells}[$row][9]),
           email      => $worksheet->get_cell( $row, 10 )->value(),#convertCell($sheet->{Cells}[$row][10]),
           homepage   => $worksheet->get_cell( $row, 11 )->value(),#convertCell($sheet->{Cells}[$row][11]),
-          date_of_birth => $worksheet->get_cell( $row, 12 )->value(),#convertCell($sheet->{Cells}[$row][12]),          
+          date_of_birth => $worksheet->get_cell( $row, 12 )->value(),#convertCell($sheet->{Cells}[$row][12]),
           date_of_death => $worksheet->get_cell( $row, 13 )->value(),#convertCell($sheet->{Cells}[$row][13]),
           gender     => $worksheet->get_cell( $row, 14 )->value(),#convertCell($sheet->{Cells}[$row][14]),
           is_living  => $worksheet->get_cell( $row, 15 )->value(),#convertCell($sheet->{Cells}[$row][15]),
@@ -53,19 +55,19 @@ my $tempperson = {
             [split( /,/, $worksheet->get_cell( $row, 19 )->value())] : undef,
           jobs       => (defined $worksheet->get_cell( $row, 20 )->value()) ?
             [split( /,/, $worksheet->get_cell( $row, 20 )->value())] : undef,
-          work_places => (defined $worksheet->get_cell( $row, 21 )->value()) ? 
+          work_places => (defined $worksheet->get_cell( $row, 21 )->value()) ?
             [split( /,/, $worksheet->get_cell( $row, 21 )->value())] : undef,
           places_of_living => $worksheet->get_cell( $row, 22 )->value(),#convertCell($sheet->{Cells}[$row][22]),
           general    => $worksheet->get_cell( $row, 23 )->value()#convertCell($sheet->{Cells}[$row][23])
 		  };
-       $family_tree_data->add_person($tempperson);				
-				
+       $family_tree_data->add_person($tempperson);
+
 				  # print $cell->value()."\n";
                 # Do something with $cell->value() and remember to encode
                 # any output streams if required.
             # }
         }
-	 
+
 }
   # foreach my $sheet (@{$excel->{Worksheet}}) {
     # $sheet->{MaxRow} ||= $sheet->{MinRow};
@@ -83,7 +85,7 @@ my $tempperson = {
           # mother_id  => convertCell($sheet->{Cells}[$row][9]),
           # email      => convertCell($sheet->{Cells}[$row][10]),
           # homepage   => convertCell($sheet->{Cells}[$row][11]),
-          # date_of_birth => convertCell($sheet->{Cells}[$row][12]),          
+          # date_of_birth => convertCell($sheet->{Cells}[$row][12]),
           # date_of_death => convertCell($sheet->{Cells}[$row][13]),
           # gender     => convertCell($sheet->{Cells}[$row][14]),
           # is_living  => convertCell($sheet->{Cells}[$row][15]),
@@ -94,7 +96,7 @@ my $tempperson = {
             # [split( /,/, convertCell($sheet->{Cells}[$row][19]))] : undef,
           # jobs       => (defined $sheet->{Cells}[$row][20]) ?
             # [split( /,/, convertCell($sheet->{Cells}[$row][20]))] : undef,
-          # work_places => (defined $sheet->{Cells}[$row][21]) ? 
+          # work_places => (defined $sheet->{Cells}[$row][21]) ?
             # [split( /,/, convertCell($sheet->{Cells}[$row][21]))] : undef,
           # places_of_living => convertCell($sheet->{Cells}[$row][22]),
           # general    => convertCell($sheet->{Cells}[$row][23])};
@@ -105,6 +107,6 @@ my $tempperson = {
     # ExtendedSimonWardFormat::setPictureDirectory($config_->{photo_dir});
     # ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
   # }
-  
+
   return $family_tree_data;
 }

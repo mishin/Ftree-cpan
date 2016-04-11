@@ -30,7 +30,7 @@ use version; our $VERSION = qv('2.3.31');
 
 use Params::Validate qw(:all);
 
-use Class::Std::Storable;
+use Class::Std::Fast::Storable;
 {
   my %title_of : ATTR(:get<title> :set<title>);
   my %prefix_of : ATTR(:get<prefix> :set<prefix>);
