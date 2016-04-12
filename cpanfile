@@ -10,6 +10,7 @@ requires 'Config::General', '2.58';
 
 requires 'Class::Std', '0.013';
 requires 'Class::Std::Storable', '0.0.1';
+requires 'Class::Std::Fast::Storable', '0.0.8';
 requires 'IO::Stringy', '2.110';
 requires 'List::MoreUtils', '0.413';
 requires 'OLE::Storage_Lite', '0.19';
@@ -41,7 +42,7 @@ requires 'Plack', '1.0037';
 requires 'CGI::Emulate::PSGI', '0.21';
 requires 'CGI::Compile', '0.19';
 requires 'Spreadsheet::Read', '0.62';
-requires 'Spreadsheet::XLSX', '0.13'; 
+requires 'Spreadsheet::XLSX', '0.13';
 requires 'Spreadsheet::ParseExcel';
 requires 'DateTime';
 requires 'Excel::Writer::XLSX';
