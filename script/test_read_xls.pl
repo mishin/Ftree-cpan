@@ -1,7 +1,7 @@
 ﻿use Data::Dumper;
 use FindBin qw($Bin);
 use lib "$Bin/../lib";
-use FamilyTreeData;
+use Ftree::FamilyTreeData;
 use Spreadsheet::ParseExcel;
 use Spreadsheet::ParseExcel::FmtJapan;
 
