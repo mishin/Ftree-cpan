@@ -14,7 +14,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# For a copy of the GNU General Public License, visit 
+# For a copy of the GNU General Public License, visit
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
@@ -30,7 +30,8 @@ use Config::General qw(SaveConfig ParseConfig);
 # SaveConfig("ftree.config", importSettings());
 
 sub importSettings {
-my %config = ParseConfig("ftree.config");
+	my ($config_name)=@_;
+my %config = ParseConfig($config_name);
 return \%config;
   # return {
     # default_language => "gb", #other options: de,fr,hu,pl,gb
@@ -43,31 +44,31 @@ return \%config;
       # config => {
         # # file_name => "../tree.xls",
         # file_name => "mishin_family.xls",#export-BloodTree.ser",
-        # photo_dir        => "c:/Users/TOSH/Documents/GitHub/Ftree-cpan/htdocs/pictures/", # relative to ftree.cgi file 
-        # # photo_dir        => "../../../htdocs/pictures/", # relative to ftree.cgi file 
-        # #photo_dir        => "../../../htdocs/pictures/", # relative to ftree.cgi file 
-        # photo_url        => "/pictures/", # set this according to webserver's settings 
+        # photo_dir        => "c:/Users/TOSH/Documents/GitHub/Ftree-cpan/htdocs/pictures/", # relative to ftree.cgi file
+        # # photo_dir        => "../../../htdocs/pictures/", # relative to ftree.cgi file
+        # #photo_dir        => "../../../htdocs/pictures/", # relative to ftree.cgi file
+        # photo_url        => "/pictures/", # set this according to webserver's settings
       # }
     # },
-# #   EXCEL DATASOURCE: 
+# #   EXCEL DATASOURCE:
     # # data_source      => {
       # # type => "excel",
       # # config => {
         # # # file_name => "../tree.xls",
         # # file_name => "../export-BloodTree.xls",
-        # # photo_dir        => "../pictures/", # relative to ftree.cgi file 
-        # # photo_url        => "../pictures/", # set this according to webserver's settings 
+        # # photo_dir        => "../pictures/", # relative to ftree.cgi file
+        # # photo_url        => "../pictures/", # set this according to webserver's settings
       # # }
     # # },
 
-# ##   CSV/TXT DATASOURCE: 
+# ##   CSV/TXT DATASOURCE:
 # #    data_source      => {
 # #      type => 'csv',
 # #      config => {
 # #        file_name => "../simpsons.txt",
 # #        encoding  => "utf8",
 # #        photo_dir        => "../pictures/", # relative to ftree.cgi file
-# #        photo_url        => "../pictures/", # set this according to webserver's settings 
+# #        photo_url        => "../pictures/", # set this according to webserver's settings
 # #      }
 # #    },
 
@@ -78,7 +79,7 @@ return \%config;
      # # config => {
        # # # file_name => "../royal.ged",
        # # file_name => "../export-BloodTree.ged",
-       # # photo_url        => "../pictures/", # set this according to webserver's settings 
+       # # photo_url        => "../pictures/", # set this according to webserver's settings
      # # }
    # # },
 
@@ -87,13 +88,13 @@ return \%config;
 # #    data_source      => {
 # #      type => "dbi",
 # #      config => {
-# #        datasource_name => 'DBI:mysql:my_database:localhost',        
+# #        datasource_name => 'DBI:mysql:my_database:localhost',
 # ##        datasource_name => 'DBI:Oracle:my_database:localhost',
 # #        db_user_name => "bart",
 # #        db_password  => "lisa",
 # #        db_table     => "family",
 # #        column_mapping => {
-# #          id         => 'ID',  
+# #          id         => 'ID',
 # #          first_name => 'FIRST_NAME',
 # #          mid_name   => 'MID_NAME',
 # #          last_name  => 'LAST_NAME',
@@ -113,10 +114,10 @@ return \%config;
 # #          jobs       => 'JOBS',
 # #          work_places => 'WORKPLACES',
 # #          places_of_living => 'LIVINGPLACES',
-# #          general    =>  'GENERAL'           
-# #        },     
+# #          general    =>  'GENERAL'
+# #        },
 # #        photo_dir        => "../pictures/", # relative to ftree.cgi file
-# #        photo_url        => "../pictures/", # set this according to webserver's settings 
+# #        photo_url        => "../pictures/", # set this according to webserver's settings
 # #      }
 # #    },
 
@@ -124,7 +125,7 @@ return \%config;
 
     # date_format      => "%d/%m/%Y",     # %d, %m, %Y denotes day, month, year respectively
 # #    date_format      => "%Y-%m-%d",
-    
+
     # css_filename     => "../css/bodon_default.css",
 
     # sitemeter_needed => 1,
