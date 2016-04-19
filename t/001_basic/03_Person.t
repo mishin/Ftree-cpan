@@ -7,5 +7,5 @@ use lib "$Bin/../lib";
 use Test::More tests => 1;
 
 require Ftree::Person;
-my $family_tree = Ftree::Person->new(1);
-isa_ok $family_tree, "Ftree::Person", "Ftree::Person->new";
+my $family_tree = Ftree::Person->new({id => 'unknown_male'});
+isa_ok $family_tree, "Ftree::Person", "Ftree::Person->new({id => 'unknown_male'})";
