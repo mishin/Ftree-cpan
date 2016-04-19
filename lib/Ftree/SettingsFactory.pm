@@ -14,7 +14,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# For a copy of the GNU General Public License, visit 
+# For a copy of the GNU General Public License, visit
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
@@ -29,10 +29,10 @@ package Ftree::SettingsFactory;
 use version; our $VERSION = qv('2.3.31');
 
 sub importSettings{
-  my ( $type ) = @_;
+  my ( $type, $config_name ) = @_;
   if($type eq "perl") {
     require Ftree::PerlSettingsImporter;
-    return Ftree::PerlSettingsImporter::importSettings();
+    return Ftree::PerlSettingsImporter::importSettings($config_name);
   }
 }
 

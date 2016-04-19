@@ -7,6 +7,6 @@ use lib "$Bin/../lib";
 use Test::More tests => 1;
 
 require Ftree::FamilyTreeInfo;
-my $family_tree = Ftree::FamilyTreeInfo->new('ftree.config');
+my $family_tree = Ftree::FamilyTreeInfo->new($Bin.'/ftree.config');
 isa_ok $family_tree, "Ftree::FamilyTreeInfo", "Ftree::FamilyTreeInfo->new";
 

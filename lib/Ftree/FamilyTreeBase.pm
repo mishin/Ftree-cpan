@@ -42,7 +42,7 @@ use utf8;
 my $q = new CGI;
 
 sub new {
-    my ($classname) = @_;
+    my ($classname, @args) = @_;
     my $self = {
         lang     => undef,
         password => undef,
@@ -59,11 +59,11 @@ sub new {
         cgi           => new CGI,
     };
     $self->{imgheight} = $self->{imgwidth} * 1.5;
-    $self->{settings}  = Ftree::SettingsFactory::importSettings('perl');
+    $self->{settings}  = Ftree::SettingsFactory::importSettings('perl', $args[0] );
     $self->{photoUrl}  = $self->{settings}{data_source}{config}{photo_url};
 
     if ( defined $self->{settings}{date_format} ){
-        Ftree::Date::Tiny->set_format( $self->{settings}{date_format} );      
+        Ftree::Date::Tiny->set_format( $self->{settings}{date_format} );
     }
 
     return bless $self, $classname;

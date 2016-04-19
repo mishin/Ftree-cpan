@@ -8,3 +8,4 @@ use Test::More tests => 1;
 
 require Ftree::FamilyTreeBase;
 my $family_tree = Ftree::FamilyTreeBase->new();
+isa_ok $family_tree, "Ftree::FamilyTreeBase", "Ftree::FamilyTreeBase->new";
