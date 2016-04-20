@@ -1,10 +1,3 @@
-#!"c:\Users\TOSH\Documents\job\perl\strawberry-perl-5.20.0.1-64bit-portable\perl\bin\perl.exe"
-#!"c:\Dwimperl\perl\bin\perl.exe"
-
-#c:\xampp\cgi-bin\ftree\..
-##!"c:\Dwimperl\perl\bin\perl.exe"
-
-###!"C:\xampp\perl\bin\perl.exe"
 use strict;
 use warnings;
 
@@ -60,18 +53,19 @@ use CGI qw(param);
 use FindBin;
 use lib "$FindBin::Bin";
 use lib "$FindBin::Bin/lib";
-
+use FindBin qw($Bin);
+use lib "$Bin/../lib";
 
 my $family_tree;
 my $type = CGI::param("type");
 if(defined $type && $type eq "tree")
 {
    require Ftree::FamilyTreeGraphics;
-   $family_tree = Ftree::FamilyTreeGraphics->new();
+   $family_tree = Ftree::FamilyTreeGraphics->new($Bin.'/ftree.config');
 }
 else {
    require Ftree::FamilyTreeInfo;
-   $family_tree = Ftree::FamilyTreeInfo->new();
+   $family_tree = Ftree::FamilyTreeInfo->new($Bin.'/ftree.config');
 }
 $family_tree->main();
 

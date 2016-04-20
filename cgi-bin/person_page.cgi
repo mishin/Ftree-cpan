@@ -31,12 +31,14 @@ use warnings;
 use FindBin;
 use lib "$FindBin::Bin";
 use lib "$FindBin::Bin/lib";
+use FindBin qw($Bin);
+use lib "$Bin/../lib";
 
 use version; our $VERSION = qv('0.2');
 
 use Ftree::PersonPage;
 
-my $family_tree = Ftree::PersonPage->new();
+my $family_tree = Ftree::PersonPage->new($Bin.'/ftree.config');
 $family_tree->main();
 
 exit;
