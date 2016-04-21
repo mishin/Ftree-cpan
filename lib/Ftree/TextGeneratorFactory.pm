@@ -27,11 +27,7 @@ use warnings;
 use Sub::Exporter -setup =>
   { exports => [qw(init getTextGenerator get_reverse_name)] };
 
-#use Perl6::Export::Attrs;
-use v5.10.1;
-no warnings 'experimental::smartmatch';
-
-#use Switch;
+use Switch;
 use version; our $VERSION = qv('2.3.33');
 
 my $language   = "gb";
@@ -66,41 +62,41 @@ sub get_reverse_name {
 }
 
 sub getTextGenerator {
-	for ($language) {
-		when (/hu/) {
+	switch ($language) {
+		case 'hu' {
 			$reverse_name = 1;
 			require Ftree::TextGenerators::HungarianTextGenerator;
 			return HungarianTextGenerator->new();
 		}
-		when (/gb/) {
+		case 'gb' {
 			require Ftree::TextGenerators::EnglishTextGenerator;
 			return EnglishTextGenerator->new();
 		}
-		when (/de/) {
+		case 'de' {
 			require Ftree::TextGenerators::GermanTextGenerator;
 			return GermanTextGenerator->new();
 		}
-		when (/fr/) {
+		case 'fr' {
 			require Ftree::TextGenerators::FrenchTextGenerator;
 			return FrenchTextGenerator->new();
 		}
-		when (/pl/) {
+		case 'pl' {
 			require Ftree::TextGenerators::PolishTextGenerator;
 			return PolishTextGenerator->new();
 		}
-		when (/it/) {
+		case 'it' {
 			require Ftree::TextGenerators::ItalianTextGenerator;
 			return ItalianTextGenerator->new();
 		}
-		when (/ro/) {
+		case 'ro' {
 			require Ftree::TextGenerators::RomanianTextGenerator;
 			return RomanianTextGenerator->new();
 		}
-		when (/ru/) {
+		case 'ru' {
 			require Ftree::TextGenerators::RussianTextGenerator;
 			return RussianTextGenerator->new();
 		}
-		default {
+		else {
 			require Ftree::TextGenerators::EnglishTextGenerator;
 			EnglishTextGenerator->new();
 		}
