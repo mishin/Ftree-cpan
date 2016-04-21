@@ -25,7 +25,7 @@ use strict;
 use warnings;
 
 use version;
-our $VERSION = qv('2.3.31');
+our $VERSION = qv('2.3.32');
 
 use Ftree::FamilyTreeBase;
 use Sub::Exporter -setup => { exports => [ qw(new main) ] };
