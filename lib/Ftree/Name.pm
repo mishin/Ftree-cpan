@@ -114,6 +114,9 @@ __END__
 
 Ftree - family tree generator
 
+=for html
+<a href="https://travis-ci.org/mishin/Ftree-cpan"><img src="https://travis-ci.org/mishin/Ftree-cpan.svg?branch=master"></a>
+
 =head1 EXAMPLE
 
 L<https://still-lowlands-7377.herokuapp.com>

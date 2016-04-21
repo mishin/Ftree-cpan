@@ -2,6 +2,11 @@
 
 Ftree - family tree generator
 
+<div>
+
+    <a href="https://travis-ci.org/mishin/Ftree-cpan"><img src="https://travis-ci.org/mishin/Ftree-cpan.svg?branch=master"></a>
+</div>
+
 # EXAMPLE
 
 [https://still-lowlands-7377.herokuapp.com](https://still-lowlands-7377.herokuapp.com)
@@ -13,6 +18,10 @@ installator for Windows 7 32bit
 
     #If install it
     cpanm M/MI/MISHIN/FamilyTreeInfo-2.3.33.tar.gz
+
+    git clone https://github.com/mishin/Ftree-cpan.git
+    cd Ftree-cpan/cgi-bin
+
 
     #copy the folder cgi-bin from the distribution
     cp cgi-bin c:\ftree\cgi-bin
