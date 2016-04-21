@@ -9,7 +9,6 @@ requires 'Gedcom', '1.15';
 requires 'Config::General', '2.58';
 
 requires 'Class::Std', '0.013';
-requires 'Class::Std::Storable', '0.0.1';
 requires 'Class::Std::Fast::Storable', '0.0.8';
 requires 'IO::Stringy', '2.110';
 requires 'List::MoreUtils', '0.413';
