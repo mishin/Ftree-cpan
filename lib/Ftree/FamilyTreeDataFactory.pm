@@ -25,45 +25,53 @@ use strict;
 use warnings;
 use version; our $VERSION = qv('2.3.33');
 
-use v5.10.1;
-#no warnings 'experimental::smartmatch';
-no if $] >= 5.017011, warnings => 'experimental::smartmatch';
-# use CGI::Carp qw(fatalsToBrowser);
+use Switch;
 
 sub getFamilyTree {
-  my ( $config ) = @_;
-  my $type = $config->{type};
-  $type = 'csv' if ($type eq 'txt');
+	my ($config) = @_;
+	my $type = $config->{type};
+	$type = 'csv' if ( $type eq 'txt' );
 
-  for ($type) {
-  	when (/\bcsv\b/) {
-  	  require Ftree::DataParsers::ExtendedSimonWardFormat;
-  	  return Ftree::DataParsers::ExtendedSimonWardFormat::createFamilyTreeDataFromFile($config->{config});
-  	}
-  	when (/\bexcel\b/) {
-  	  require Ftree::DataParsers::ExcelFormat;
-  	  return Ftree::DataParsers::ExcelFormat::createFamilyTreeDataFromFile($config->{config});
-  	}
-	when (/\bexcelx\b/) {
-  	  require Ftree::DataParsers::ExcelxFormat;
-  	  return Ftree::DataParsers::ExcelxFormat::createFamilyTreeDataFromFile($config->{config});
-  	}
-    when (/\bser\b/) {
-      require Ftree::DataParsers::SerializerFormat;
-      return Ftree::DataParsers::SerializerFormat::createFamilyTreeDataFromFile($config->{config});
-    }
-  	when (/\bgedcom\b/) {
-  	  require Ftree::DataParsers::GedcomFormat;
-  	  return Ftree::DataParsers::GedcomFormat::createFamilyTreeDataFromFile($config->{config});
-  	  }
-  	when (/\bdbi\b/) {
-      require Ftree::DataParsers::DBIFormat;
-      return Ftree::DataParsers::DBIFormat::getFamilyTreeData($config->{config});
-    }
-  	default {die "Unknown type: $type" }
-  }
+	switch ($type) {
+		case 'csv' {
+			require Ftree::DataParsers::ExtendedSimonWardFormat;
+			return
+			  Ftree::DataParsers::ExtendedSimonWardFormat::createFamilyTreeDataFromFile(
+				$config->{config} );
+		}
+		case 'excel' {
+			require Ftree::DataParsers::ExcelFormat;
+			return
+			  Ftree::DataParsers::ExcelFormat::createFamilyTreeDataFromFile(
+				$config->{config} );
+		}
+		case 'excelx' {
+			require Ftree::DataParsers::ExcelxFormat;
+			return
+			  Ftree::DataParsers::ExcelxFormat::createFamilyTreeDataFromFile(
+				$config->{config} );
+		}
+		case 'ser' {
+			require Ftree::DataParsers::SerializerFormat;
+			return
+			  Ftree::DataParsers::SerializerFormat::createFamilyTreeDataFromFile(
+				$config->{config} );
+		}
+		case 'gedcom' {
+			require Ftree::DataParsers::GedcomFormat;
+			return
+			  Ftree::DataParsers::GedcomFormat::createFamilyTreeDataFromFile(
+				$config->{config} );
+		}
+		case 'dbi' {
+			require Ftree::DataParsers::DBIFormat;
+			return Ftree::DataParsers::DBIFormat::getFamilyTreeData(
+				$config->{config} );
+		}
+		else { die "Unknown type: $type" }
+	}
 
-  return;
+	return;
 }
 
 1;
