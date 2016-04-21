@@ -14,7 +14,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# For a copy of the GNU General Public License, visit 
+# For a copy of the GNU General Public License, visit
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
@@ -57,14 +57,14 @@ sub main{
     case 'subfamily' {$self->_draw_same_surname_page();}
     case 'snames' {$self->_draw_surname_page();}
     case 'faces' {$self->_draw_facehall_page();}
-    case 'emails' {$self->_draw_general_page(\&Person::get_email, 'email', $self->{textGenerator}->{Emails},
+    case 'emails' {$self->_draw_general_page(\&Ftree::Person::get_email, 'email', $self->{textGenerator}->{Emails},
     		$self->{textGenerator}->{Total_with_email});}
-    case 'hpages' {$self->_draw_general_page(\&Person::get_homepage, 'homepage', $self->{textGenerator}->{Homepages},
+    case 'hpages' {$self->_draw_general_page(\&Ftree::Person::get_homepage, 'homepage', $self->{textGenerator}->{Homepages},
     		$self->{textGenerator}->{Total_with_homepage});}
     case 'bdays' {$self->_draw_birthday_page();}
     else { $self->_draw_invalid_page(); }
   }
-  
+
   return;
 }
 
@@ -75,19 +75,19 @@ sub _process_parameters {
 	$self->SUPER::_process_parameters();
 	$self->{pagetype} = $self->{cgi}->param('type');
 	$self->{pagetype} = "" unless(defined $self->{pagetype});
-	
+
 	return;
 }
 
 # private functions
 sub _draw_people_table {
-    my ($self, $people, $column_number) = validate_pos(@_, 
+    my ($self, $people, $column_number) = validate_pos(@_,
       {type => HASHREF}, {type => ARRAYREF}, {defaulf => 5});
     $column_number = 5 unless defined $column_number;  #AAARRRRGGGHHH
     my $nr_of_man  = 0;
     my $nr_of_woman= 0;
     print $self->{cgi}->start_table({-cellpadding => '5', -border=>'1', -align=>'center'}),"\n";
-    
+
     for my $index (0 .. @{$people} - 1 ) {
       print $self->{cgi}->start_Tr() if ( $index % $column_number == 0 );
       my $class = $self->get_cell_class(
@@ -97,27 +97,27 @@ sub _draw_people_table {
       print $self->{cgi}->end_Tr() if ( ($index % $column_number) == $column_number-1 );
   }
   print $self->{cgi}->end_Tr(),"\n" if ( (@{$people} % $column_number) != 1 );
-  
+
   print $self->{cgi}->end_table(),"\n", $self->{cgi}->br,
-    $self->{textGenerator}->summary(scalar(@{$people})), 
-    " ($self->{textGenerator}{man}: ", $nr_of_man,  
-    ", $self->{textGenerator}{woman}: ", $nr_of_woman, 
+    $self->{textGenerator}->summary(scalar(@{$people})),
+    " ($self->{textGenerator}{man}: ", $nr_of_man,
+    ", $self->{textGenerator}{woman}: ", $nr_of_woman,
     ", $self->{textGenerator}{unknown}: ", scalar(@{$people}) - $nr_of_man - $nr_of_woman, ')' ;
-    
-  return;    
+
+  return;
 }
 #########################################################
 # INDEX PAGE
 #########################################################
 sub _draw_index_page {
-  my ($self, $column_number) = validate_pos(@_, 
+  my ($self, $column_number) = validate_pos(@_,
       {type => HASHREF}, {type => SCALAR, optional => 1});
   my @people = grep {defined $_->get_name()} $self->{family_tree_data}->get_all_people();
   @people = sort{$a->get_name()->get_full_name() cmp $b->get_name()->get_full_name()} @people;
   $self->_toppage($self->{textGenerator}->{members});
   $self->_draw_people_table(\@people, $column_number);
   $self->_endpage();
-  
+
   return;
 }
 
@@ -125,19 +125,19 @@ sub _draw_index_page {
 # Same surname people
 #########################################################
 sub _draw_same_surname_page {
-  my ($self, $column_number) = validate_pos(@_, 
+  my ($self, $column_number) = validate_pos(@_,
       {type => HASHREF}, {type => SCALAR, optional => 1});
   my $surname = decode_utf8($self->{cgi}->param('surname'));
 	$surname = "" unless(defined $surname);
 	my @people = grep {defined $_->get_name() &&
-	                   $_->get_name()->get_last_name() eq $surname} 
+	                   $_->get_name()->get_last_name() eq $surname}
 	               $self->{family_tree_data}->get_all_people();
-	               
+
   @people = sort{$a->get_name()->get_full_name() cmp $b->get_name()->get_full_name()} (@people);
   $self->_toppage($self->{textGenerator}->People_with_surname($surname));
   $self->_draw_people_table(\@people, $column_number);
   $self->_endpage();
-  
+
   return;
 }
 
@@ -145,7 +145,7 @@ sub _draw_same_surname_page {
 # SURNAME PAGE
 #########################################################
 sub _draw_surname_page {
-  my ($self, $column_number) = validate_pos(@_, 
+  my ($self, $column_number) = validate_pos(@_,
       {type => HASHREF}, {type => SCALAR, optional => 1});
   $column_number = 8 unless( defined $column_number);
 
@@ -155,7 +155,7 @@ sub _draw_surname_page {
     $last_name_set->insert($person->get_name()->get_last_name())
       if((defined $person->get_name()) && (defined $person->get_name()->get_last_name()));
   }
-  
+
   $self->_toppage($self->{textGenerator}->{Surnames});
 
   while ( defined( my $a_last_name = $last_name_set->each ) ) {
@@ -166,7 +166,7 @@ sub _draw_surname_page {
   print $self->{cgi}->start_table({-cellpadding => '5', -border=>'1', -align=>'center'}),"\n";
   for my $people_count (0 .. $#sortednodes) {
     print $self->{cgi}->start_Tr() if ( $people_count % $column_number == 0 );
-    print $self->{cgi}->td($self->{cgi}->a({-href => "$self->{treeScript}?type=subfamily&surname=$sortednodes[$people_count]&lang=$self->{lang}"}, 
+    print $self->{cgi}->td($self->{cgi}->a({-href => "$self->{treeScript}?type=subfamily&surname=$sortednodes[$people_count]&lang=$self->{lang}"},
       $sortednodes[$people_count]));
     print $self->{cgi}->end_Tr(),"\n" if ( $people_count % $column_number == $column_number - 1 );
   }
@@ -174,18 +174,18 @@ sub _draw_surname_page {
   print $self->{cgi}->end_table(),"\n", $self->{cgi}->br,
     $self->{textGenerator}->{Total}.' '.$last_name_set->size.' '.$self->{textGenerator}->{people};
   $self->_endpage();
-  
+
   return;
 }
 
 sub _draw_general_table {
-  my ($self, $func, $attribute, $people_with_type_r, $text2) = validate_pos(@_, 
+  my ($self, $func, $attribute, $people_with_type_r, $text2) = validate_pos(@_,
       {type => HASHREF}, {type => CODEREF}, {type => SCALAR}, {type => ARRAYREF}, {type => SCALAR});
   my $nr_of_man=0;
   my $nr_of_woman=0;
-  
+
   print $self->{cgi}->start_table({-cellpadding => '5', -border=>'1', -align=>'center'}),"\n",
-  	$self->{cgi}->Tr($self->{cgi}->th($self->{textGenerator}{photo}), $self->{cgi}->th($self->{textGenerator}{name}), 
+  	$self->{cgi}->Tr($self->{cgi}->th($self->{textGenerator}{photo}), $self->{cgi}->th($self->{textGenerator}{name}),
   		$self->{cgi}->th($self->{textGenerator}{$attribute}));
 
   foreach my $a_person ( @{$people_with_type_r} ) {
@@ -193,34 +193,34 @@ sub _draw_general_table {
         $a_person, \$nr_of_man, \$nr_of_woman);
 	print  $self->{cgi}->start_Tr({-class => $class}),
 		$self->{cgi}->td($self->html_img($a_person)),
-		
+
 		$self->{cgi}->td($self->aref_tree($a_person->get_name()->get_full_name(), $a_person)),
     $self->{cgi}->td($func->($a_person)),
-    $self->{cgi}->end_Tr, "\n";      
+    $self->{cgi}->end_Tr, "\n";
   }
   print $self->{cgi}->end_table, "\n", $self->{cgi}->br, $text2, scalar(@{$people_with_type_r}),
-    " ($self->{textGenerator}{man}: ", $nr_of_man,  
-    ", $self->{textGenerator}{woman}: ", $nr_of_woman, 
+    " ($self->{textGenerator}{man}: ", $nr_of_man,
+    ", $self->{textGenerator}{woman}: ", $nr_of_woman,
     ", $self->{textGenerator}{unknown}: ", scalar(@{$people_with_type_r}) - $nr_of_man - $nr_of_woman, ")" ;
 
-  return;  
+  return;
 }
 #########################################################
 # GENERAL PAGE
 #########################################################
 sub _draw_general_page {
-  my ($self, $func, $attribute, $title, $text2) = validate_pos(@_, 
-      {type => HASHREF}, {type => CODEREF}, {type => SCALAR}, 
+  my ($self, $func, $attribute, $title, $text2) = validate_pos(@_,
+      {type => HASHREF}, {type => CODEREF}, {type => SCALAR},
       {type => SCALAR}, {type => SCALAR});
-  
-  my @people_with_type = grep {defined $func->($_)} 
+
+  my @people_with_type = grep {defined $func->($_)}
     (grep {defined $_->get_name()} $self->{family_tree_data}->get_all_people());
   @people_with_type = sort{$a->get_name()->get_full_name() cmp $b->get_name()->get_full_name()} (@people_with_type);
-  
+
   $self->_toppage($title);
   $self->_draw_general_table($func, $attribute, \@people_with_type, $text2);
   $self->_endpage();
-  
+
   return;
 }
 
@@ -241,23 +241,23 @@ sub _draw_birthday_page {
  	++$index while($months->[$index] ne $month);
     $month = $index + 1;
   }
- 
-  
-  my @people_with_bday = grep {defined $_->get_name() && 
-    defined $_->get_date_of_birth() && 
-  	defined $_->get_date_of_birth()->{month} && $_->get_date_of_birth()->{month} == $month} 
+
+
+  my @people_with_bday = grep {defined $_->get_name() &&
+    defined $_->get_date_of_birth() &&
+  	defined $_->get_date_of_birth()->{month} && $_->get_date_of_birth()->{month} == $month}
   	 ($self->{family_tree_data}->get_all_people());
 
-  my $title = $self->{textGenerator}->birthday_reminder($month-1); 
+  my $title = $self->{textGenerator}->birthday_reminder($month-1);
   $self->_toppage($title);
   @people_with_bday = sort{$a->get_name()->get_full_name() cmp $b->get_name()->get_full_name()} (@people_with_bday);
 
-  $self->_draw_general_table(\&Person::get_date_of_birth, 'date_of_birth', \@people_with_bday, 
+  $self->_draw_general_table(\&Ftree::Person::get_date_of_birth, 'date_of_birth', \@people_with_bday,
     $self->{textGenerator}->total_living_with_birthday($month-1));
 
   # Add the button for other months
   print $self->{cgi}->start_form({-action => $self->{treeScript},
-                        -method => 'get' }), 
+                        -method => 'get' }),
     "\n$self->{textGenerator}->{CheckAnotherMonth}:\n",
     $self->{cgi}->start_Select({-name => 'month',
                 -size => 1}), "\n";
@@ -277,7 +277,7 @@ sub _draw_birthday_page {
     $self->{cgi}->end_form;
 
   $self->_endpage();
-  
+
   return;
 }
 #########################################################
@@ -286,63 +286,63 @@ sub _draw_birthday_page {
 sub _draw_facehall_page {
   my ($self) = validate_pos(@_, {type => HASHREF});
   my $column_number = 5;
-  
-  my @people_with_photo = grep {defined $_->get_name() && 
-    defined $_->get_default_picture()} 
+
+  my @people_with_photo = grep {defined $_->get_name() &&
+    defined $_->get_default_picture()}
     ($self->{family_tree_data}->get_all_people());
-  @people_with_photo = sort{ $a->get_name()->get_full_name() cmp 
+  @people_with_photo = sort{ $a->get_name()->get_full_name() cmp
                              $b->get_name()->get_full_name() } (@people_with_photo);
-  
+
   $self->_toppage($self->{textGenerator}->{Hall_of_faces});
 
   my $nr_of_man   = 0;
   my $nr_of_woman = 0;
   print $self->{cgi}->start_table({-cellpadding => '7', -align=>'center'}),"\n";
-  
+
   foreach my $index (0 .. $#people_with_photo) {
       print $self->{cgi}->start_Tr,"\n" if ( $index % $column_number == 0 );
       my $class = $self->get_cell_class(
         $people_with_photo[$index], \$nr_of_man, \$nr_of_woman);
-      print $self->{cgi}->start_td({-class => $class, -align=>'center'}), 
-        $self->aref_tree($self->html_img($people_with_photo[$index]), $people_with_photo[$index]), $self->{cgi}->br, 
+      print $self->{cgi}->start_td({-class => $class, -align=>'center'}),
+        $self->aref_tree($self->html_img($people_with_photo[$index]), $people_with_photo[$index]), $self->{cgi}->br,
         $people_with_photo[$index]->get_name()->get_full_name(), $self->{cgi}->end_td;
       print $self->{cgi}->end_Tr,"\n" if ( $index % $column_number == $column_number-1 );
   }
   print $self->{cgi}->end_Tr,"\n" if ( $#people_with_photo % $column_number != 0 );
   print $self->{cgi}->end_table,"\n", $self->{cgi}->br,
     $self->{textGenerator}->{Total_with_photo}, scalar(@people_with_photo),
-    " ($self->{textGenerator}{man}: ", $nr_of_man,  
-    ", $self->{textGenerator}{woman}: ", $nr_of_woman, 
+    " ($self->{textGenerator}{man}: ", $nr_of_man,
+    ", $self->{textGenerator}{woman}: ", $nr_of_woman,
     ", $self->{textGenerator}{unknown}: ", scalar(@people_with_photo) - $nr_of_man - $nr_of_woman, ")" ;
-print $self->{cgi}->start_table({-cellpadding => '7', -align=>'center'}),"\n";	
+print $self->{cgi}->start_table({-cellpadding => '7', -align=>'center'}),"\n";
 print $self->{cgi}->start_Tr;
       print $self->{cgi}->start_td({-align=>'center'});
 	  print $self->{cgi}->br, " $self->{textGenerator}{Prayer_for_the_living}: ";
-	  
+
 	    foreach my $index (0 .. $#people_with_photo) {
 		if ($people_with_photo[$index]->get_is_living()){
-      print $self->{cgi}->br,$people_with_photo[$index]->get_name()->get_first_name(),' (',$people_with_photo[$index]->get_name()->get_full_name(),')';     
+      print $self->{cgi}->br,$people_with_photo[$index]->get_name()->get_first_name(),' (',$people_with_photo[$index]->get_name()->get_full_name(),')';
 	  }
   }
-	  
+
 	  print $self->{cgi}->end_td;
-	  
+
       print $self->{cgi}->start_td({-align=>'center'});
       print $self->{cgi}->br, " $self->{textGenerator}{Prayer_for_the_departed}: ";
 	  	    foreach my $index (0 .. $#people_with_photo) {
 		if (!$people_with_photo[$index]->get_is_living()){
-      print $self->{cgi}->br,$people_with_photo[$index]->get_name()->get_first_name(),' (',$people_with_photo[$index]->get_name()->get_full_name(),')';     
+      print $self->{cgi}->br,$people_with_photo[$index]->get_name()->get_first_name(),' (',$people_with_photo[$index]->get_name()->get_full_name(),')';
 	  }
   }
 	  print $self->{cgi}->end_td;
-	  
+
       print $self->{cgi}->end_Tr,"\n";
 
 print $self->{cgi}->end_table,"\n", $self->{cgi}->br;
 
 
   $self->_endpage();
-  
+
   return;
 }
 #########################################################
@@ -369,12 +369,12 @@ __END__
 
 Ftree - family tree generator
 
-=head1 EXAMPLE 
+=head1 EXAMPLE
 
 L<https://still-lowlands-7377.herokuapp.com>
 
 =head1 SYNOPSIS
-  
+
 installator for Windows 7 32bit
 L<https://sourceforge.net/projects/family-tree-32/files/latest/download?source=navbar>
 
@@ -382,13 +382,13 @@ L<https://sourceforge.net/projects/family-tree-32/files/latest/download?source=n
   cpanm FamilyTreeInfo
 
   #copy the folder cgi-bin from the distribution
-  cp cgi-bin c:\ftree\cgi-bin 
-  
+  cp cgi-bin c:\ftree\cgi-bin
+
   #then got to it directory
   c:\ftree\cgi-bin
   #and run
   plackup
-  
+
   #HTTP::Server::PSGI: Accepting connections at http://0:5000/
 
   #now go to the browser
@@ -397,8 +397,8 @@ L<https://sourceforge.net/projects/family-tree-32/files/latest/download?source=n
   #and we can see a family tree, and
   #to his Office just need to edit the file
   c:\ftree\cgi-bin\tree.xls
-  
-  #or the file with a different name, but then this name must indicate file 
+
+  #or the file with a different name, but then this name must indicate file
   ftree.config
   #changing parameter
   file_name tree.xls
@@ -416,7 +416,7 @@ L<https://sourceforge.net/projects/family-tree-32/files/latest/download?source=n
 
   #on your
 
-=head1 OTHER Guts (you never need to read it)  
+=head1 OTHER Guts (you never need to read it)
 
 =head1 PACKAGE CONTENTS:
 
@@ -428,22 +428,22 @@ L<https://sourceforge.net/projects/family-tree-32/files/latest/download?source=n
   license.txt                    The GNU GPL license details
   changes.txt					   Change history
   pictures/*.[gif,png,jpg,tif]   The pictures of the relatives
-  graphics/*.gif                 The system graphic files 
+  graphics/*.gif                 The system graphic files
 
 =head1 OVERVIEW:
- 
+
 When I designed the Family Tree Generator, I wanted more than just an online version of a traditional tree. With this software it is possible to draw a tree of ancestors and descendants for any person, showing any number of generations (where the information exists).
-Most other web-based "trees" are little more than text listings of people. 
+Most other web-based "trees" are little more than text listings of people.
 
 A simple datafile contains details of people and their relationships. All the HTML pages are generated on the fly. This means that the tree is easy to maintain.
 
 Note that the tree shows the "genetic" family tree. It contains no information about marriages and adaptation.
 
-For a demonstration of this software, visit http://www.ilab.sztaki.hu/~bodon/Simpsons/cgi/ftree.cgi or http://www.ilab.sztaki.hu/~bodon/ftree2/cgi/ftree.cgi. 
+For a demonstration of this software, visit http://www.ilab.sztaki.hu/~bodon/Simpsons/cgi/ftree.cgi or http://www.ilab.sztaki.hu/~bodon/ftree2/cgi/ftree.cgi.
 
 The program is written in Perl.
 It runs as a CGI program - its output is the HTML of the page that you see.
-The program reads in the data file, and analyzes the relationships to determine the ancestors, siblings and descendants of the person selected. 
+The program reads in the data file, and analyzes the relationships to determine the ancestors, siblings and descendants of the person selected.
 HTML tables are generated to display these trees, linking in the portrait images where they exist.
 
 =head1 INSTALLATION INSTRUCTIONS:
@@ -466,43 +466,43 @@ HTML tables are generated to display these trees, linking in the portrait images
 
 =head1 INSTALLATION INSTRUCTIONS FOR XAMPP for Windows 5.6.12:
 
-Download I use xampp XAMPP for Windows 5.6.12 (https://www.apachefriends.org/ru/download.html) to install and configure Apache  
- 
-  <IfModule alias_module>  
-  ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/ftree/cgi/"  
-  </IfModule>  
-  
-  <Directory "C:/xampp/cgi-bin/ftree/cgi">  
-  AllowOverride All  
-  Options None  
-  Require all granted  
-  </Directory>  
-   
-My shebang in ftree.cgi is #!"c:\Dwimperl\perl\bin\perl.exe" (by Gabor Sabo)  
- 
-  copy c:\xampp\cgi-bin\ftree\graphics\   
-  to    
-  c:\xampp\htdocs\graphics\  
-  
-to correct show images  
-  
+Download I use xampp XAMPP for Windows 5.6.12 (https://www.apachefriends.org/ru/download.html) to install and configure Apache
+
+  <IfModule alias_module>
+  ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/ftree/cgi/"
+  </IfModule>
+
+  <Directory "C:/xampp/cgi-bin/ftree/cgi">
+  AllowOverride All
+  Options None
+  Require all granted
+  </Directory>
+
+My shebang in ftree.cgi is #!"c:\Dwimperl\perl\bin\perl.exe" (by Gabor Sabo)
+
+  copy c:\xampp\cgi-bin\ftree\graphics\
+  to
+  c:\xampp\htdocs\graphics\
+
+to correct show images
+
 I catch error couldn't create child process: 720002
 ------------------------
-It was the first line in the .cgi file that needed to be adapted to Xamp's configuration:  
-  
-  #!"c:\xampp\perl\bin\perl.exe"  
-  Instead of:  
-  
-  #!"c:\perl\bin\perl.exe"  
-  
-https://forum.xojo.com/20697-couldn-t-create-child-process-720002-error-when-deploying-on-wi/0  
-http://open-server.ru/forum/viewtopic.php?f=6&t=1059  
-  
+It was the first line in the .cgi file that needed to be adapted to Xamp's configuration:
+
+  #!"c:\xampp\perl\bin\perl.exe"
+  Instead of:
+
+  #!"c:\perl\bin\perl.exe"
+
+https://forum.xojo.com/20697-couldn-t-create-child-process-720002-error-when-deploying-on-wi/0
+http://open-server.ru/forum/viewtopic.php?f=6&t=1059
+
 =head1 NAME OF THE PICTURE:
-  
-  One picture may belong to each person. 
+
+  One picture may belong to each person.
   No image put here and name=id.jpg
-  c:\xampp\cgi-bin\ftree\pictures\  
+  c:\xampp\cgi-bin\ftree\pictures\
 
 =head1 DATAFILE FORMAT:
 
@@ -517,7 +517,7 @@ http://open-server.ru/forum/viewtopic.php?f=6&t=1059
   We encourage everybody to use the excel format. To convert from the csv format to the excel format, use script script/convertFormat.pl
 
   TIP 1.: Maintain your family tree data in excel using the Form option. Select all the columns, then press DATA->Form. It is convenient to add new people or to modify information of existing persons.
-  TIP 2.: Freeze the first line so that header does not disappear when scrolling down. 
+  TIP 2.: Freeze the first line so that header does not disappear when scrolling down.
 
 =head1 The excel format:
 
@@ -526,7 +526,7 @@ http://open-server.ru/forum/viewtopic.php?f=6&t=1059
    * title: like: Dr., Prof.
    * prefix: like: sir
    * first name
-   * middle name 
+   * middle name
    * last Name
    * suffix: like: VIII
    * nickname
@@ -557,14 +557,14 @@ http://open-server.ru/forum/viewtopic.php?f=6&t=1059
 
   1. Full name.
    Middle names can be included in this field.
-   If more than one person share the same name, a number can be appended (not shown in the displayed output). For example, "Bart Simpson2". 
-  2. Father (optional - leave blank if not known). No middle names. 
-  3. Mother (optional) 
-  4. email address (optional) 
-  5. web page (optional) 
+   If more than one person share the same name, a number can be appended (not shown in the displayed output). For example, "Bart Simpson2".
+  2. Father (optional - leave blank if not known). No middle names.
+  3. Mother (optional)
+  4. email address (optional)
+  5. web page (optional)
   6. Dates, birth-death (both optional).
   Examples: "17/10/49-24/11/83", "10/69-"
-   Note that the year of birth is not displayed for people who are still alive. 
+   Note that the year of birth is not displayed for people who are still alive.
   7. Gender (0 for male, 1 for female)
   8. title: like: Dr., Prof.
   9. prefix: like: sir
@@ -585,7 +585,7 @@ http://open-server.ru/forum/viewtopic.php?f=6&t=1059
   To switch from comma separated value file to excel spreadsheet, do the following:
   cd ftree2
   perl ./scripts/convertFormat.pl ./tree.txt ./tree.xls
-  This will generate (overwrite) a tree.xls file. 
+  This will generate (overwrite) a tree.xls file.
 
   The GEDCOM format:
   GEDCOM, an acronym for GEnealogical Data COMmunication, is a specification for exchanging genealogical data between different genealogy software. GEDCOM was developed by The Church of Jesus Christ of Latter-day Saints as an aid in their extensive genealogical research. A GEDCOM file is plain text (an obscure text encoding named ANSEL, though often in ASCII in the United States) containing genealogical information about individuals, and data linking these records together. Most genealogy software supports importing from and/or exporting to GEDCOM format.
@@ -627,7 +627,7 @@ Since the purpose of this software is to provide a free and simple tool for thos
 =head1 SECURITY ISSUES:
 
 The protection provided by password request (set in config file) is quite primitive, i.e. it is easy to break it.
-Ther are historical reasons for being available. We suggest to use server side protection like .htaccess files in case of apache web servers. 
+Ther are historical reasons for being available. We suggest to use server side protection like .htaccess files in case of apache web servers.
 
 =head1 AUTHORS
 
@@ -658,10 +658,10 @@ Rober Miles (Italian),
 Lajos Malozsak (Romanian),
 Vladimir Kangin (Russian)
 
-I also would like to thank the feedback/help of (in no particular order) Alex Roitman, Anthony Fletcher, 
+I also would like to thank the feedback/help of (in no particular order) Alex Roitman, Anthony Fletcher,
 Richard Bos, Sylvia McKenzie and Sean Symes.
 
 =head1 SEE ALSO
 
 =cut
- 
+
