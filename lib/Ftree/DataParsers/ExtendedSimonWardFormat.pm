@@ -103,7 +103,7 @@ sub createFamilyTreeDataFromFile {
   my $arrayImporter = Ftree::DataParsers::ArrayImporters::CSVArrayImporter->new($file_name, $encoding);
   while ($arrayImporter->hasNext()) {
     my @fields = $arrayImporter->next();
-    @fields = map {StringUtils::trim($_)} @fields;
+    @fields = map {Ftree::StringUtils::trim($_)} @fields;
 
     my $name_ref = getNameFields($fields[0]);
     my ( $date_of_birth, $date_of_death ) = defined $fields[5] ?
