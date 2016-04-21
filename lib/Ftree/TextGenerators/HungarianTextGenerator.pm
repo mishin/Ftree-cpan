@@ -25,7 +25,7 @@ use warnings;
 use utf8;
 
 package HungarianTextGenerator;
-use version; our $VERSION = qv('2.3.35');
+use version; our $VERSION = qv('2.3.36');
 sub new {
   my ( $classname ) = @_;
   my $self = {

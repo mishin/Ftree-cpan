@@ -2,6 +2,8 @@ Revision history for Ftree
 
 {{$NEXT}}
 
+2.3.36  2016-04-21 17:43:21 MSK
+
            * fix bug converting
            * https://github.com/mishin/Ftree-cpan/issues/3
            * from GEDCOM format to XLS

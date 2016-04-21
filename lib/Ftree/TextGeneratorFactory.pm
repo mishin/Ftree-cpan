@@ -28,7 +28,7 @@ use Sub::Exporter -setup =>
   { exports => [qw(init getTextGenerator get_reverse_name)] };
 
 use Switch;
-use version; our $VERSION = qv('2.3.35');
+use version; our $VERSION = qv('2.3.36');
 
 my $language   = "gb";
 my %langToPict = (
