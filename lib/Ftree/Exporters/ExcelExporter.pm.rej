@@ -1,9 +1,0 @@
-diff a/lib/Ftree/Exporters/ExcelExporter.pm b/lib/Ftree/Exporters/ExcelExporter.pm	(rejected hunks)
-@@ -42,7 +42,6 @@
-     my @person_row = ();
-     # push @person_row, $person->get_id();
-     
--      $person->get_name()->get_prefix(), $person->get_name()->get_first_name(),
- 	
- 	my ($id, $title, $prefix, $first_name, $mid_name, $last_name, $suffix, 
-         $nickname,$father, $mother, $email, $homepage, $date_of_birth,$date_of_death) = (
