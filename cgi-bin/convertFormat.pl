@@ -16,7 +16,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# For a copy of the GNU General Public License, visit 
+# For a copy of the GNU General Public License, visit
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
@@ -51,26 +51,26 @@ else {
     type => $type_hash{$input_extension},
     config => {
       file_name => $input_file_name,
-    }    
+    }
   );
-  
-  
+
+
   my $family_tree = Ftree::FamilyTreeDataFactory::getFamilyTree( \%config );
   my $extension = (split(/\./, $output_file_name))[-1];
   switch ($extension) {
     case "xls" {
       require Ftree::Exporters::ExcelExporter;
-      Ftree::ExcelExporter::export($output_file_name, $family_tree);
+      Ftree::Exporters::ExcelExporter::export($output_file_name, $family_tree);
       }
     case "xlsx" {
       require Ftree::Exporters::ExcelxExporter;
-      Ftree::ExcelxExporter::export($output_file_name, $family_tree);
-      }	  
+      Ftree::Exporters::ExcelxExporter::export($output_file_name, $family_tree);
+      }
     case "ser" {
       require Ftree::Exporters::Serializer;
-      Ftree::Serializer::export($output_file_name, $family_tree);
+      Ftree::Exporters::Serializer::export($output_file_name, $family_tree);
       }
-} 
-  
+}
+
 }
 

@@ -14,18 +14,19 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# For a copy of the GNU General Public License, visit 
+# For a copy of the GNU General Public License, visit
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 #######################################################
 
-package Serializer;
+package Ftree::Exporters::Serializer;
 use strict;
 use warnings;
 use version; our $VERSION = qv('2.3.31');
 use Storable;
 use Params::Validate qw(:all);
+use Sub::Exporter -setup => { exports => [ qw(export) ] };
 
 sub export {
   my ($filename, $family_tree_data) = validate_pos(@_, {type => SCALAR}, {type => HASHREF});

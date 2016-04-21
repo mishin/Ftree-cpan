@@ -14,7 +14,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# For a copy of the GNU General Public License, visit 
+# For a copy of the GNU General Public License, visit
 # http://www.gnu.org or write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
@@ -37,10 +37,10 @@ sub createFamilyTreeDataFromFile {
 
   my $family_tree_data = Storable::retrieve($file_name);
   if(defined $config_->{photo_dir}) {
-    Ftree::ExtendedSimonWardFormat::setPictureDirectory($config_->{photo_dir});
-    Ftree::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
+    Ftree::DataParsers::ExtendedSimonWardFormat::setPictureDirectory($config_->{photo_dir});
+    Ftree::DataParsers::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
   }
-  
+
   return $family_tree_data;
 }
 

@@ -47,7 +47,7 @@ sub createFamilyTreeDataFromFile {
     # my $excel            = Spreadsheet::ParseXLSX->new->parse($file_name);
     # Spreadsheet::ParseXLSX::Workbook->Parse($file_name)
     # or die "Unable to parse file " . $file_name;
-foreach my $sheet ( @{ $excel->{Worksheet} } ) {	
+foreach my $sheet ( @{ $excel->{Worksheet} } ) {
             foreach my $row ( $sheet->{MinRow} + 1 .. $sheet->{MaxRow} ) {
             my $tempperson = {
                 id             => convertCell( $sheet->{Cells}[$row][0] ),
@@ -84,10 +84,10 @@ foreach my $sheet ( @{ $excel->{Worksheet} } ) {
             $family_tree_data->add_person($tempperson);
         }
     }
-     
+
     if ( defined $config_->{photo_dir} ) {
-        Ftree::ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
-        Ftree::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
+        Ftree::DataParsers::ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
+        Ftree::DataParsers::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
     }
 
     return $family_tree_data;
