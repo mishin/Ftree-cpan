@@ -21,26 +21,7 @@ installator for Windows 7 32bit
 
     git clone https://github.com/mishin/Ftree-cpan.git
     cd Ftree-cpan/cgi-bin
-
-
-    #copy the folder cgi-bin from the distribution
-    cp cgi-bin c:\ftree\cgi-bin
-
-    #then got to it directory
-    c:\ftree\cgi-bin
-    #and run
-    plackup
-
-    #HTTP::Server::PSGI: Accepting connections at http://0:5000/
-
-    #now go to the browser
-    http://127.0.0.1:5000/
-
-    try to attach junit to eclipse
-
-    http://blogs.perl.org/users/confuseacat/2011/09/perl-testing-with-jenkinshudson-avoiding-some-pitfalls.html
-    prove -r --timer --formatter=TAP::Formatter::JUnit -l t > test_results.xml
-
+    ftree.bat
 
 
     #and we can see a family tree, and
