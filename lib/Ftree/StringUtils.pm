@@ -4,7 +4,7 @@ package Ftree::StringUtils;
 use strict;
 use warnings;
 use Params::Validate qw(:all);
-use version; our $VERSION = qv('2.3.33');
+use version; our $VERSION = qv('2.3.34');
 
 # Perl trim function to remove whitespace from the start and end of the string
 sub trim

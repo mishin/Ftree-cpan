@@ -23,7 +23,7 @@
 package Ftree::Picture;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.33');
+use version; our $VERSION = qv('2.3.34');
 
 use Class::Std::Fast::Storable;
 {
