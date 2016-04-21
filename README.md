@@ -12,7 +12,7 @@ installator for Windows 7 32bit
 [https://sourceforge.net/projects/family-tree-32/files/latest/download?source=navbar](https://sourceforge.net/projects/family-tree-32/files/latest/download?source=navbar)
 
     #If install it
-    cpanm FamilyTreeInfo
+    cpanm M/MI/MISHIN/FamilyTreeInfo-2.3.33.tar.gz
 
     #copy the folder cgi-bin from the distribution
     cp cgi-bin c:\ftree\cgi-bin
