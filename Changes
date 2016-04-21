@@ -1,6 +1,7 @@
 Revision history for Ftree
 
 {{$NEXT}}
+           * fix export, fix all bugs, it works now
 
 2.3.31  2015-10-15 07:37:21 MSK
 
@@ -31,8 +32,8 @@ Revision history for Ftree
 2.3.23  2015-09-16 04:59:37 MSK
            * add xlsx adaptor support
 2.3.22  2015-09-14 03:22:27 MSK
-           * I tune to deploy my app from github(https://github.com/mishin/Ftree-cpan) to 
-           * https://www.heroku.com/home 
+           * I tune to deploy my app from github(https://github.com/mishin/Ftree-cpan) to
+           * https://www.heroku.com/home
            * #heroku is fantastic!
 2.3.21  2015-09-12 09:05:48 MSK
            * add installer for windows7
@@ -55,10 +56,10 @@ Revision history for Ftree
 
            * Move distribution to plack
 2.3.13  2015-09-07 01:54:27 MSK
-           * Put config to file c:\Users\TOSH\Documents\GitHub\Ftree-cpan\cgi-bin\ftree.config 
+           * Put config to file c:\Users\TOSH\Documents\GitHub\Ftree-cpan\cgi-bin\ftree.config
            * Add Prayer_for_the_living
            * Add Prayer_for_the_departed
-		   
+
 2.3.12  2015-09-06 09:15:07 MSK
            * Improve pod
 
@@ -73,12 +74,12 @@ NEW IN VERSION 2.3.10:
 * bug fixes
 
 NEW IN VERSION 2.3.9:
-* language Russian added 
+* language Russian added
 
 NEW IN VERSION 2.3.8:
 * no zoom-out button if there are no more generations
 * border color of the image depends on the existence of the member (black for dead relative). See class dead and alive in style sheet
-* gender-dependent picture for unknown persons  
+* gender-dependent picture for unknown persons
 * proper UTF-8 and excel encoding (big endian) handling
 * bug fixes (e.g. in language switching)
 * config file change (see option encoding for csv format)
@@ -144,4 +145,4 @@ NEW IN VERSION 2.0:
 * Facehall
 * Surname page
 
-Version 2.0 is fully backwards compatible - the data file format just slightly changed. 		   
+Version 2.0 is fully backwards compatible - the data file format just slightly changed.

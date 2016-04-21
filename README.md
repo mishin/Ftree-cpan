@@ -2,7 +2,7 @@
 
 Ftree - family tree generator
 
-# EXAMPLE 
+# EXAMPLE
 
 [https://still-lowlands-7377.herokuapp.com](https://still-lowlands-7377.herokuapp.com)
 
@@ -15,23 +15,30 @@ installator for Windows 7 32bit
     cpanm FamilyTreeInfo
 
     #copy the folder cgi-bin from the distribution
-    cp cgi-bin c:\ftree\cgi-bin 
-    
+    cp cgi-bin c:\ftree\cgi-bin
+
     #then got to it directory
     c:\ftree\cgi-bin
     #and run
     plackup
-    
+
     #HTTP::Server::PSGI: Accepting connections at http://0:5000/
 
     #now go to the browser
     http://127.0.0.1:5000/
 
+    try to attach junit to eclipse
+
+    http://blogs.perl.org/users/confuseacat/2011/09/perl-testing-with-jenkinshudson-avoiding-some-pitfalls.html
+    prove -r --timer --formatter=TAP::Formatter::JUnit -l t > test_results.xml
+
+
+
     #and we can see a family tree, and
     #to his Office just need to edit the file
     c:\ftree\cgi-bin\tree.xls
-    
-    #or the file with a different name, but then this name must indicate file 
+
+    #or the file with a different name, but then this name must indicate file
     ftree.config
     #changing parameter
     file_name tree.xls
@@ -49,7 +56,7 @@ installator for Windows 7 32bit
 
     #on your
 
-# OTHER Guts (you never need to read it)  
+# OTHER Guts (you never need to read it)
 
 # PACKAGE CONTENTS:
 
@@ -61,22 +68,22 @@ installator for Windows 7 32bit
     license.txt                    The GNU GPL license details
     changes.txt                                      Change history
     pictures/*.[gif,png,jpg,tif]   The pictures of the relatives
-    graphics/*.gif                 The system graphic files 
+    graphics/*.gif                 The system graphic files
 
 # OVERVIEW:
 
 When I designed the Family Tree Generator, I wanted more than just an online version of a traditional tree. With this software it is possible to draw a tree of ancestors and descendants for any person, showing any number of generations (where the information exists).
-Most other web-based "trees" are little more than text listings of people. 
+Most other web-based "trees" are little more than text listings of people.
 
 A simple datafile contains details of people and their relationships. All the HTML pages are generated on the fly. This means that the tree is easy to maintain.
 
 Note that the tree shows the "genetic" family tree. It contains no information about marriages and adaptation.
 
-For a demonstration of this software, visit http://www.ilab.sztaki.hu/~bodon/Simpsons/cgi/ftree.cgi or http://www.ilab.sztaki.hu/~bodon/ftree2/cgi/ftree.cgi. 
+For a demonstration of this software, visit http://www.ilab.sztaki.hu/~bodon/Simpsons/cgi/ftree.cgi or http://www.ilab.sztaki.hu/~bodon/ftree2/cgi/ftree.cgi.
 
 The program is written in Perl.
 It runs as a CGI program - its output is the HTML of the page that you see.
-The program reads in the data file, and analyzes the relationships to determine the ancestors, siblings and descendants of the person selected. 
+The program reads in the data file, and analyzes the relationships to determine the ancestors, siblings and descendants of the person selected.
 HTML tables are generated to display these trees, linking in the portrait images where they exist.
 
 # INSTALLATION INSTRUCTIONS:
@@ -99,46 +106,43 @@ HTML tables are generated to display these trees, linking in the portrait images
 
 # INSTALLATION INSTRUCTIONS FOR XAMPP for Windows 5.6.12:
 
-Download I use xampp XAMPP for Windows 5.6.12 (https://www.apachefriends.org/ru/download.html) to install and configure Apache  
+Download I use xampp XAMPP for Windows 5.6.12 (https://www.apachefriends.org/ru/download.html) to install and configure Apache
 
-    <IfModule alias_module>  
-    ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/ftree/cgi/"  
-    </IfModule>  
-    
-    <Directory "C:/xampp/cgi-bin/ftree/cgi">  
-    AllowOverride All  
-    Options None  
-    Require all granted  
-    </Directory>  
-     
+    <IfModule alias_module>
+    ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/ftree/cgi/"
+    </IfModule>
 
-My shebang in ftree.cgi is #!"c:\\Dwimperl\\perl\\bin\\perl.exe" (by Gabor Sabo)  
+    <Directory "C:/xampp/cgi-bin/ftree/cgi">
+    AllowOverride All
+    Options None
+    Require all granted
+    </Directory>
 
-    copy c:\xampp\cgi-bin\ftree\graphics\   
-    to    
-    c:\xampp\htdocs\graphics\  
-    
+My shebang in ftree.cgi is #!"c:\\Dwimperl\\perl\\bin\\perl.exe" (by Gabor Sabo)
 
-to correct show images  
+    copy c:\xampp\cgi-bin\ftree\graphics\
+    to
+    c:\xampp\htdocs\graphics\
+
+to correct show images
 
 I catch error couldn't create child process: 720002
 \------------------------
-It was the first line in the .cgi file that needed to be adapted to Xamp's configuration:  
+It was the first line in the .cgi file that needed to be adapted to Xamp's configuration:
 
-    #!"c:\xampp\perl\bin\perl.exe"  
-    Instead of:  
-    
-    #!"c:\perl\bin\perl.exe"  
-    
+    #!"c:\xampp\perl\bin\perl.exe"
+    Instead of:
 
-https://forum.xojo.com/20697-couldn-t-create-child-process-720002-error-when-deploying-on-wi/0  
-http://open-server.ru/forum/viewtopic.php?f=6&t=1059  
+    #!"c:\perl\bin\perl.exe"
+
+https://forum.xojo.com/20697-couldn-t-create-child-process-720002-error-when-deploying-on-wi/0
+http://open-server.ru/forum/viewtopic.php?f=6&t=1059
 
 # NAME OF THE PICTURE:
 
-    One picture may belong to each person. 
+    One picture may belong to each person.
     No image put here and name=id.jpg
-    c:\xampp\cgi-bin\ftree\pictures\  
+    c:\xampp\cgi-bin\ftree\pictures\
 
 # DATAFILE FORMAT:
 
@@ -153,7 +157,7 @@ http://open-server.ru/forum/viewtopic.php?f=6&t=1059
     We encourage everybody to use the excel format. To convert from the csv format to the excel format, use script script/convertFormat.pl
 
     TIP 1.: Maintain your family tree data in excel using the Form option. Select all the columns, then press DATA->Form. It is convenient to add new people or to modify information of existing persons.
-    TIP 2.: Freeze the first line so that header does not disappear when scrolling down. 
+    TIP 2.: Freeze the first line so that header does not disappear when scrolling down.
 
 # The excel format:
 
@@ -162,7 +166,7 @@ http://open-server.ru/forum/viewtopic.php?f=6&t=1059
      * title: like: Dr., Prof.
      * prefix: like: sir
      * first name
-     * middle name 
+     * middle name
      * last Name
      * suffix: like: VIII
      * nickname
@@ -193,14 +197,14 @@ http://open-server.ru/forum/viewtopic.php?f=6&t=1059
 
     1. Full name.
      Middle names can be included in this field.
-     If more than one person share the same name, a number can be appended (not shown in the displayed output). For example, "Bart Simpson2". 
-    2. Father (optional - leave blank if not known). No middle names. 
-    3. Mother (optional) 
-    4. email address (optional) 
-    5. web page (optional) 
+     If more than one person share the same name, a number can be appended (not shown in the displayed output). For example, "Bart Simpson2".
+    2. Father (optional - leave blank if not known). No middle names.
+    3. Mother (optional)
+    4. email address (optional)
+    5. web page (optional)
     6. Dates, birth-death (both optional).
     Examples: "17/10/49-24/11/83", "10/69-"
-     Note that the year of birth is not displayed for people who are still alive. 
+     Note that the year of birth is not displayed for people who are still alive.
     7. Gender (0 for male, 1 for female)
     8. title: like: Dr., Prof.
     9. prefix: like: sir
@@ -221,7 +225,7 @@ http://open-server.ru/forum/viewtopic.php?f=6&t=1059
     To switch from comma separated value file to excel spreadsheet, do the following:
     cd ftree2
     perl ./scripts/convertFormat.pl ./tree.txt ./tree.xls
-    This will generate (overwrite) a tree.xls file. 
+    This will generate (overwrite) a tree.xls file.
 
     The GEDCOM format:
     GEDCOM, an acronym for GEnealogical Data COMmunication, is a specification for exchanging genealogical data between different genealogy software. GEDCOM was developed by The Church of Jesus Christ of Latter-day Saints as an aid in their extensive genealogical research. A GEDCOM file is plain text (an obscure text encoding named ANSEL, though often in ASCII in the United States) containing genealogical information about individuals, and data linking these records together. Most genealogy software supports importing from and/or exporting to GEDCOM format.
@@ -263,7 +267,7 @@ Since the purpose of this software is to provide a free and simple tool for thos
 # SECURITY ISSUES:
 
 The protection provided by password request (set in config file) is quite primitive, i.e. it is easy to break it.
-Ther are historical reasons for being available. We suggest to use server side protection like .htaccess files in case of apache web servers. 
+Ther are historical reasons for being available. We suggest to use server side protection like .htaccess files in case of apache web servers.
 
 # AUTHORS
 
@@ -294,7 +298,7 @@ Rober Miles (Italian),
 Lajos Malozsak (Romanian),
 Vladimir Kangin (Russian)
 
-I also would like to thank the feedback/help of (in no particular order) Alex Roitman, Anthony Fletcher, 
+I also would like to thank the feedback/help of (in no particular order) Alex Roitman, Anthony Fletcher,
 Richard Bos, Sylvia McKenzie and Sean Symes.
 
 # SEE ALSO

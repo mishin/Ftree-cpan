@@ -44,15 +44,6 @@ use IO::Interactive qw(is_interactive);
 use Encode::Locale qw(decode_argv);
 use Text::CSV;
 
-=pod
-   Группируйте импорты в следующем порядке:
-
-импорты стандартной библиотеки
-импорты сторонних библиотек
-импорты модулей текущего проекта
-=cut
-
-
 exit main();
 
 sub main {
