@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="t_000_compile_t" errors="0" failures="0" skipped="0" tests="3" time="0.269461154937744">
+    <system-out>1..3
+ok 1 - use Ftree::FamilyTreeGraphics;
+ok 2 - use Ftree::FamilyTreeInfo;
+ok 3 - use Ftree::PersonPage;
+</system-out>
+    <testcase name="use Ftree::FamilyTreeGraphics;" classname="t_000_compile_t" time="0.0998079776763916" />
+    <testcase name="use Ftree::FamilyTreeInfo;" classname="t_000_compile_t" time="0.120681047439575" />
+    <testcase name="use Ftree::PersonPage;" classname="t_000_compile_t" time="0.000100851058959961" />
+  </testsuite>
+</testsuites>
