@@ -2,6 +2,7 @@ Revision history for Ftree
 
 {{$NEXT}}
 
+           * refactoring
 2.3.34  2016-04-21 17:06:32 MSK
            * improve Readme and ftree.bat
 
