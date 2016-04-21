@@ -23,7 +23,7 @@
 package Ftree::DataParsers::ExcelxFormat;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.32');
+use version; our $VERSION = qv('2.3.33');
 
 use Spreadsheet::XLSX;
 # use Spreadsheet::ParseExcel;

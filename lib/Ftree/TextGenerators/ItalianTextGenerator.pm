@@ -25,7 +25,7 @@ use warnings;
 use utf8;
 
 package ItalianTextGenerator;
-use version; our $VERSION = qv('2.3.32');
+use version; our $VERSION = qv('2.3.33');
 sub new {
   my ( $classname ) = @_;
   my $self = {

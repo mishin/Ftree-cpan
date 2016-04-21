@@ -23,7 +23,7 @@
 package Ftree::FamilyTreeDataFactory;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.32');
+use version; our $VERSION = qv('2.3.33');
 
 use v5.10.1;
 no warnings 'experimental::smartmatch';

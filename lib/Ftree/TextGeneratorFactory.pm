@@ -32,7 +32,7 @@ use v5.10.1;
 no warnings 'experimental::smartmatch';
 
 #use Switch;
-use version; our $VERSION = qv('2.3.32');
+use version; our $VERSION = qv('2.3.33');
 
 my $language   = "gb";
 my %langToPict = (
