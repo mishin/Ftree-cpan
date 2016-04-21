@@ -35,27 +35,27 @@ sub getFamilyTree {
   $type = 'csv' if ($type eq 'txt');
 
   for ($type) {
-  	when (/csv/) {
+  	when (/\bcsv\b/) {
   	  require Ftree::DataParsers::ExtendedSimonWardFormat;
   	  return Ftree::DataParsers::ExtendedSimonWardFormat::createFamilyTreeDataFromFile($config->{config});
   	}
-  	when (/excel/) {
+  	when (/\bexcel\b/) {
   	  require Ftree::DataParsers::ExcelFormat;
   	  return Ftree::DataParsers::ExcelFormat::createFamilyTreeDataFromFile($config->{config});
   	}
-	when (/excelx/) {
+	when (/\bexcelx\b/) {
   	  require Ftree::DataParsers::ExcelxFormat;
   	  return Ftree::DataParsers::ExcelxFormat::createFamilyTreeDataFromFile($config->{config});
   	}
-    when (/ser/) {
+    when (/\bser\b/) {
       require Ftree::DataParsers::SerializerFormat;
       return Ftree::DataParsers::SerializerFormat::createFamilyTreeDataFromFile($config->{config});
     }
-  	when (/gedcom/) {
+  	when (/\bgedcom\b/) {
   	  require Ftree::DataParsers::GedcomFormat;
   	  return Ftree::DataParsers::GedcomFormat::createFamilyTreeDataFromFile($config->{config});
   	  }
-  	when (/dbi/) {
+  	when (/\bdbi\b/) {
       require Ftree::DataParsers::DBIFormat;
       return Ftree::DataParsers::DBIFormat::getFamilyTreeData($config->{config});
     }
