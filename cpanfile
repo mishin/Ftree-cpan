@@ -47,6 +47,7 @@ requires 'Spreadsheet::ParseExcel';
 requires 'DateTime';
 requires 'Excel::Writer::XLSX';
 requires 'Spreadsheet::WriteExcel';
+requires 'Plack', '1.0039';
 
 on test => sub {
     requires 'Test::More';
