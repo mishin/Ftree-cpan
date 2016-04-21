@@ -22,7 +22,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.34');
+use version; our $VERSION = qv('2.3.35');
 
 package Ftree::PerlSettingsImporter;
 use Config::General qw(SaveConfig ParseConfig);

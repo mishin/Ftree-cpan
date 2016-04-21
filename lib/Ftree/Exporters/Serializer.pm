@@ -23,7 +23,7 @@
 package Ftree::Exporters::Serializer;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.34');
+use version; our $VERSION = qv('2.3.35');
 use Storable;
 use Params::Validate qw(:all);
 use Sub::Exporter -setup => { exports => [ qw(export) ] };
