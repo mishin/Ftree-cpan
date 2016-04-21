@@ -26,7 +26,8 @@ use warnings;
 use version; our $VERSION = qv('2.3.33');
 
 use v5.10.1;
-no warnings 'experimental::smartmatch';
+#no warnings 'experimental::smartmatch';
+no if $] >= 5.017011, warnings => 'experimental::smartmatch';
 # use CGI::Carp qw(fatalsToBrowser);
 
 sub getFamilyTree {
