@@ -29,7 +29,7 @@ use Sub::Exporter -setup =>
 
 use v5.10.1;
 use experimental 'smartmatch';
-use version; our $VERSION = qv('2.3.37');
+use version; our $VERSION = qv('2.3.38');
 
 my $language   = "gb";
 my %langToPict = (
