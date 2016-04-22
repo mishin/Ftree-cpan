@@ -24,7 +24,7 @@ package Ftree::Exporters::ExcelExporter;
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.36');
+use version; our $VERSION = qv('2.3.37');
 use Spreadsheet::WriteExcel;
 
 sub export {

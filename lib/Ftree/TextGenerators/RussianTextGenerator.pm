@@ -26,7 +26,7 @@ use utf8;
 
 
 package RussianTextGenerator;
-use version; our $VERSION = qv('2.3.36');
+use version; our $VERSION = qv('2.3.37');
 
 sub new {
   my ( $classname ) = @_;

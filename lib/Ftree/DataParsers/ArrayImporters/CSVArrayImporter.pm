@@ -23,7 +23,7 @@
 package Ftree::DataParsers::ArrayImporters::CSVArrayImporter;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.36');
+use version; our $VERSION = qv('2.3.37');
 use Params::Validate qw(:all);
 # use CGI::Carp qw(fatalsToBrowser);
 

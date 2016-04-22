@@ -1,6 +1,8 @@
 Revision history for Ftree
 
 {{$NEXT}}
+
+2.3.37  2016-04-22 13:17:34 MSK
            * fix some error
            * remove Switch module
 2.3.36  2016-04-21 17:43:21 MSK
