@@ -1,7 +1,8 @@
 Revision history for Ftree
 
 {{$NEXT}}
-
+           * fix some error
+           * remove Switch module
 2.3.36  2016-04-21 17:43:21 MSK
 
            * fix bug converting
