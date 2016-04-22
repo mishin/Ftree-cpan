@@ -1,4 +1,3 @@
-# base.t
 use strict;
 use warnings;
 use Test::More tests => 3;
@@ -7,8 +6,6 @@ use HTTP::Request;
 use FindBin qw($Bin);
 use lib "$Bin/../lib";
 use lib "$Bin/../../lib";
-
-#use MyApp;
 
 use CGI::Emulate::PSGI;
 use CGI::Compile;
@@ -34,14 +31,13 @@ my $test_app = builder {
 
 is ref($app), 'CODE';
 
-#my $app = MyApp->to_app;
-my $test = Plack::Test->create($app2);
+my $test = Plack::Test->create($test_app);
 
-my $request = HTTP::Request->new( GET => '/' );
+my $request = HTTP::Request->new( GET => '/ftree?type=tree;target=Homer_Simpson;levels=2;passwd=;lang=gb' );
 my $response = $test->request($request);
 
 ok( $response->is_success, '[GET /] Successful request' );
-is( $response->content, 'OK', '[GET /] Correct content' );
+like  ($response->content, qr/Family tree for Homer Jay Simpson/, '[GET /] Correct content');
 
 #
 #
