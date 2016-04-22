@@ -56,7 +56,7 @@ sub main {
 	$self->SUPER::_password_check();
 
 	for ( $self->{pagetype} ) {
-		when (//)          { $self->_draw_index_page(); }
+		when (/^$/)          { $self->_draw_index_page(); }
 		when (/subfamily/) { $self->_draw_same_surname_page(); }
 		when (/snames/)    { $self->_draw_surname_page(); }
 		when (/faces/)     { $self->_draw_facehall_page(); }
