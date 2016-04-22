@@ -6,6 +6,7 @@ use Plack::Test;
 use HTTP::Request;
 use FindBin qw($Bin);
 use lib "$Bin/../lib";
+use lib "$Bin/../../lib";
 
 #use MyApp;
 
@@ -34,10 +35,10 @@ my $test_app = builder {
 is ref($app), 'CODE';
 
 #my $app = MyApp->to_app;
-my $test = Plack::Test->create($app);
+my $test = Plack::Test->create($app2);
 
-my $request = HTTP::Request->new( GET => '/ftree' );
-my $response = $app2->request($request);
+my $request = HTTP::Request->new( GET => '/' );
+my $response = $test->request($request);
 
 ok( $response->is_success, '[GET /] Successful request' );
 is( $response->content, 'OK', '[GET /] Correct content' );
