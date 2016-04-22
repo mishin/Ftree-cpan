@@ -1,4 +1,4 @@
-requires 'perl', '5.010_001';
+requires 'perl', '5.008005';
 requires 'DBI';
 requires 'Digest::MD4';
 requires 'Digest::MD5';

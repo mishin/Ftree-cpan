@@ -132,7 +132,7 @@ sub _draw_pictures {
 
 sub _draw_single_person_page {
     my ($self) = validate_pos( @_, { type => HASHREF } );
-    binmode STDOUT, ":utf8";
+    binmode STDOUT, ":encoding(UTF-8)";
     $self->_toppage( $self->{target_person}->get_name()->get_long_name() );
 
     print $q->start_center;
