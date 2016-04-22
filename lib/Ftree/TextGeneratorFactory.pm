@@ -28,7 +28,7 @@ use Sub::Exporter -setup =>
   { exports => [qw(init getTextGenerator get_reverse_name)] };
 
 use v5.10.1;
-no warnings 'experimental::smartmatch';
+use experimental 'smartmatch';
 use version; our $VERSION = qv('2.3.36');
 
 my $language   = "gb";

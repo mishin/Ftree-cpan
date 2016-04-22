@@ -28,7 +28,7 @@ use warnings;
 use Ftree::FamilyTreeBase;
 
 use v5.10.1;
-no warnings 'experimental::smartmatch';
+use experimental 'smartmatch';
 use Params::Validate qw(:all);
 use Sub::Exporter -setup => { exports => [qw(new main)] };
 use Encode qw(decode_utf8);
