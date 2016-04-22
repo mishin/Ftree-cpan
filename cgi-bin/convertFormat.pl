@@ -24,7 +24,8 @@
 
 use lib ('cgi', 'cgi/lib');
 use Ftree::FamilyTreeDataFactory;
-use Switch;
+use v5.10.1;
+no warnings 'experimental::smartmatch';
 use utf8;
 
 my $input_file_name = $ARGV[0];
@@ -57,16 +58,16 @@ else {
 
   my $family_tree = Ftree::FamilyTreeDataFactory::getFamilyTree( \%config );
   my $extension = (split(/\./, $output_file_name))[-1];
-  switch ($extension) {
-    case "xls" {
+  for ($extension) {
+    when (/\bxls\b/) {
       require Ftree::Exporters::ExcelExporter;
       Ftree::Exporters::ExcelExporter::export($output_file_name, $family_tree);
       }
-    case "xlsx" {
+    when (/\bxlsx\b/){
       require Ftree::Exporters::ExcelxExporter;
       Ftree::Exporters::ExcelxExporter::export($output_file_name, $family_tree);
       }
-    case "ser" {
+    when (/\bser\b/) {
       require Ftree::Exporters::Serializer;
       Ftree::Exporters::Serializer::export($output_file_name, $family_tree);
       }

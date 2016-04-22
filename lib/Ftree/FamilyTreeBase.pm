@@ -85,7 +85,7 @@ sub _process_parameters {
 sub _toppage {
     my ( $self, $title ) =
       validate_pos( @_, { type => HASHREF }, { type => SCALAR } );
-    binmode STDOUT, ":utf8";
+    binmode STDOUT, ":encoding(UTF-8)";
     print $self->{cgi}->header( -charset => 'UTF-8' ),
       $self->{cgi}->start_html(
         -title => $title,
