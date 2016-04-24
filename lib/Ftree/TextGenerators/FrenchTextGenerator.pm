@@ -3,7 +3,7 @@ use warnings;
 use utf8;
 
 package FrenchTextGenerator;
-use version; our $VERSION = qv('2.3.40');
+use version; our $VERSION = qv('2.3.41');
 sub new {
   my ( $classname ) = @_;
   my $self = {

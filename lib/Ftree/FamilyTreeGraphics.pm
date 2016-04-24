@@ -2,7 +2,7 @@ package Ftree::FamilyTreeGraphics;
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('2.3.40');
+use version; our $VERSION = qv('2.3.41');
 
 use Ftree::FamilyTreeBase;
 
