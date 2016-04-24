@@ -4,7 +4,7 @@ package Ftree::Name;
 use strict;
 use warnings;
 use Ftree::TextGeneratorFactory qw(getTextGenerator get_reverse_name);
-use version; our $VERSION = qv('2.3.39');
+use version; our $VERSION = qv('2.3.40');
 
 use Params::Validate qw(:all);
 
