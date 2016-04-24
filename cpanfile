@@ -50,6 +50,9 @@ requires 'Plack', '1.0039';
 
 on test => sub {
     requires 'Test::More';
+    requires 'Test::Run';
+    requires 'Test::Run::CmdLine';
+    requires 'Test::Trap';
 };
 
 # Зависимости фазы сборки, спасибо Владимиру Леттиеву из Pragmaticperl
