@@ -267,3 +267,4 @@
 127.0.0.1 - - [24/Apr/2016:16:21:22 +0300] "GET /ftree?type=;passwd=1;lang=gb HTTP/1.1" 200 9181 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0"
 127.0.0.1 - - [24/Apr/2016:16:21:25 +0300] "GET /ftree?type=tree;target=Jacqueline_Bouvier;levels=2;passwd=1;lang=gb HTTP/1.1" 200 11889 "http://localhost:8080/ftree?type=;passwd=1;lang=gb" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0"
 127.0.0.1 - - [24/Apr/2016:16:21:29 +0300] "GET /ftree?type=tree;target=Marge_Simpson;levels=2;passwd=1;lang=gb HTTP/1.1" 200 11634 "http://localhost:8080/ftree?type=tree;target=Jacqueline_Bouvier;levels=2;passwd=1;lang=gb" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0"
+127.0.0.1 - - [24/Apr/2016:16:45:33 +0300] "GET / HTTP/1.1" 500 34117 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0"
