@@ -15,6 +15,9 @@ my $sub_person = CGI::Compile->compile($cgi_person);
 my $app2 = CGI::Emulate::PSGI->handler($sub_person);
 
   builder {
+      enable 'Debug'; # load defaults
+      enable 'Debug::DBITrace', level => 2;
+      #enable "InteractiveDebugger";
       enable "Plack::Middleware::Static",
           path => qr{[gif|png|jpg|swf|ico|mov|mp3|pdf|js|css]$}, root => './';
 	  mount "/person_page" => $app2;

@@ -48,7 +48,7 @@ requires 'Excel::Writer::XLSX';
 requires 'Spreadsheet::WriteExcel';
 requires 'Plack', '1.0039';
 
-on test => sub {
+on 'test' => sub {
     requires 'Test::More';
     requires 'Test::Run';
     requires 'Test::Run::CmdLine';
@@ -57,6 +57,6 @@ on test => sub {
 
 # Зависимости фазы сборки, спасибо Владимиру Леттиеву из Pragmaticperl
 # http://pragmaticperl.com/issues/10/pragmaticperl-10-%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-cpanfile.html
-on build => sub {
-    requires 'Test::Pod',           '1.48';
+on 'build' => sub {
+    requires 'Test::Pod';
 };

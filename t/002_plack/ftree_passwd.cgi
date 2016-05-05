@@ -35,16 +35,16 @@ use lib "$FindBin::Bin/lib";
 use FindBin qw($Bin);
 use lib "$Bin/../lib";
 
+my $config_path = $Bin . '/ftree_passwd.config';
 my $family_tree;
 my $type = CGI::param("type");
-if(defined $type && $type eq "tree")
-{
-   require Ftree::FamilyTreeGraphics;
-   $family_tree = Ftree::FamilyTreeGraphics->new($Bin.'/ftree_passwd.config');
+if ( defined $type && $type eq "tree" ) {
+	require Ftree::FamilyTreeGraphics;
+	$family_tree = Ftree::FamilyTreeGraphics->new($config_path);
 }
 else {
-   require Ftree::FamilyTreeInfo;
-   $family_tree = Ftree::FamilyTreeInfo->new($Bin.'/ftree_passwd.config');
+	require Ftree::FamilyTreeInfo;
+	$family_tree = Ftree::FamilyTreeInfo->new($config_path);
 }
 $family_tree->main();
 
