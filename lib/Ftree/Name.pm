@@ -105,7 +105,7 @@ installator for Windows 7 32bit
 L<https://sourceforge.net/projects/family-tree-32/files/latest/download?source=navbar>
 
   #If install it
-  cpanm FamilyTreeInfo
+  cpanm Ftree::Name
 
   git clone https://github.com/mishin/Ftree-cpan.git
   cd Ftree-cpan/cgi-bin
