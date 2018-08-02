@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package Cemetery;
+package Ftree::Cemetery;
 
 use strict;
 use warnings;

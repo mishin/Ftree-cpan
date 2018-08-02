@@ -21,7 +21,7 @@
 #######################################################
 
 
-package FamilyTreeGraphics;
+package Ftree::FamilyTreeGraphics;
 use strict;
 use warnings;
 
@@ -67,10 +67,10 @@ sub main : Export{
   my ($self) = validate_pos(@_, HASHREF);
   $self->_process_parameters();
   
-  $Person::unknown_male->set_default_picture(Picture->new(
+  $Person::unknown_male->set_default_picture(Ftree::Picture->new(
   	{file_name => $self->{graphicsUrl} . '/nophoto_m.jpg', 
      comment => ""})); 
-  $Person::unknown_female->set_default_picture(Picture->new(
+  $Person::unknown_female->set_default_picture(Ftree::Picture->new(
   	{file_name => $self->{graphicsUrl} . '/nophoto_f.jpg', 
      comment => ""}));
      
@@ -99,7 +99,7 @@ sub _process_parameters {
   $self->SUPER::_process_parameters();
   my $id = decode_utf8(CGI::param('target'));
   my $family_tree_data =
-    	FamilyTreeDataFactory::getFamilyTree( $self->{settings}{data_source} );
+    	Ftree::FamilyTreeDataFactory::getFamilyTree( $self->{settings}{data_source} );
   $self->{target_person} = $family_tree_data->get_person($id);
   $self->{reqLevels}     = CGI::param('levels');
   $self->{reqLevels}     = 2 unless ( defined $self->{reqLevels} );
@@ -488,7 +488,7 @@ sub buildDGrid {
 
     my $is_blank_line = $self->drawRow($DWidth, \@{ $DTree_ref->[$this_level] }, 
       $self->{reqLevels} - $this_level, $this_level, $left_fill, 
-      \&unknownEquiCond, \&getDTreeWidth, \&FamilyTreeGraphics::html_img);
+      \&unknownEquiCond, \&getDTreeWidth, \&Ftree::FamilyTreeGraphics::html_img);
       
     $self->drawRow($DWidth, \@{ $DTree_ref->[$this_level] },
       $self->{reqLevels} - $this_level, $this_level, $left_fill, 
@@ -517,7 +517,7 @@ sub buildDestroyAGrid {
   for ( my $this_level = $aLevel; $this_level >= 0 ; --$this_level ) {
     my $aRow = pop @$ATree_ref;
     $self->drawRow($AWidth, $aRow, $aLevel - $this_level, $this_level, $left_fill, 
-      \&falseCond, \&getATreeWidth , \&FamilyTreeGraphics::html_img);
+      \&falseCond, \&getATreeWidth , \&Ftree::FamilyTreeGraphics::html_img);
       
     $self->drawRow($AWidth, $aRow, $aLevel - $this_level, $this_level, $left_fill, 
       \&falseCond, \&getATreeWidth, \&html_name);
@@ -556,11 +556,11 @@ sub buildPGrid {
 
   $self->drawRow($PWidth, \@peers,
       undef, undef, $left_fill, 
-      \&falseCond, sub {return 1} , \&FamilyTreeGraphics::html_img);
+      \&falseCond, sub {return 1} , \&Ftree::FamilyTreeGraphics::html_img);
       
   $self->drawRow($PWidth, \@peers,
       undef, undef, $left_fill, 
-      \&falseCond, sub {return 1} , \&FamilyTreeGraphics::html_name);
+      \&falseCond, sub {return 1} , \&Ftree::FamilyTreeGraphics::html_name);
 
   if ( defined $self->{target_person}->get_children() ) {  	
     print $self->{cgi}->start_Tr, "\n";

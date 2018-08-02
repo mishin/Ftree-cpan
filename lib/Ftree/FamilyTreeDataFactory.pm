@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package FamilyTreeDataFactory;
+package Ftree::FamilyTreeDataFactory;
 use strict;
 use warnings;
 

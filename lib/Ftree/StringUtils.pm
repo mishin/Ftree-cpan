@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-package StringUtils;
+package Ftree::StringUtils;
 use strict;
 use warnings;
 use Params::Validate qw(:all);

@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package TextGeneratorFactory;
+package Ftree::TextGeneratorFactory;
 use strict;
 use warnings;
 
@@ -60,39 +60,39 @@ sub getTextGenerator : Export{
     case "hu" {
       $reverse_name = 1;;
       require TextGenerators::HungarianTextGenerator;
-      return HungarianTextGenerator->new( ); 
+      return Ftree::HungarianTextGenerator->new( );
     }
     case "gb" {
       require TextGenerators::EnglishTextGenerator; 
-      return EnglishTextGenerator->new( ); 
+      return Ftree::EnglishTextGenerator->new( );
     }
     case "de" {
       require TextGenerators::GermanTextGenerator; 
-      return GermanTextGenerator->new( ); 
+      return Ftree::GermanTextGenerator->new( );
     }
     case "fr" {
       require TextGenerators::FrenchTextGenerator; 
-      return FrenchTextGenerator->new( ); 
+      return Ftree::FrenchTextGenerator->new( );
     }
     case "pl" {
       require TextGenerators::PolishTextGenerator; 
-      return PolishTextGenerator->new( ); 
+      return Ftree::PolishTextGenerator->new( );
     }
     case "it" {
       require TextGenerators::ItalianTextGenerator; 
-      return ItalianTextGenerator->new( ); 
+      return Ftree::ItalianTextGenerator->new( );
     }
     case "ro" {
       require TextGenerators::RomanianTextGenerator; 
-      return RomanianTextGenerator->new( ); 
+      return Ftree::RomanianTextGenerator->new( );
     }
     case "ru" {
       require TextGenerators::RussianTextGenerator; 
-      return RussianTextGenerator->new( ); 
+      return Ftree::RussianTextGenerator->new( );
     }
     else {
       require TextGenerators::EnglishTextGenerator;
-      EnglishTextGenerator->new( );
+      Ftree::EnglishTextGenerator->new( );
     }
   } 
 }

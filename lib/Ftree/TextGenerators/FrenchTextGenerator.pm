@@ -24,7 +24,7 @@ use strict;
 use warnings;
 use utf8;
 
-package FrenchTextGenerator;
+package Ftree::FrenchTextGenerator;
 
 sub new {
   my ( $classname ) = @_;

@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package PersonPage;
+package Ftree::PersonPage;
 use strict;
 use warnings;
 
@@ -61,7 +61,7 @@ sub _set_target {
     $self->SUPER::_process_parameters();
     my $id = decode_utf8( CGI::param('target') );
     my $family_tree_data =
-      FamilyTreeDataFactory::getFamilyTree( $self->{settings}{data_source} );
+      Ftree::FamilyTreeDataFactory::getFamilyTree( $self->{settings}{data_source} );
     $self->{target_person} = $family_tree_data->get_person($id);
 
     return;

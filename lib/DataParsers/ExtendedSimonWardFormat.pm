@@ -58,7 +58,7 @@ sub fill_up_pictures {
   my($family_tree_data) = @_;
   while ( my ($id, $person) = each %{$family_tree_data->{people}}) {
     my $picture_file_name = getPictureFileName(getFileName($id), $picture_directory);
-      $person->set_default_picture(Picture->new({file_name => $picture_file_name, 
+      $person->set_default_picture(Ftree::Picture->new({file_name => $picture_file_name,
                                                  comment => ""})) 
         if(defined $picture_file_name); 
   }  
@@ -134,14 +134,14 @@ sub createFamilyTreeDataFromFile {
   my ($config_) = @_;
   my $file_name = $config_->{file_name} or die "No file_name is given in config";
 
-  my $family_tree_data = FamilyTreeData->new();
+  my $family_tree_data = Ftree::FamilyTreeData->new();
 
   # default encoding is utf8
   my $encoding = defined $config_->{encoding} ? $config_->{encoding} : "utf8";
   my $arrayImporter = CSVArrayImporter->new($file_name, $encoding);
   while ($arrayImporter->hasNext()) {
     my @fields = $arrayImporter->next();
-    @fields = map {StringUtils::trim($_)} @fields;
+    @fields = map {Ftree::StringUtils::trim($_)} @fields;
     
     my $name_ref = getNameFields($fields[0]);
     my ( $date_of_birth, $date_of_death ) = defined $fields[5] ? 
@@ -178,12 +178,12 @@ sub createFamilyTreeDataFromFile {
           if(defined $temp_person->get_father() 
              && ! defined $temp_person->get_father()->get_name()) {
             $temp_person->get_father()->set_name(
-            	Name->new( getNameFields($fields[1])));
+            	Ftree::Name->new( getNameFields($fields[1])));
           }
           if(defined $temp_person->get_mother() 
              && ! defined $temp_person->get_mother()->get_name()) {
             $temp_person->get_mother()->set_name(
-            	Name->new( getNameFields($fields[2])));
+            	Ftree::Name->new( getNameFields($fields[2])));
           }
   }
   $arrayImporter->close();

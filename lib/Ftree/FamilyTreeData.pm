@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package FamilyTreeData;
+package Ftree::FamilyTreeData;
 use strict;
 use warnings;
 
@@ -99,12 +99,12 @@ sub add_person : Export {
   }
   
   if ( !defined $self->{people}{ $arg_ref{id} } ) {
-  	$self->{people}{ $arg_ref{id} } = Person->new( {id => $arg_ref{id}} );
+  	$self->{people}{ $arg_ref{id} } = Ftree::Person->new( {id => $arg_ref{id}} );
   }
   my $temp_person = $self->{people}{ $arg_ref{id} };
   $temp_person->set_is_living(1);
   
-  $temp_person->set_name(Name->new(
+  $temp_person->set_name(Ftree::Name->new(
           {first_name => $arg_ref{first_name},
            mid_name   => $arg_ref{mid_name},
            last_name  => $arg_ref{last_name}}));
@@ -211,7 +211,7 @@ sub set_parent {
     return;         	
   }
   if ( !defined $self->{people}{ $id } ) {
-    $self->{people}{ $id } = Person->new( { id => $id } );
+    $self->{people}{ $id } = Ftree::Person->new( { id => $id } );
   }
 	
   my $parent = $self->{people}{ $id };

@@ -23,7 +23,7 @@
 use strict;
 use warnings;
 
-package PerlSettingsImporter;
+package Ftree::PerlSettingsImporter;
 use Config::General qw(SaveConfig ParseConfig);
 # ..
 # SaveConfig("ftree.config", importSettings());

@@ -33,7 +33,7 @@ sub createFamilyTreeDataFromFile {
     my $file_name = $config_->{file_name}
       or die "No file_name is given in config";
 
-    my $family_tree_data = FamilyTreeData->new();
+    my $family_tree_data = Ftree::FamilyTreeData->new();
     my $excel            = Spreadsheet::ParseExcel::Workbook->Parse($file_name)
       or die "Unable to parse file " . $file_name;
     foreach my $sheet ( @{ $excel->{Worksheet} } ) {

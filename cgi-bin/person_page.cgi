@@ -36,7 +36,7 @@ use version; our $VERSION = qv('0.2');
 
 use PersonPage;
 
-my $family_tree = PersonPage->new();
+my $family_tree = Ftree::PersonPage->new();
 $family_tree->main();
 
 exit;

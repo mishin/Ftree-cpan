@@ -55,7 +55,7 @@ else {
   );
   
   
-  my $family_tree = FamilyTreeDataFactory::getFamilyTree( \%config );
+  my $family_tree = Ftree::FamilyTreeDataFactory::getFamilyTree( \%config );
   my $extension = (split(/\./, $output_file_name))[-1];
   switch ($extension) {
     case "xls" {

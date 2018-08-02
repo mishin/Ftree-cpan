@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package Person;
+package Ftree::Person;
 use strict;
 use warnings;
 use version; our $VERSION = qv('2.3.24');
@@ -123,8 +123,8 @@ use Class::Std::Storable;
 }
 
 #Static variables for unknown male and female
-our $unknown_male = Person->new( {id => 'unknown_male'} );
-our $unknown_female = Person->new( {id => 'unknown_female'} );
+our $unknown_male = Ftree::Person->new( {id => 'unknown_male'} );
+our $unknown_female = Ftree::Person->new( {id => 'unknown_female'} );
 
 $unknown_male->set_gender(0);
 $unknown_female->set_gender(1);

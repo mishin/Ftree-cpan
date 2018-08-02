@@ -9,7 +9,7 @@ sub createFamilyTreeDataFromFile {
   # my ($config_) = @_;
   my $file_name = 'mishin_family.xls';#$config_->{file_name} or die "No file_name is given in config";
     
-  my $family_tree_data = FamilyTreeData->new();
+  my $family_tree_data = Ftree::FamilyTreeData->new();
     my $parser    = Spreadsheet::ParseExcel->new();
     my $formatter = Spreadsheet::ParseExcel::FmtJapan->new();
   

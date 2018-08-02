@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package FamilyTreeBase;
+package Ftree::FamilyTreeBase;
 use strict;
 use warnings;
 
@@ -58,7 +58,7 @@ sub new : Export {
         cgi           => new CGI,
     };
     $self->{imgheight} = $self->{imgwidth} * 1.5;
-    $self->{settings}  = SettingsFactory::importSettings('perl');
+    $self->{settings}  = Ftree::SettingsFactory::importSettings('perl');
     $self->{photoUrl}  = $self->{settings}{data_source}{config}{photo_url};
 
     Date::Tiny->set_format( $self->{settings}{date_format} )
@@ -72,8 +72,8 @@ sub _process_parameters {
     $self->{lang} = CGI::param('lang');
     $self->{lang} = $self->{settings}{default_language}
       unless defined $self->{lang};
-    TextGeneratorFactory::init( $self->{lang} );
-    $self->{textGenerator} = TextGeneratorFactory::getTextGenerator();
+    Ftree::TextGeneratorFactory::init( $self->{lang} );
+    $self->{textGenerator} = Ftree::TextGeneratorFactory::getTextGenerator();
     $self->{password}      = CGI::param('passwd');
     $self->{password}      = "" unless defined $self->{password};
 
@@ -286,7 +286,7 @@ sub language_chooser {
     }
     print "\n", $self->{cgi}->start_table( { -cellpadding => '3' } ), "\n",
       $self->{cgi}->start_Tr;
-    my %lang_to_pict = TextGeneratorFactory::getLangToPict();
+    my %lang_to_pict = Ftree::TextGeneratorFactory::getLangToPict();
     while ( my ( $lang, $pic ) = each %lang_to_pict ) {
         print $self->{cgi}->td(
             { -align => 'center' },

@@ -20,32 +20,19 @@
 #
 #######################################################
 
-package Place;
 
 use strict;
 use warnings;
+use lib "../config";
 
-use version; our $VERSION = qv('2.3.24');
+package Ftree::SettingsFactory;
 
-use Params::Validate qw(:all);
-
-sub new {
-  my ( $classname, $country, $city) = @_;
-  my $self = {
-     country => $country,
-     city => $city,     
-  };
-  return bless $self, $classname;
+sub importSettings{
+  my ( $type ) = @_;
+  if($type eq "perl") {
+    require PerlSettingsImporter;
+    return Ftree::PerlSettingsImporter::importSettings();
+  }
 }
-
- sub toString {
- 	  my ( $self) = validate_pos(@_, HASHREF);
- 	  if(defined $self->{city}) {
- 	  	return defined $self->{city} ? "$self->{city} ($self->{country})" : $self->{country}; 
- 	  }
- 	  else {
- 	  	return defined $self->{country} ? $self->{country} : "";
- 	  }
- }
 
 1;

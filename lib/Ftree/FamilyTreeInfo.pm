@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package FamilyTreeInfo;
+package Ftree::FamilyTreeInfo;
 
 use strict;
 use warnings;
@@ -42,7 +42,7 @@ sub new : Export {
     my $type = shift;
     my $self = $type->SUPER::new(@_);
     $self->{family_tree_data} =
-    	FamilyTreeDataFactory::getFamilyTree( $self->{settings}{data_source} );
+    	Ftree::FamilyTreeDataFactory::getFamilyTree( $self->{settings}{data_source} );
     $self->{pagetype} = undef;
     return $self;
   }
@@ -57,9 +57,9 @@ sub main : Export {
     case 'subfamily' {$self->_draw_same_surname_page();}
     case 'snames' {$self->_draw_surname_page();}
     case 'faces' {$self->_draw_facehall_page();}
-    case 'emails' {$self->_draw_general_page(\&Person::get_email, 'email', $self->{textGenerator}->{Emails},
+    case 'emails' {$self->_draw_general_page(\&Ftree::Person::get_email, 'email', $self->{textGenerator}->{Emails},
     		$self->{textGenerator}->{Total_with_email});}
-    case 'hpages' {$self->_draw_general_page(\&Person::get_homepage, 'homepage', $self->{textGenerator}->{Homepages},
+    case 'hpages' {$self->_draw_general_page(\&Ftree::Person::get_homepage, 'homepage', $self->{textGenerator}->{Homepages},
     		$self->{textGenerator}->{Total_with_homepage});}
     case 'bdays' {$self->_draw_birthday_page();}
     else { $self->_draw_invalid_page(); }
@@ -252,7 +252,7 @@ sub _draw_birthday_page {
   $self->_toppage($title);
   @people_with_bday = sort{$a->get_name()->get_full_name() cmp $b->get_name()->get_full_name()} (@people_with_bday);
 
-  $self->_draw_general_table(\&Person::get_date_of_birth, 'date_of_birth', \@people_with_bday, 
+  $self->_draw_general_table(\&Ftree::Person::get_date_of_birth, 'date_of_birth', \@people_with_bday,
     $self->{textGenerator}->total_living_with_birthday($month-1));
 
   # Add the button for other months

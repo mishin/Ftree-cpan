@@ -130,15 +130,15 @@ sub getDate {
 sub getCemetery {
   my ($field) = @_;
   if(defined $field && $field ne "") {
-    $field = StringUtils::trim($field);
+    $field = Ftree::StringUtils::trim($field);
     if($field =~ /"(\S.+)"\s+"(\S.+)"\s+"(\S.+)"/) {
-      return Cemetery->new($1, $2, $3);
+      return Ftree::Cemetery->new($1, $2, $3);
     }
     if($field =~ /"(\S.+)"\s+"(\S.+)"/) {
-      return Cemetery->new($1, $2, undef);
+      return Ftree::Cemetery->new($1, $2, undef);
     }
     if($field =~ /"(\S.+)"/) {
-      return Cemetery->new($1, undef, undef);
+      return Ftree::Cemetery->new($1, undef, undef);
     }
     warn "Nonvalid cemetery: ". $field . ". It should be like \"Hungary\" \"Budapest\" \"Farkasréti\"";
   }
@@ -147,12 +147,12 @@ sub getCemetery {
 sub getPlace {
   my ($field) = @_;
   if(defined $field && $field ne "") {
-    $field = StringUtils::trim($field);
+    $field = Ftree::StringUtils::trim($field);
     if($field =~ /"(\S.+)"\s+"(\S.+)"/) {
-      return Place->new($1, $2);
+      return Ftree::Place->new($1, $2);
     }
     elsif($field =~ /"(\S.+)"/) {
-      return Place->new($1, undef);
+      return Ftree::Place->new($1, undef);
     }
     else {
       warn "Nonvalid place: ". $field . ". It should be like \"Hungary\" \"Budapest\" ";

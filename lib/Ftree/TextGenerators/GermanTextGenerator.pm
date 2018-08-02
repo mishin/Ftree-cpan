@@ -25,7 +25,7 @@ use strict;
 use warnings;
 use utf8;
 
-package GermanTextGenerator;
+package Ftree::GermanTextGenerator;
 
 sub new {
   my ( $classname ) = @_;

@@ -67,11 +67,11 @@ my $type = CGI::param("type");
 if(defined $type && $type eq "tree")
 {
    require FamilyTreeGraphics;
-   $family_tree = FamilyTreeGraphics->new();
+   $family_tree = Ftree::FamilyTreeGraphics->new();
 }
 else {
    require FamilyTreeInfo;
-   $family_tree = FamilyTreeInfo->new();
+   $family_tree = Ftree::FamilyTreeInfo->new();
 }
 $family_tree->main();
 

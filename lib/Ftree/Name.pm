@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package Name;
+package Ftree::Name;
 use strict;
 use warnings;
 use TextGeneratorFactory qw(getTextGenerator get_reverse_name);
@@ -57,11 +57,11 @@ use Class::Std::Storable;
     my ( $self ) = validate_pos(@_, {type => SCALARREF});
     my $ident = ident $self;
     
-    my @name_array = grep {defined $_ && $_ ne ""} (TextGeneratorFactory::get_reverse_name( ) ?
+    my @name_array = grep {defined $_ && $_ ne ""} (Ftree::TextGeneratorFactory::get_reverse_name( ) ?
                     ($last_name_of{$ident}, $mid_name_of{$ident}, $first_name_of{$ident}) :
                     ($first_name_of{$ident}, $mid_name_of{$ident}, $last_name_of{$ident}));
                     
-    return TextGeneratorFactory::getTextGenerator( )->{Unknown} if(0 == @name_array);
+    return Ftree::TextGeneratorFactory::getTextGenerator( )->{Unknown} if(0 == @name_array);
 	return join(' ', @name_array);       
   }
   
@@ -83,7 +83,7 @@ use Class::Std::Storable;
     my ( $self) = validate_pos(@_, {type => SCALARREF});
     my $ident = ident $self;
     
-    if(TextGeneratorFactory::get_reverse_name( )) {
+    if(Ftree::TextGeneratorFactory::get_reverse_name( )) {
       return join(" ", grep {defined $_ && $_ ne ""} 
       ($last_name_of{$ident}, $first_name_of{$ident}) );
     } else {

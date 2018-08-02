@@ -24,7 +24,7 @@ use strict;
 use warnings;
 use utf8;
 
-package HungarianTextGenerator;
+package Ftree::HungarianTextGenerator;
 
 sub new {
   my ( $classname ) = @_;
