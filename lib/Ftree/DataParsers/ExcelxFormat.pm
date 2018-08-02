@@ -20,10 +20,12 @@
 #
 #######################################################
 
-package ExcelxFormat;
+package Ftree::DataParsers::ExcelxFormat;
 
 # use Spreadsheet::ParseXLSX;
 # use Spreadsheet::Read;
+use warnings FATAL => 'all';
+use strict;
 use Spreadsheet::XLSX;
 # use Spreadsheet::ParseExcel;
 use DataParsers::ExtendedSimonWardFormat
@@ -84,8 +86,8 @@ foreach my $sheet ( @{ $excel->{Worksheet} } ) {
     }
      
     if ( defined $config_->{photo_dir} ) {
-        ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
-        ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
+        Ftree::DataParsers::ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
+        Ftree::DataParsers::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
     }
 
     return $family_tree_data;

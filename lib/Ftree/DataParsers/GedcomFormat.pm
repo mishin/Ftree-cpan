@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package GedcomFormat;
+package Ftree::DataParsers::GedcomFormat;
 use strict;
 use warnings;
 use Gedcom;
@@ -110,14 +110,14 @@ sub getPlace {
 sub getEmail {
   my ($i) = @_;
   my @data = decode_utf8($i->get_value("Object File"));
-  my @emails = grep {defined $_ && FieldValidatorParser::validEmail($_)} @data; 
+  my @emails = grep {defined $_ && Ftree::DataParsers::FieldValidatorParser::validEmail($_)} @data;
   return $emails[0];
 
 }
 sub getHomepage {
   my ($i) = @_;
   my @data = decode_utf8($i->get_value("Object File"));
-  my @urls = grep {defined $_ && FieldValidatorParser::validURL($_)} @data; 
+  my @urls = grep {defined $_ && Ftree::DataParsers::FieldValidatorParser::validURL($_)} @data;
   return $urls[0];
 
 }

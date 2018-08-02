@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package ExcelxExporter;
+package Ftree::Exporters::ExcelxExporter;
 
 use strict;
 use warnings;

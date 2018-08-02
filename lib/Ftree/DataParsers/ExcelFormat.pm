@@ -20,7 +20,9 @@
 #
 #######################################################
 
-package ExcelFormat;
+package Ftree::DataParsers::ExcelFormat;
+use warnings FATAL => 'all';
+use strict;
 use Spreadsheet::ParseExcel;
 use DataParsers::ExtendedSimonWardFormat
   ;    # for getting pictures. Temporal solution
@@ -75,8 +77,8 @@ sub createFamilyTreeDataFromFile {
         }
     }
     if ( defined $config_->{photo_dir} ) {
-        ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
-        ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
+        Ftree::DataParsers::ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
+        Ftree::DataParsers::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
     }
 
     return $family_tree_data;

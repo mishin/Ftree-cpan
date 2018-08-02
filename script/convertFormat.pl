@@ -60,15 +60,15 @@ else {
   switch ($extension) {
     case "xls" {
       require Exporters::ExcelExporter;
-      ExcelExporter::export($output_file_name, $family_tree);
+      Ftree::Exporters::ExcelExporter::export($output_file_name, $family_tree);
       }
     case "xlsx" {
       require Exporters::ExcelxExporter;
-      ExcelxExporter::export($output_file_name, $family_tree);
+      Ftree::Exporters::ExcelxExporter::export($output_file_name, $family_tree);
       }	  
     case "ser" {
       require Exporters::Serializer;
-      Serializer::export($output_file_name, $family_tree);
+      Ftree::Exporters::Serializer::export($output_file_name, $family_tree);
       }
 } 
   

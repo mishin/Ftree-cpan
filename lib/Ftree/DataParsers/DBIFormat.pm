@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package DBIFormat;
+package Ftree::DataParsers::DBIFormat;
 
 use strict;
 use warnings;
@@ -114,8 +114,8 @@ sub getFamilyTreeData {
   $dbh->disconnect;
  
   if (defined $config_->{photo_dir}) {
-    ExtendedSimonWardFormat::setPictureDirectory($config_->{photo_dir});
-    ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);    
+    Ftree::DataParsers::ExtendedSimonWardFormat::setPictureDirectory($config_->{photo_dir});
+    Ftree::DataParsers::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
   }       
 
   return $family_tree_data;

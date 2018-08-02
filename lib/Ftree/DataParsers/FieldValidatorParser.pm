@@ -21,7 +21,7 @@
 #######################################################
 
 
-package FieldValidatorParser;
+package Ftree::DataParsers::FieldValidatorParser;
 use Date::Tiny;
 use Place;
 use Cemetery;

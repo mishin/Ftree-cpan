@@ -20,7 +20,7 @@
 #
 #######################################################
 
-package ExtendedSimonWardFormat;
+package Ftree::DataParsers::ExtendedSimonWardFormat;
 
 require DataParsers::ArrayImporters::CSVArrayImporter;
 use strict;
@@ -138,7 +138,7 @@ sub createFamilyTreeDataFromFile {
 
   # default encoding is utf8
   my $encoding = defined $config_->{encoding} ? $config_->{encoding} : "utf8";
-  my $arrayImporter = CSVArrayImporter->new($file_name, $encoding);
+  my $arrayImporter = Ftree::DataParsers::ArrayImporters::CSVArrayImporter->new($file_name, $encoding);
   while ($arrayImporter->hasNext()) {
     my @fields = $arrayImporter->next();
     @fields = map {Ftree::StringUtils::trim($_)} @fields;

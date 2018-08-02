@@ -20,25 +20,41 @@
 #
 #######################################################
 
-
-package SerializerFormat;
-use DataParsers::FieldValidatorParser;
-use DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
-use FamilyTreeData;
-use Storable;
+package Ftree::DataParsers::ArrayImporters::CSVArrayImporter;
+use strict;
+use warnings;
+use Params::Validate qw(:all);
 use CGI::Carp qw(fatalsToBrowser);
 
-sub createFamilyTreeDataFromFile {
-  my ($config_) = @_;
-  my $file_name = $config_->{file_name} or die "No file_name is given in config";
-
-  my $family_tree_data = Storable::retrieve($file_name);
-  if(defined $config_->{photo_dir}) {
-    ExtendedSimonWardFormat::setPictureDirectory($config_->{photo_dir});
-    ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
-  }
-  
-  return $family_tree_data;
+sub new {
+    my ($classname, $file_name, $encoding) = @_;
+	my $self = {
+    	current_line => undef,
+  };
+  open DATAFILE, "<:encoding($encoding)", "$file_name" 
+     or die "Unable to open datafile $file_name";
+  $self->{current_line} = <DATAFILE>;
+  return bless $self, $classname;
 }
+sub hasNext {
+	my ($self) = validate_pos(@_, {type => HASHREF});
+	return $self->{current_line};
+}
+sub next {
+	my ($self) = validate_pos(@_, {type => HASHREF});
+	my $prevline = $self->{current_line};
+	do {
+		$self->{current_line} = <DATAFILE>;		
+	}
+	while($self->{current_line} && $self->{current_line} =~ m/^\s*\#/x);  # skip comments
 
+
+	chomp($prevline); 
+	return split( /;/, $prevline);
+}
+sub close {
+	my ($self) = validate_pos(@_, {type => HASHREF});
+	close(DATAFILE) or die "Unable to close datafile";
+}
+ 
 1;

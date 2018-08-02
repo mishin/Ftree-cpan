@@ -20,41 +20,16 @@
 #
 #######################################################
 
-package CSVArrayImporter;
+package Ftree::Exporters::Serializer;
+
+use warnings FATAL => 'all';
 use strict;
-use warnings;
+use Storable;
 use Params::Validate qw(:all);
-use CGI::Carp qw(fatalsToBrowser);
 
-sub new {
-    my ($classname, $file_name, $encoding) = @_;
-	my $self = {
-    	current_line => undef,
-  };
-  open DATAFILE, "<:encoding($encoding)", "$file_name" 
-     or die "Unable to open datafile $file_name";
-  $self->{current_line} = <DATAFILE>;
-  return bless $self, $classname;
+sub export {
+  my ($filename, $family_tree_data) = validate_pos(@_, {type => SCALAR}, {type => HASHREF});
+  Storable::nstore $family_tree_data, $filename;
 }
-sub hasNext {
-	my ($self) = validate_pos(@_, {type => HASHREF});
-	return $self->{current_line};
-}
-sub next {
-	my ($self) = validate_pos(@_, {type => HASHREF});
-	my $prevline = $self->{current_line};
-	do {
-		$self->{current_line} = <DATAFILE>;		
-	}
-	while($self->{current_line} && $self->{current_line} =~ m/^\s*\#/x);  # skip comments
 
-
-	chomp($prevline); 
-	return split( /;/, $prevline);
-}
-sub close {
-	my ($self) = validate_pos(@_, {type => HASHREF});
-	close(DATAFILE) or die "Unable to close datafile";
-}
- 
 1;

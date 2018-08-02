@@ -20,14 +20,25 @@
 #
 #######################################################
 
-package Serializer;
 
+package Ftree::DataParsers::SerializerFormat;
+use DataParsers::FieldValidatorParser;
+use DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
+use FamilyTreeData;
 use Storable;
-use Params::Validate qw(:all);
+use CGI::Carp qw(fatalsToBrowser);
 
-sub export {
-  my ($filename, $family_tree_data) = validate_pos(@_, {type => SCALAR}, {type => HASHREF});
-  Storable::nstore $family_tree_data, $filename;
+sub createFamilyTreeDataFromFile {
+  my ($config_) = @_;
+  my $file_name = $config_->{file_name} or die "No file_name is given in config";
+
+  my $family_tree_data = Storable::retrieve($file_name);
+  if(defined $config_->{photo_dir}) {
+    Ftree::DataParsers::ExtendedSimonWardFormat::setPictureDirectory($config_->{photo_dir});
+    Ftree::DataParsers::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);
+  }
+  
+  return $family_tree_data;
 }
 
 1;
