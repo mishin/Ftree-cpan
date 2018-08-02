@@ -28,9 +28,9 @@ use warnings FATAL => 'all';
 use strict;
 use Spreadsheet::XLSX;
 # use Spreadsheet::ParseExcel;
-use DataParsers::ExtendedSimonWardFormat
+use Ftree::DataParsers::ExtendedSimonWardFormat
   ;    # for getting pictures. Temporal solution
-use FamilyTreeData;
+use Ftree::FamilyTreeData;
 use CGI::Carp qw(fatalsToBrowser);
 use Encode qw(decode);
 

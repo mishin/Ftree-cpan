@@ -36,7 +36,7 @@ use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 use Perl6::Export::Attrs;
 use utf8;
 use Encode qw(decode_utf8);
-use Picture;
+use Ftree::Picture;
 
 
 
