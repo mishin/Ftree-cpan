@@ -24,8 +24,8 @@ package Ftree::DataParsers::GedcomFormat;
 use strict;
 use warnings;
 use Gedcom;
-use DataParsers::FieldValidatorParser;
-use FamilyTreeData;
+use Ftree::DataParsers::FieldValidatorParser;
+use Ftree::FamilyTreeData;
 use CGI::Carp qw(fatalsToBrowser);
 use Encode qw(decode_utf8);
 

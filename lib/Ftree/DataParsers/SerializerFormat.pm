@@ -22,9 +22,11 @@
 
 
 package Ftree::DataParsers::SerializerFormat;
-use DataParsers::FieldValidatorParser;
-use DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
-use FamilyTreeData;
+use warnings FATAL => 'all';
+use strict;
+use Ftree::DataParsers::FieldValidatorParser;
+use Ftree::DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
+use Ftree::FamilyTreeData;
 use Storable;
 use CGI::Carp qw(fatalsToBrowser);
 

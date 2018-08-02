@@ -24,9 +24,8 @@ package Ftree::DataParsers::ExcelFormat;
 use warnings FATAL => 'all';
 use strict;
 use Spreadsheet::ParseExcel;
-use DataParsers::ExtendedSimonWardFormat
-  ;    # for getting pictures. Temporal solution
-use FamilyTreeData;
+use Ftree::DataParsers::ExtendedSimonWardFormat;    # for getting pictures. Temporal solution
+use Ftree::FamilyTreeData;
 use CGI::Carp qw(fatalsToBrowser);
 use Encode qw(decode);
 

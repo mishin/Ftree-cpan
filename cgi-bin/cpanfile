@@ -40,7 +40,7 @@ use 'Plack', '1.0037';
 use 'CGI::Emulate::PSGI', '0.21';
 use 'CGI::Compile', '0.19';
 use 'Dist::Milla', '1.0.15';
-use 'FamilyTreeInfo', '2.3.20';
+use 'Ftree::FamilyTreeInfo', '2.3.20';
 
 on test => sub {
     use 'Test::More';

@@ -34,27 +34,27 @@ sub getFamilyTree {
   
   switch ($type) {
   	case 'csv' {
-  	  require DataParsers::ExtendedSimonWardFormat;
+  	  require Ftree::DataParsers::ExtendedSimonWardFormat;
   	  return Ftree::DataParsers::ExtendedSimonWardFormat::createFamilyTreeDataFromFile($config->{config});
   	}
   	case 'excel' {
-  	  require DataParsers::ExcelFormat;
+  	  require Ftree::DataParsers::ExcelFormat;
   	  return Ftree::DataParsers::ExcelFormat::createFamilyTreeDataFromFile($config->{config});
   	}
 	case 'excelx' {
-  	  require DataParsers::ExcelxFormat;
+  	  require Ftree::DataParsers::ExcelxFormat;
   	  return Ftree::DataParsers::ExcelxFormat::createFamilyTreeDataFromFile($config->{config});
   	}
     case 'ser' {
-      require DataParsers::SerializerFormat;
+      require Ftree::DataParsers::SerializerFormat;
       return Ftree::DataParsers::SerializerFormat::createFamilyTreeDataFromFile($config->{config});
     }
   	case 'gedcom' {
-  	  require DataParsers::GedcomFormat;
+  	  require Ftree::DataParsers::GedcomFormat;
   	  return Ftree::DataParsers::GedcomFormat::createFamilyTreeDataFromFile($config->{config});
   	  }
   	case 'dbi' {
-      require DataParsers::DBIFormat;
+      require Ftree::DataParsers::DBIFormat;
       return Ftree::DataParsers::DBIFormat::getFamilyTreeData($config->{config});
     }
   	else {croak "Unknown type: $type" }

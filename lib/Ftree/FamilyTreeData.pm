@@ -24,9 +24,9 @@ package Ftree::FamilyTreeData;
 use strict;
 use warnings;
 
-use Person;
-use Name;
-use DataParsers::FieldValidatorParser;
+use Ftree::Person;
+use Ftree::Name;
+use Ftree::DataParsers::FieldValidatorParser;
 # use Params::Validate::Array qw(SCALAR ARRAYREF validate);# ...);
 # use Params::Validate::Array qw(SCALAR HASHREF validate);
 use Params::Validate qw(validate

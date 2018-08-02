@@ -27,13 +27,13 @@ use warnings;
 use version;
 our $VERSION = qv('2.3.24');
 
-use FamilyTreeBase;
+use Ftree::FamilyTreeBase;
 use Perl6::Export::Attrs;
 use Params::Validate qw(:all);
 use Encode qw(decode_utf8);
 my $q = new CGI;
 
-use base 'FamilyTreeBase';
+use base 'Ftree::FamilyTreeBase';
 
 sub new : Export {
     my $type = shift;

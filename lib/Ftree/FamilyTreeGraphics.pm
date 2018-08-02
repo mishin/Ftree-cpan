@@ -27,7 +27,7 @@ use warnings;
 
 use version; our $VERSION = qv('2.3.24');
 
-use FamilyTreeBase;
+use Ftree::FamilyTreeBase;
 
 use Params::Validate qw(:all);
 use List::Util qw(first max);
@@ -50,7 +50,7 @@ use Picture;
 #
 #######################################################
 
-use base 'FamilyTreeBase';
+use base 'Ftree::FamilyTreeBase';
 sub new : Export{
   my $type = shift;
   my $self = $type->SUPER::new(@_);

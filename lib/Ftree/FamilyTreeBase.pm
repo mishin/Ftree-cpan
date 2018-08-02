@@ -28,10 +28,10 @@ use version; our $VERSION = qv('2.3.24');
 
 use Params::Validate qw(:all);
 use CGI qw(:standard);
-use FamilyTreeDataFactory;
-use Person;
-use TextGeneratorFactory qw(getTextGenerator init);
-use SettingsFactory;
+use Ftree::FamilyTreeDataFactory;
+use Ftree::Person;
+use Ftree::TextGeneratorFactory qw(getTextGenerator init);
+use Ftree::SettingsFactory;
 use Date::Tiny;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 use Perl6::Export::Attrs;

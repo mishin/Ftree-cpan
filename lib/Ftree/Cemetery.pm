@@ -27,10 +27,10 @@ use warnings;
 
 use version; our $VERSION = qv('2.3.24');
 
-use Place;
+use Ftree::Place;
 use Params::Validate qw(:all);
 
-use base 'Place';
+use base 'Ftree::Place';
 sub new {
     my $type = shift;
     my $self = $type->SUPER::new(@_);

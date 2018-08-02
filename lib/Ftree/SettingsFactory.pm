@@ -30,7 +30,7 @@ package Ftree::SettingsFactory;
 sub importSettings{
   my ( $type ) = @_;
   if($type eq "perl") {
-    require PerlSettingsImporter;
+    require Ftree::PerlSettingsImporter;
     return Ftree::PerlSettingsImporter::importSettings();
   }
 }

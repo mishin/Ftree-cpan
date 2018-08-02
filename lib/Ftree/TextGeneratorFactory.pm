@@ -59,39 +59,39 @@ sub getTextGenerator : Export{
   switch ($language) {
     case "hu" {
       $reverse_name = 1;;
-      require TextGenerators::HungarianTextGenerator;
+      require Ftree::TextGenerators::HungarianTextGenerator;
       return Ftree::TextGenerators::HungarianTextGenerator->new( );
     }
     case "gb" {
-      require TextGenerators::EnglishTextGenerator; 
+      require Ftree::TextGenerators::EnglishTextGenerator;
       return Ftree::TextGenerators::EnglishTextGenerator->new( );
     }
     case "de" {
-      require TextGenerators::GermanTextGenerator; 
+      require Ftree::TextGenerators::GermanTextGenerator;
       return Ftree::TextGenerators::GermanTextGenerator->new( );
     }
     case "fr" {
-      require TextGenerators::FrenchTextGenerator; 
+      require Ftree::TextGenerators::FrenchTextGenerator;
       return Ftree::TextGenerators::FrenchTextGenerator->new( );
     }
     case "pl" {
-      require TextGenerators::PolishTextGenerator; 
+      require Ftree::TextGenerators::PolishTextGenerator;
       return Ftree::TextGenerators::PolishTextGenerator->new( );
     }
     case "it" {
-      require TextGenerators::ItalianTextGenerator; 
+      require Ftree::TextGenerators::ItalianTextGenerator;
       return Ftree::TextGenerators::ItalianTextGenerator->new( );
     }
     case "ro" {
-      require TextGenerators::RomanianTextGenerator; 
+      require Ftree::TextGenerators::RomanianTextGenerator;
       return Ftree::TextGenerators::RomanianTextGenerator->new( );
     }
     case "ru" {
-      require TextGenerators::RussianTextGenerator; 
+      require Ftree::TextGenerators::RussianTextGenerator;
       return Ftree::TextGenerators::RussianTextGenerator->new( );
     }
     else {
-      require TextGenerators::EnglishTextGenerator;
+      require Ftree::TextGenerators::EnglishTextGenerator;
       Ftree::TextGenerators::EnglishTextGenerator->new( );
     }
   } 

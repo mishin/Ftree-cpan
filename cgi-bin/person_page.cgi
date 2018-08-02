@@ -34,7 +34,7 @@ use lib "$FindBin::Bin/lib";
 
 use version; our $VERSION = qv('0.2');
 
-use PersonPage;
+use Ftree::PersonPage;
 
 my $family_tree = Ftree::PersonPage->new();
 $family_tree->main();

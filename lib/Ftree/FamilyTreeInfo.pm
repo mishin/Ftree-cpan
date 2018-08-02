@@ -25,7 +25,7 @@ package Ftree::FamilyTreeInfo;
 use strict;
 use warnings;
 
-use FamilyTreeBase;
+use Ftree::FamilyTreeBase;
 
 use Switch;
 use Params::Validate qw(:all);
@@ -37,7 +37,7 @@ our $VERSION = '2.3.24';
 
 my $q = new CGI;
 
-use base 'FamilyTreeBase';
+use base 'Ftree::FamilyTreeBase';
 sub new : Export {
     my $type = shift;
     my $self = $type->SUPER::new(@_);

@@ -23,7 +23,9 @@
 #######################################################
 
 use lib ('cgi', 'cgi/lib');
-use FamilyTreeDataFactory;
+use warnings FATAL => 'all';
+use strict;
+use Ftree::FamilyTreeDataFactory;
 use Switch;
 use utf8;
 

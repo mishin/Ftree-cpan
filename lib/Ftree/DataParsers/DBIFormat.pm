@@ -24,11 +24,11 @@ package Ftree::DataParsers::DBIFormat;
 
 use strict;
 use warnings;
-use FamilyTreeData;
+use Ftree::FamilyTreeData;
 use Params::Validate qw(:all);
-use DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
+use Ftree::DataParsers::ExtendedSimonWardFormat; # for getting pictures. Temporal solution
 use DBI;
-use DataParsers::FieldValidatorParser;
+use Ftree::DataParsers::FieldValidatorParser;
 use CGI::Carp qw(fatalsToBrowser);
 
 my $picture_directory;
