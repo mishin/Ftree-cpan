@@ -23,7 +23,7 @@
 use strict;
 use warnings;
 
-package Ftree::EnglishTextGenerator;
+package Ftree::TextGenerators::EnglishTextGenerator;
 
 sub new {
   my ( $classname ) = @_;

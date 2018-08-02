@@ -25,7 +25,7 @@ use warnings;
 use utf8;
 
 
-package Ftree::RussianTextGenerator;
+package Ftree::TextGenerators::RussianTextGenerator;
 
 sub new {
   my ( $classname ) = @_;

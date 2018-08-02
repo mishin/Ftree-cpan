@@ -24,7 +24,7 @@ use strict;
 use warnings;
 use utf8;
 
-package Ftree::PolishTextGenerator;
+package Ftree::TextGenerators::PolishTextGenerator;
 
 
 sub new {

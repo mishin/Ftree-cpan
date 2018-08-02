@@ -60,39 +60,39 @@ sub getTextGenerator : Export{
     case "hu" {
       $reverse_name = 1;;
       require TextGenerators::HungarianTextGenerator;
-      return Ftree::HungarianTextGenerator->new( );
+      return Ftree::TextGenerators::HungarianTextGenerator->new( );
     }
     case "gb" {
       require TextGenerators::EnglishTextGenerator; 
-      return Ftree::EnglishTextGenerator->new( );
+      return Ftree::TextGenerators::EnglishTextGenerator->new( );
     }
     case "de" {
       require TextGenerators::GermanTextGenerator; 
-      return Ftree::GermanTextGenerator->new( );
+      return Ftree::TextGenerators::GermanTextGenerator->new( );
     }
     case "fr" {
       require TextGenerators::FrenchTextGenerator; 
-      return Ftree::FrenchTextGenerator->new( );
+      return Ftree::TextGenerators::FrenchTextGenerator->new( );
     }
     case "pl" {
       require TextGenerators::PolishTextGenerator; 
-      return Ftree::PolishTextGenerator->new( );
+      return Ftree::TextGenerators::PolishTextGenerator->new( );
     }
     case "it" {
       require TextGenerators::ItalianTextGenerator; 
-      return Ftree::ItalianTextGenerator->new( );
+      return Ftree::TextGenerators::ItalianTextGenerator->new( );
     }
     case "ro" {
       require TextGenerators::RomanianTextGenerator; 
-      return Ftree::RomanianTextGenerator->new( );
+      return Ftree::TextGenerators::RomanianTextGenerator->new( );
     }
     case "ru" {
       require TextGenerators::RussianTextGenerator; 
-      return Ftree::RussianTextGenerator->new( );
+      return Ftree::TextGenerators::RussianTextGenerator->new( );
     }
     else {
       require TextGenerators::EnglishTextGenerator;
-      Ftree::EnglishTextGenerator->new( );
+      Ftree::TextGenerators::EnglishTextGenerator->new( );
     }
   } 
 }

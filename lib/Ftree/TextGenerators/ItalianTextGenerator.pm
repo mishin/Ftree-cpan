@@ -24,7 +24,7 @@ use strict;
 use warnings;
 use utf8;
 
-package Ftree::ItalianTextGenerator;
+package Ftree::TextGenerators::ItalianTextGenerator;
 
 sub new {
   my ( $classname ) = @_;

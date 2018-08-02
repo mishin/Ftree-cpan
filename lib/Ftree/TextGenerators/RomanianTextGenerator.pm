@@ -23,7 +23,7 @@
 use strict;
 use warnings;
 
-package Ftree::RomanianTextGenerator;
+package Ftree::TextGenerators::RomanianTextGenerator;
 
 sub new {
   my ( $classname ) = @_;
