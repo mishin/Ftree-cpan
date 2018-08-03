@@ -21,8 +21,6 @@
 #######################################################
 
 package Ftree::DataParsers::ExcelFormat;
-use warnings FATAL => 'all';
-use strict;
 use Spreadsheet::ParseExcel;
 use Ftree::DataParsers::ExtendedSimonWardFormat;    # for getting pictures. Temporal solution
 use Ftree::FamilyTreeData;

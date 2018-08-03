@@ -21,9 +21,6 @@
 #######################################################
 
 package Ftree::FamilyTreeBase;
-use strict;
-use warnings;
-
 use version; our $VERSION = qv('2.3.24');
 
 use Params::Validate qw(:all);
@@ -50,7 +47,7 @@ sub new : Export {
         treeScript    => 'ftree',
         personScript  => 'person_page',
         photoUrl      => undef,
-        graphicsUrl   => '../graphics',
+        graphicsUrl   => 'graphics',
         imgwidth      => 60,
         reqLevels     => 2,
         textGenerator => undef,
