@@ -254,8 +254,8 @@ sub _print_people_list {
 
         foreach my $person ( @{$people_array_r} ) {
             if (   $person != $self->{target_person}
-                && $person != $Person::unknown_male
-                && $person != $Person::unknown_female )
+                && $person != $Ftree::Person::unknown_male
+                && $person != $Ftree::Person::unknown_female )
             {
                 print $self->aref_tree( $person->get_name()->get_full_name(),
                     $person, 0 ),

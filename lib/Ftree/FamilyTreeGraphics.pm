@@ -67,10 +67,10 @@ sub main :Export {
     my ($self) = validate_pos(@_, HASHREF);
     $self->_process_parameters();
 
-    $Person::unknown_male->set_default_picture(Ftree::Picture->new(
+    $Ftree::Person::unknown_male->set_default_picture(Ftree::Picture->new(
         { file_name => $self->{graphicsUrl} . '/nophoto_m.jpg',
             comment => "" }));
-    $Person::unknown_female->set_default_picture(Ftree::Picture->new(
+    $Ftree::Person::unknown_female->set_default_picture(Ftree::Picture->new(
         { file_name => $self->{graphicsUrl} . '/nophoto_f.jpg',
             comment => "" }));
 
@@ -162,8 +162,8 @@ sub html_img {
 
     my $img = $self->SUPER::html_img($person);
     return ($person == $self->{target_person} ||
-        $person == $Person::unknown_male ||
-        $person == $Person::unknown_female) ? $img : $self->aref_tree($img, $person);
+        $person == $Ftree::Person::unknown_male ||
+        $person == $Ftree::Person::unknown_female) ? $img : $self->aref_tree($img, $person);
 }
 
 sub img_graph {
@@ -195,8 +195,8 @@ sub getDTreeWidth {
     #  carp "called: getDTreeWidth with \$root_person = " . $root_person->get_name()->get_long_name() . ", \$levels = $levels";
 
     return 1 if (0 == $levels);
-    return 1 if ($root_person == $Person::unknown_male ||
-        $root_person == $Person::unknown_female);
+    return 1 if ($root_person == $Ftree::Person::unknown_male ||
+        $root_person == $Ftree::Person::unknown_female);
     return 1 unless defined $root_person->get_children();
 
     my $width = 0;
@@ -242,14 +242,14 @@ sub fillDTree {
     #  print "called: fillDTree (root_node=$root_node_id, dec_level=$dec_level,  req_levels=$req_levels)\n";
     $dec_level++;
 
-    if ($root_person != $Person::unknown_male
-        && $root_person != $Person::unknown_female
+    if ($root_person != $Ftree::Person::unknown_male
+        && $root_person != $Ftree::Person::unknown_female
         && defined $root_person->get_children()) {
         push @{$DTree_ref->[$dec_level]}, @{$root_person->get_children()};
         $self->{DLevels} = $dec_level if ($dec_level > $self->{DLevels});
     }
     else {
-        push @{$DTree_ref->[$dec_level]}, $Person::unknown_female;
+        push @{$DTree_ref->[$dec_level]}, $Ftree::Person::unknown_female;
     }
 
     if ($dec_level < $req_levels) {
@@ -258,7 +258,7 @@ sub fillDTree {
                 for (@{$root_person->get_children()});
         }
         else {
-            $self->fillDTree($Person::unknown_female, $dec_level, $req_levels, $DTree_ref);
+            $self->fillDTree($Ftree::Person::unknown_female, $dec_level, $req_levels, $DTree_ref);
         }
     }
 
@@ -305,13 +305,13 @@ sub drawRow {
 }
 sub unknownEquiCond {
     my ($self, $person) = validate_pos(@_, HASHREF, SCALARREF, 0);
-    return $person == $Person::unknown_male || $person == $Person::unknown_female;
+    return $person == $Ftree::Person::unknown_male || $person == $Ftree::Person::unknown_female;
 }
 sub unknownEquiNoChildrenCond {
     my ($self, $person, $this_level) = validate_pos(@_,
         HASHREF, SCALARREF, SCALAR);
-    return $person == $Person::unknown_female ||
-        $person == $Person::unknown_male ||
+    return $person == $Ftree::Person::unknown_female ||
+        $person == $Ftree::Person::unknown_male ||
         !defined $person->get_children() ||
         ($this_level == $self->{reqLevels});
 }
@@ -356,7 +356,7 @@ sub getDGridLineG {
                     unless (defined $this_parent);
             }
 
-            if ($person == $Person::unknown_female) {
+            if ($person == $Ftree::Person::unknown_female) {
                 # This blank person
                 $left_fill = $branch = $right_fill = "";
             }
@@ -413,10 +413,10 @@ sub fillATree {
     #  print "called: fillATree (root_node = $root_person, anc_level = $anc_level, req_levels = $req_levels)\n";
 
     my $father = defined $root_person->get_father() ?
-        $root_person->get_father() : $Person::unknown_male;
+        $root_person->get_father() : $Ftree::Person::unknown_male;
 
     my $mother = defined $root_person->get_mother() ?
-        $root_person->get_mother() : $Person::unknown_female;
+        $root_person->get_mother() : $Ftree::Person::unknown_female;
 
     push @{$ATree_ref->[$anc_level]}, ($father, $mother);
 
@@ -589,7 +589,7 @@ sub getPTreeWidth {
 sub html_name {
     my ($self, $person) = validate_pos(@_, { type => HASHREF }, { type => SCALARREF });
     return $self->{cgi}->font({ -size => $self->{fontsize} }, $self->{textGenerator}{Unknown})
-        if (!defined $person || $person == $Person::unknown_male || $person == $Person::unknown_female);
+        if (!defined $person || $person == $Ftree::Person::unknown_male || $person == $Ftree::Person::unknown_female);
     my $show_name;
     if (defined $person->get_name()) {
         $show_name = ($self->{reqLevels} > 1) ?
