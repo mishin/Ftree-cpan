@@ -8,42 +8,39 @@ Ftree - family tree generator
 
 # SYNOPSIS
 
-installator for Windows 7 32bit
-[https://sourceforge.net/projects/family-tree-32/files/latest/download?source=navbar](https://sourceforge.net/projects/family-tree-32/files/latest/download?source=navbar)
-
-    #If install it
+If install it
     cpanm https://cpan.metacpan.org/authors/id/M/MI/MISHIN/FamilyTreeInfo-2.3.16.tar.gz
 
-    #copy the folder cgi-bin from the distribution
+copy the folder cgi-bin from the distribution
     cp cgi-bin c:\ftree\cgi-bin 
     
-    #then got to it directory
+then got to it directory
     c:\ftree\cgi-bin
-    #and run
+and run
     plackup -I..\lib
     
-    #HTTP::Server::PSGI: Accepting connections at http://0:5000/
+HTTP::Server::PSGI: Accepting connections at http://0:5000/
 
-    #now go to the browser
+now go to the browser
     http://127.0.0.1:5000/
 
-    #and we can see a family tree, and
-    #to his Office just need to edit the file
+and we can see a family tree, and
+to his Office just need to edit the file
     c:\ftree\cgi-bin\tree.xls
     
-    #or the file with a different name, but then this name must indicate file 
+or the file with a different name, but then this name must indicate file
     ftree.config
-    #changing parameter
+changing parameter
     file_name tree.xls
-    #on your
+on your
 
-    #and pictures of relatives should be 3 x 4
-    #and they need to be put in the directory
+and pictures of relatives should be 3 x 4
+and they need to be put in the directory
     c:\ftree\cgi-bin\pictures
-    #where the name of the picture must be a person id + .jpg
-    #all works!
+where the name of the picture must be a person id + .jpg
+all works!
 
-    #for Unix you will need to fix option
+for Unix you will need to fix option
 
     photo_dir c:/ftree/cgi-bin/pictures/
 
