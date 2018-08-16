@@ -9,34 +9,47 @@ Ftree - family tree generator
 # SYNOPSIS
 
 If install it
+
     cpanm https://cpan.metacpan.org/authors/id/M/MI/MISHIN/FamilyTreeInfo-2.3.16.tar.gz
 
 copy the folder cgi-bin from the distribution
-    cp cgi-bin c:\ftree\cgi-bin 
+
+    cp cgi-bin c:\ftree\cgi-bin
     
 then got to it directory
+
     c:\ftree\cgi-bin
+
 and run
+
     plackup -I..\lib
     
 HTTP::Server::PSGI: Accepting connections at http://0:5000/
 
 now go to the browser
+
     http://127.0.0.1:5000/
 
 and we can see a family tree, and
 to his Office just need to edit the file
+
     c:\ftree\cgi-bin\tree.xls
     
 or the file with a different name, but then this name must indicate file
+
     ftree.config
+
 changing parameter
+
     file_name tree.xls
+
 on your
 
 and pictures of relatives should be 3 x 4
 and they need to be put in the directory
+
     c:\ftree\cgi-bin\pictures
+
 where the name of the picture must be a person id + .jpg
 all works!
 
