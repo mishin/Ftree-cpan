@@ -1,26 +1,48 @@
+#######################################################
+#
+# Family Tree generation program, v2.0
+# Written by Ferenc Bodon and Simon Ward, March 2000 (simonward.com)
+# Copyright (C) 2000 Ferenc Bodon, Simon K Ward
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# For a copy of the GNU General Public License, visit
+# http://www.gnu.org or write to the Free Software Foundation, Inc.,
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+#######################################################
+
 package Ftree::PersonPage;
 use strict;
 use warnings;
 
 use version;
-our $VERSION = qv('2.3.41');
+our $VERSION = qv('2.3.24');
 
 use Ftree::FamilyTreeBase;
-use Sub::Exporter -setup => { exports => [ qw(new main) ] };
+use Perl6::Export::Attrs;
 use Params::Validate qw(:all);
 use Encode qw(decode_utf8);
 my $q = new CGI;
 
 use base 'Ftree::FamilyTreeBase';
 
-sub new{
+sub new : Export {
     my $type = shift;
     my $self = $type->SUPER::new(@_);
     $self->{target_person} = undef;
     return $self;
 }
 
-sub main{
+sub main : Export {
     my ($self) = validate_pos( @_, { type => HASHREF } );
     $self->_set_target();
     $self->_target_check();
@@ -110,7 +132,7 @@ sub _draw_pictures {
 
 sub _draw_single_person_page {
     my ($self) = validate_pos( @_, { type => HASHREF } );
-    binmode STDOUT, ":encoding(UTF-8)";
+    binmode STDOUT, ":utf8";
     $self->_toppage( $self->{target_person}->get_name()->get_long_name() );
 
     print $q->start_center;

@@ -1,11 +1,32 @@
+#######################################################
+#
+# Family Tree generation program, v2.0
+# Written by Ferenc Bodon and Simon Ward, March 2000 (simonward.com)
+# Copyright (C) 2000 Ferenc Bodon, Simon K Ward
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# For a copy of the GNU General Public License, visit 
+# http://www.gnu.org or write to the Free Software Foundation, Inc.,
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+#######################################################
+
 package Ftree::DataParsers::GedcomFormat;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.41');
 use Gedcom;
 use Ftree::DataParsers::FieldValidatorParser;
 use Ftree::FamilyTreeData;
-# use CGI::Carp qw(fatalsToBrowser);
+use CGI::Carp qw(fatalsToBrowser);
 use Encode qw(decode_utf8);
 
 my %genderTogedcomsex = (
@@ -36,7 +57,7 @@ sub createFamilyTreeDataFromFile {
   my $file_name = $config_->{file_name} or die "No file_name is given in config";
 
   my $ged = Gedcom->new(gedcom_file  => $file_name);
-  my $family_tree_data = Ftree::FamilyTreeData->new();                        
+  my $family_tree_data = Ftree::FamilyTreeData->new();
   for my $i ($ged->individuals)
   {
     $family_tree_data->add_person({
@@ -89,14 +110,14 @@ sub getPlace {
 sub getEmail {
   my ($i) = @_;
   my @data = decode_utf8($i->get_value("Object File"));
-  my @emails = grep {defined $_ && FieldValidatorParser::validEmail($_)} @data; 
+  my @emails = grep {defined $_ && Ftree::DataParsers::FieldValidatorParser::validEmail($_)} @data;
   return $emails[0];
 
 }
 sub getHomepage {
   my ($i) = @_;
   my @data = decode_utf8($i->get_value("Object File"));
-  my @urls = grep {defined $_ && FieldValidatorParser::validURL($_)} @data; 
+  my @urls = grep {defined $_ && Ftree::DataParsers::FieldValidatorParser::validURL($_)} @data;
   return $urls[0];
 
 }

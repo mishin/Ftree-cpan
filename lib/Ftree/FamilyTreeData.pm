@@ -1,11 +1,34 @@
+#######################################################
+#
+# Family Tree generation program, v2.0
+# Written by Ferenc Bodon and Simon Ward, March 2000 (simonward.com)
+# Copyright (C) 2000 Ferenc Bodon, Simon K Ward
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# For a copy of the GNU General Public License, visit 
+# http://www.gnu.org or write to the Free Software Foundation, Inc.,
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+#######################################################
+
 package Ftree::FamilyTreeData;
 use strict;
 use warnings;
-use version; our $VERSION = qv('2.3.41');
 
 use Ftree::Person;
 use Ftree::Name;
 use Ftree::DataParsers::FieldValidatorParser;
+# use Params::Validate::Array qw(SCALAR ARRAYREF validate);# ...);
+# use Params::Validate::Array qw(SCALAR HASHREF validate);
 use Params::Validate qw(validate
     SCALAR
     ARRAYREF
@@ -18,18 +41,31 @@ use Params::Validate qw(validate
     BOOLEAN
     UNDEF
     OBJECT
-);
-# use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
-use Sub::Exporter -setup => { exports => [ qw(new add_person) ] };
+);#:all);
+# use Params::Validate::Array qw(validate validation_options 
+    # SCALAR
+    # ARRAYREF
+    # HASHREF
+    # CODEREF
+    # GLOB
+    # GLOBREF
+    # SCALARREF
+    # HANDLE
+    # BOOLEAN
+    # UNDEF
+    # OBJECT
+# );
+use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
+use Perl6::Export::Attrs;
 
-sub new{
+sub new : Export {
   my ( $classname) = @_;
   my $self = {
     people   => {},  #hash of Person
   };
   return bless $self, $classname;
 }
-sub add_person{
+sub add_person : Export {
   my ($self) = shift;
   my (%arg_ref) = validate(@_, { id => {type => SCALAR},
     first_name => {type => SCALAR|UNDEF, default => undef },
@@ -55,19 +91,19 @@ sub add_person{
     work_places => {type => ARRAYREF|UNDEF, default => undef},
     places_of_living => {type => SCALAR|UNDEF, default => undef},
     general    => {type => SCALAR|UNDEF, default => undef} });
-
+    
   if(!Ftree::DataParsers::FieldValidatorParser::validIDEntry($arg_ref{id})) {
-    die "Not valid Id: " . $arg_ref{id} . " Ids should not contain "
+    carp "Not valid Id: " . $arg_ref{id} . " Ids should not contain "
       . "only alphanumeric plus underscore character";
-    return;
+    return; 
   }
-
+  
   if ( !defined $self->{people}{ $arg_ref{id} } ) {
   	$self->{people}{ $arg_ref{id} } = Ftree::Person->new( {id => $arg_ref{id}} );
   }
   my $temp_person = $self->{people}{ $arg_ref{id} };
   $temp_person->set_is_living(1);
-
+  
   $temp_person->set_name(Ftree::Name->new(
           {first_name => $arg_ref{first_name},
            mid_name   => $arg_ref{mid_name},
@@ -80,56 +116,56 @@ sub add_person{
     if(defined $arg_ref{suffix});
   $temp_person->get_name()->set_nickname($arg_ref{nickname})
     if(defined $arg_ref{nickname});
-
-  $self->set_parent($temp_person, $arg_ref{father_id}, 0);
+    
+  $self->set_parent($temp_person, $arg_ref{father_id}, 0);   
   $self->set_parent($temp_person, $arg_ref{mother_id}, 1);
 
   if(defined $arg_ref{email} && $arg_ref{email} ne "") {
     if(Ftree::DataParsers::FieldValidatorParser::validEmail($arg_ref{email})) {
-      $temp_person->set_email($arg_ref{email});
+      $temp_person->set_email($arg_ref{email});      
     } else {
-      die 'Not valid email: ' . $arg_ref{email};
+      carp 'Not valid email: ' . $arg_ref{email};
     }
   }
-
+   
   if(defined $arg_ref{homepage} && $arg_ref{homepage} ne "") {
     if(Ftree::DataParsers::FieldValidatorParser::validURL($arg_ref{homepage})) {
-      $temp_person->set_homepage($arg_ref{homepage});
+      $temp_person->set_homepage($arg_ref{homepage});      
     } else {
-      die 'Not valid url: ' . $arg_ref{homepage};
+      carp 'Not valid url: ' . $arg_ref{homepage};
     }
-  }
+  }   
 
   $temp_person->set_date_of_birth(Ftree::DataParsers::FieldValidatorParser::getDate($arg_ref{date_of_birth}))
-    if ( defined $arg_ref{date_of_birth}
+    if ( defined $arg_ref{date_of_birth} 
          && Ftree::DataParsers::FieldValidatorParser::getDate($arg_ref{date_of_birth}) );
-   if ( defined $arg_ref{date_of_death}
+   if ( defined $arg_ref{date_of_death} 
         && Ftree::DataParsers::FieldValidatorParser::getDate($arg_ref{date_of_death})) {
          $temp_person->set_date_of_death(Ftree::DataParsers::FieldValidatorParser::getDate($arg_ref{date_of_death}));
-         $temp_person->set_is_living(0);
-   }
-
-
+         $temp_person->set_is_living(0);     	
+   }   
+     
+    
   if(defined $arg_ref{gender} && $arg_ref{gender} ne "") {
     if(Ftree::DataParsers::FieldValidatorParser::validBool($arg_ref{gender})) {
-      $temp_person->set_gender($arg_ref{gender});
+      $temp_person->set_gender($arg_ref{gender});      
     } else {
-      die "Not valid bool: " . $arg_ref{gender};
+      carp "Not valid bool: " . $arg_ref{gender};
     }
   }
-
+  
    my $place = Ftree::DataParsers::FieldValidatorParser::getPlace($arg_ref{place_of_birth});
    $temp_person->set_place_of_birth($place)
      if(defined $arg_ref{place_of_birth});
-
+     
    $place = Ftree::DataParsers::FieldValidatorParser::getCemetery($arg_ref{cemetery});
    if(defined $place) {
      $temp_person->set_cemetery($place);
      $temp_person->set_is_living(0);
    }
-
+              
    $temp_person->set_schools($arg_ref{schools})
-     if(defined $arg_ref{schools});
+     if(defined $arg_ref{schools});        
    $temp_person->set_jobs($arg_ref{jobs})
      if(defined $arg_ref{jobs});
    $temp_person->set_work_places($arg_ref{work_places})
@@ -143,21 +179,21 @@ sub add_person{
   if(defined $arg_ref{is_living} && $arg_ref{is_living} ne "") {
     if(Ftree::DataParsers::FieldValidatorParser::validBool($arg_ref{is_living})) {
       if(0 == $temp_person->get_is_living() && $arg_ref{is_living}){
-      	die "is_living field should be 0 for " . $arg_ref{id};
+      	carp "is_living field should be 0 for " . $arg_ref{id};	
       } else {
-      	$temp_person->set_is_living($arg_ref{is_living});
+      	$temp_person->set_is_living($arg_ref{is_living});	
       }
     } else {
-      die "Not valid bool: " . $arg_ref{is_living};
+      carp "Not valid bool: " . $arg_ref{is_living};
     }
   }
 
-
-  return $temp_person;
+     
+  return $temp_person;  
 }
 sub get_person {
   my ($self, $id) = @_;
-
+  
   return $self->{people}{$id};
 }
 sub get_all_people {
@@ -168,40 +204,40 @@ sub get_all_people {
 sub set_parent {
   my ($self, $temp_person, $id, $gender) = @_;
   return unless defined $id;
-
+  
   if(!Ftree::DataParsers::FieldValidatorParser::validIDEntry($id)) {
-  	die "Not valid Id: $id. Ids should not contain " .
+  	carp "Not valid Id: $id. Ids should not contain " .
          "only alphanumeric plus underscore character!";
-    return;
+    return;         	
   }
   if ( !defined $self->{people}{ $id } ) {
     $self->{people}{ $id } = Ftree::Person->new( { id => $id } );
   }
-
+	
   my $parent = $self->{people}{ $id };
-
+    
   if($gender == 0) {
-    $temp_person->set_father($parent);
+    $temp_person->set_father($parent);	
   }
   else {
 	$temp_person->set_mother($parent);
   }
-
+		
   if ( !defined $parent->get_gender() ) {
     $parent->set_gender($gender);
   }
   else {
-	die( "Incorrent gender for " . $parent->get_id() )
+	carp( "Incorrent gender for " . $parent->get_id() )
 	  if ( $parent->get_gender() != $gender );
   }
-
+  
   if (defined $parent->get_children()) {
-    push @{$parent->get_children()}, $temp_person;
+    push @{$parent->get_children()}, $temp_person;		
   }
   else {
 	$parent->set_children([$temp_person]);
   }
-
+  
   return;
 }
 

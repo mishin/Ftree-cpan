@@ -1,26 +1,44 @@
-package Ftree::FamilyTreeBase;
-use strict;
-use warnings;
+#######################################################
+#
+# Family Tree generation program, v2.0
+# Written by Ferenc Bodon and Simon Ward, March 2000 (simonward.com)
+# Copyright (C) 2000 Ferenc Bodon, Simon K Ward
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# For a copy of the GNU General Public License, visit
+# http://www.gnu.org or write to the Free Software Foundation, Inc.,
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+#######################################################
 
-use version; our $VERSION = qv('2.3.41');
+package Ftree::FamilyTreeBase;
+use version; our $VERSION = qv('2.3.24');
 
 use Params::Validate qw(:all);
 use CGI qw(:standard);
 use Ftree::FamilyTreeDataFactory;
 use Ftree::Person;
-use Ftree::TextGeneratorFactory;
+use Ftree::TextGeneratorFactory qw(getTextGenerator init);
 use Ftree::SettingsFactory;
-use Ftree::Date::Tiny;
-use CGI::Carp qw(warningsToBrowser);#fatalsToBrowser
-# use Perl6::Export::Attrs;
-use Sub::Exporter -setup => { exports => [ qw(new) ] };
+use Date::Tiny;
+use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
+use Perl6::Export::Attrs;
 use Encode qw(decode_utf8);
 use utf8;
 
 my $q = new CGI;
 
-sub new {
-    my ($classname, @args) = @_;
+sub new : Export {
+    my ($classname) = @_;
     my $self = {
         lang     => undef,
         password => undef,
@@ -29,7 +47,7 @@ sub new {
         treeScript    => 'ftree',
         personScript  => 'person_page',
         photoUrl      => undef,
-        graphicsUrl   => '../graphics',
+        graphicsUrl   => 'graphics',
         imgwidth      => 60,
         reqLevels     => 2,
         textGenerator => undef,
@@ -37,12 +55,11 @@ sub new {
         cgi           => new CGI,
     };
     $self->{imgheight} = $self->{imgwidth} * 1.5;
-    $self->{settings}  = Ftree::SettingsFactory::importSettings('perl', $args[0] );
+    $self->{settings}  = Ftree::SettingsFactory::importSettings('perl');
     $self->{photoUrl}  = $self->{settings}{data_source}{config}{photo_url};
 
-    if ( defined $self->{settings}{date_format} ){
-        Ftree::Date::Tiny->set_format( $self->{settings}{date_format} );
-    }
+    Date::Tiny->set_format( $self->{settings}{date_format} )
+      if ( defined $self->{settings}{date_format} );
 
     return bless $self, $classname;
 }
@@ -63,7 +80,7 @@ sub _process_parameters {
 sub _toppage {
     my ( $self, $title ) =
       validate_pos( @_, { type => HASHREF }, { type => SCALAR } );
-    binmode STDOUT, ":encoding(UTF-8)";
+    binmode STDOUT, ":utf8";
     print $self->{cgi}->header( -charset => 'UTF-8' ),
       $self->{cgi}->start_html(
         -title => $title,
@@ -226,7 +243,7 @@ sub _password_check {
           '<input type="text" size="25" name="passwd">',
           '<input type="submit" value="Go"></p>',
           "</form>\n";
-        $self->_endpage();
+        $self->endpage();
         exit 1;
     }
 }

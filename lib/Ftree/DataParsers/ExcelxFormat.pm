@@ -1,14 +1,37 @@
-package Ftree::DataParsers::ExcelxFormat;
-use strict;
-use warnings;
-use version; our $VERSION = qv('2.3.41');
+#######################################################
+#
+# Family Tree generation program, v2.0
+# Written by Ferenc Bodon and Simon Ward, March 2000 (simonward.com)
+# Copyright (C) 2000 Ferenc Bodon, Simon K Ward
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# For a copy of the GNU General Public License, visit
+# http://www.gnu.org or write to the Free Software Foundation, Inc.,
+# 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+#######################################################
 
+package Ftree::DataParsers::ExcelxFormat;
+
+# use Spreadsheet::ParseXLSX;
+# use Spreadsheet::Read;
+use warnings FATAL => 'all';
+use strict;
 use Spreadsheet::XLSX;
 # use Spreadsheet::ParseExcel;
 use Ftree::DataParsers::ExtendedSimonWardFormat
   ;    # for getting pictures. Temporal solution
 use Ftree::FamilyTreeData;
-# use CGI::Carp qw(fatalsToBrowser);
+use CGI::Carp qw(fatalsToBrowser);
 use Encode qw(decode);
 
 sub createFamilyTreeDataFromFile {
@@ -18,14 +41,13 @@ sub createFamilyTreeDataFromFile {
 
     my $family_tree_data = Ftree::FamilyTreeData->new();
 	my $excel = Spreadsheet::XLSX -> new ( $file_name);#, $converter);
-	# my $excel = Spreadsheet::ParseXLSX->new->parse($file_name);
     # my $workbook         = ReadData($file_name)
       # or die "Unable to parse file " . $file_name;
 
     # my $excel            = Spreadsheet::ParseXLSX->new->parse($file_name);
     # Spreadsheet::ParseXLSX::Workbook->Parse($file_name)
     # or die "Unable to parse file " . $file_name;
-foreach my $sheet ( @{ $excel->{Worksheet} } ) {
+foreach my $sheet ( @{ $excel->{Worksheet} } ) {	
             foreach my $row ( $sheet->{MinRow} + 1 .. $sheet->{MaxRow} ) {
             my $tempperson = {
                 id             => convertCell( $sheet->{Cells}[$row][0] ),
@@ -62,7 +84,7 @@ foreach my $sheet ( @{ $excel->{Worksheet} } ) {
             $family_tree_data->add_person($tempperson);
         }
     }
-
+     
     if ( defined $config_->{photo_dir} ) {
         Ftree::DataParsers::ExtendedSimonWardFormat::setPictureDirectory( $config_->{photo_dir} );
         Ftree::DataParsers::ExtendedSimonWardFormat::fill_up_pictures($family_tree_data);

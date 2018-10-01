@@ -21,6 +21,3 @@ nytprof.out
 *.o
 *.bs
 /_eumm/
-/.project
- .idea/
-
