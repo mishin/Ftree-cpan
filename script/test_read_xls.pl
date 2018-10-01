@@ -1,4 +1,4 @@
-﻿use Data::Dumper;
+use Data::Dumper;
 use FamilyTreeData;
 use Spreadsheet::ParseExcel;
 use Spreadsheet::ParseExcel::FmtJapan;
