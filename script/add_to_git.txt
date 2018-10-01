@@ -1,0 +1,1 @@
+perl c:\Users\TOSH\Documents\GitHub\YAPC-Russia-2015\git_commit_in_the_past.pl  --date=date --message="sinxronize pod"
