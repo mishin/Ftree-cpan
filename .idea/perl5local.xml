@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Perl5LocalSettings">
-    <option name="perlInterpreter" value="Perl v5.26.2" />
+    <option name="perlInterpreter" value="Local, System: Perl v5.14.2" />
   </component>
   <component name="Perl5XSubsState">
+    <option name="isActual" value="false" />
     <option name="myFilesMap">
       <map>
         <entry key="$USER_HOME$/scoop/apps/perl/5.26.2.1/perl/lib/auto/B/B.xs.dll" value="1523789640000" />
