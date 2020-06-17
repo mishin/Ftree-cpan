@@ -2,10 +2,6 @@
 
 Ftree - family tree generator
 
-# EXAMPLE 
-
-[https://still-lowlands-7377.herokuapp.com](https://still-lowlands-7377.herokuapp.com)
-
 # SYNOPSIS
 
 If install it
